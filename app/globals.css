@@ -8,26 +8,23 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  h2 {
+    @apply text-neutral-300 font-medium;
+  }
+  h3 {
+    @apply text-neutral-300 font-medium;
+  }
+  p {
+    @apply text-sm text-neutral-500;
+  }
+  *::-webkit-scrollbar {
+    @apply w-0 bg-transparent;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer components {
+  .bg-glass {
+    @apply bg-white/5 border border-white/5 backdrop-blur-md cursor-pointer hover:border-white/10;
   }
 }

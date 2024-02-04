@@ -1,0 +1,16 @@
+export type Stack = (
+  | "nextjs"
+  | "tailwindcss"
+  | "firebase"
+  | "android"
+  | "dotnet"
+  | "mongodb"
+  | "expressjs"
+  | "reactjs"
+  | "html"
+  | "css"
+  | "javascript"
+  | "python"
+  | "jquery"
+  | "typescript"
+)[];
