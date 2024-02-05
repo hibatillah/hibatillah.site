@@ -10,16 +10,16 @@ export default function Featured() {
         target="_blank"
         href="https://github.com/hibatillah"
         className="col-span-1">
-        <div className="h-full p-5 rounded-xl bg-glass space-y-2 group *:cursor-pointer">
+        <div className="h-full p-5 rounded-xl bg-glass space-y-2 group">
           <Braces size={20} className="text-blue-600" />
           <div className="flex items-center gap-2">
-            <h3>Front End Development</h3>
+            <h3 className="cursor-pointer">Front End Development</h3>
             <ExternalLink
               size={14}
               className="hidden text-neutral-400 group-hover:block"
             />
           </div>
-          <p>
+          <p className="cursor-pointer">
             Interested in creating user interfaces with code that is attractive
             and easy for users to use and responsive for web and mobile screens.
           </p>
@@ -30,16 +30,16 @@ export default function Featured() {
         target="_blank"
         href="https://dribbble.com/hibatillah"
         className="col-span-1 lg:row-start-2">
-        <div className="h-full p-5 rounded-xl bg-glass space-y-2 group *:cursor-pointer">
+        <div className="h-full p-5 rounded-xl bg-glass space-y-2 group">
           <Crop size={20} className="text-indigo-600" />
           <div className="flex items-center gap-2">
-            <h3>UI Design</h3>
+            <h3 className="cursor-pointer">UI Design</h3>
             <ExternalLink
               size={14}
               className="hidden text-neutral-400 group-hover:block"
             />
           </div>
-          <p>
+          <p className="cursor-pointer">
             Process of designing a user interface to create an engaging, and
             efficient user experience by considering the visual, functional, and
             interactive aspects.
@@ -52,7 +52,7 @@ export default function Featured() {
         href="https://read.cv/hibatillah"
         className="col-span-1 row-span-2 lg:col-start-2">
         <div className="p-5 rounded-xl bg-glass flex flex-col gap-5 group">
-          <div className="flex-none space-y-2 *:cursor-pointer">
+          <div className="flex-none space-y-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-5 text-teal-600"
@@ -63,13 +63,13 @@ export default function Featured() {
               />
             </svg>
             <div className="flex items-center gap-2">
-              <h3>Read.cv</h3>
+              <h3 className="cursor-pointer">Read.cv</h3>
               <ExternalLink
                 size={14}
                 className="hidden text-neutral-400 group-hover:block"
               />
             </div>
-            <p>
+            <p className="cursor-pointer">
               Student majoring in Information Systems. Interested in web
               development especially in Frontend and create UI Designs in web
               and mobile.

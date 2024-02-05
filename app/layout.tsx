@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
+import AnimatedCursor from "react-animated-cursor";
 import "./globals.css";
 
 const sourceSans = Source_Sans_3({
@@ -46,6 +47,20 @@ export default function RootLayout({
           (sourceSans.className,
           " before:fixed before:top-0 before:left-[20%] before:w-1/2 before:h-20 before:rotate-[25deg] before:rounded-full before:bg-primary before:opacity-70 before:blur-[80px] after:fixed after:-bottom-10 after:left-[20%] after:w-[500px] after:h-20 after:rotate-12 after:rounded-full after:bg-primary after:opacity-70 after:blur-[80px]")
         }>
+        <AnimatedCursor
+          showSystemCursor={true}
+          innerSize={0}
+          outerSize={15}
+          innerScale={1}
+          outerScale={4}
+          outerAlpha={0}
+          innerStyle={{
+            backgroundColor: "transparent",
+          }}
+          outerStyle={{
+            border: "2px solid #4f46e5",
+          }}
+        />
         {children}
         <span className="fixed inset-0 -z-10 h-screen w-screen bg-black bg-[linear-gradient(to_right,#080808_1px,transparent_1px),linear-gradient(to_bottom,#080808_1px,transparent_1px)] bg-[size:4rem_4rem] [mask:linear-gradient(90deg,transparent,white_3%,white_97%,transparent)]" />
       </body>

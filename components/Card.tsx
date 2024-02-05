@@ -23,7 +23,9 @@ export function ProjectCard({ data }: { data: Project }) {
       </div>
       <div className="grow flex flex-col">
         <abbr title={title} className="[text-decoration:unset]">
-          <h3 className="text-neutral-300 font-medium line-clamp-1">{title}</h3>
+          <h3 className="text-neutral-300 font-medium line-clamp-1 select-all">
+            {title}
+          </h3>
           <p className="mt-1 text-neutral-500 text-sm line-clamp-3">
             {description}
           </p>
