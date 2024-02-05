@@ -9,22 +9,39 @@
 }
 
 @layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-black cursor-[url('../assets/cursor.svg'),auto];
+  }
+  h1,
+  h2,
+  h3 {
+    @apply w-fit cursor-text;
+  }
   h2 {
-    @apply text-neutral-300 font-medium;
+    @apply text-neutral-200;
   }
   h3 {
     @apply text-neutral-300 font-medium;
   }
   p {
-    @apply text-sm text-neutral-500;
+    @apply text-sm text-neutral-500 cursor-text;
   }
-  *::-webkit-scrollbar {
-    @apply w-0 bg-transparent;
+  time {
+    @apply cursor-text;
+  }
+  *::-webkit-scrollbar-track {
+    @apply w-1 bg-black;
+  }
+  *::-webkit-scrollbar-thumb {
+    @apply bg-indigo-950 rounded-full hover:bg-indigo-900 hover:cursor-pointer;
   }
 }
 
 @layer components {
   .bg-glass {
-    @apply bg-white/5 border border-white/5 backdrop-blur-md cursor-pointer hover:border-white/10;
+    @apply bg-white/5 border border-white/5 backdrop-blur-md hover:border-white/10;
   }
 }
