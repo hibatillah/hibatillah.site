@@ -6,8 +6,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="container space-y-28 antialiased">
-      <main className="grid grid-cols-1 lg:grid-cols-2">
+    <main className="container space-y-28 antialiased">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
         <div className="col-span-1 lg:sticky lg:top-0 py-12 px-6 h-dvh md:h-fit lg:h-dvh 2xl:h-fit flex flex-col gap-24">
           <Link
             href="/"
@@ -47,7 +47,7 @@ export default function Home() {
           <Works />
           <Educations />
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }

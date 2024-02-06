@@ -1,10 +1,13 @@
 "use client";
 
 import { cn } from "@/lib/util";
+import { useLenis } from "@studio-freight/react-lenis";
 import { ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function ScrollTop() {
+  const lenis = useLenis();
+
   const [currentPositionY, setCurrentPositionY] = useState(0);
   const atTop = currentPositionY <= 50;
 
@@ -17,7 +20,7 @@ export default function ScrollTop() {
   return (
     <button
       type="button"
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      onClick={() => lenis.scrollTo("top")}
       className={cn(
         "fixed lg:absolute bottom-9 right-9 size-14 grid place-items-center rounded-full border border-white/10 bg-black/30 backdrop-blur-md shadow-md cursor-pointer transition-all ease-in-out duration-300 z-50 group",
         {
