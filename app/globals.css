@@ -27,7 +27,7 @@
     @apply text-neutral-300 font-medium;
   }
   p {
-    @apply text-sm text-neutral-500 cursor-text;
+    @apply text-sm text-neutral-500 text-pretty cursor-text;
   }
   time {
     @apply cursor-text;

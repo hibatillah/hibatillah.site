@@ -39,6 +39,16 @@ const projects: Project[] = [
     image: "rotte",
   },
   {
+    title: "Web Identification of Rice Types based on Color",
+    description:
+      "3rd semester project of Data Mining course at Politeknik Caltex Riau. Applies the concept of deep learning and image processing with Python to identify the inputted images and classify them based on color.",
+    source: "https://hibatillah.github.io/ProjectPD/",
+    live: "https://hibatillah.github.io/ProjectPD/",
+    stack: ["Python", "JQuery", "HTML", "TailwindCSS"],
+    date: new Date("2023-01-15"),
+    image: "jenisBeras",
+  },
+  {
     title: "MassBeat - Workout App and Trainer Consultation",
     description:
       "An app that provides a workout program and coach consultation services, healthy food recommendations and communities to interact with each other in providing support for healthy living.",
@@ -65,16 +75,6 @@ const projects: Project[] = [
     stack: ["ReactJS", "TailwindCSS"],
     date: new Date("2023-03-25"),
     image: "modernPortfolio",
-  },
-  {
-    title: "Web Identification of Rice Types based on Color",
-    description:
-      "3rd semester project of Data Mining course at Politeknik Caltex Riau. Applies the concept of deep learning and image processing with Python to identify the inputted images and classify them based on color.",
-    source: "https://hibatillah.github.io/ProjectPD/",
-    live: "https://hibatillah.github.io/ProjectPD/",
-    stack: ["Python", "JQuery", "HTML", "TailwindCSS"],
-    date: new Date("2023-01-15"),
-    image: "jenisBeras",
   },
   {
     title: "Classroom Loan Information Systems",

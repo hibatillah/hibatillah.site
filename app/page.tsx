@@ -1,5 +1,6 @@
 import { Educations, Featured, Projects, Works } from "@/app/section";
 import Menu from "@/components/Menu";
+import ScrollTop from "@/components/ScrollTop";
 import Socials from "@/components/Socials";
 import Link from "next/link";
 
@@ -7,10 +8,15 @@ export default function Home() {
   return (
     <div className="container space-y-28 antialiased">
       <main className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="col-span-1 sticky top-0 py-12 px-5 h-dvh flex flex-col gap-24">
-          <Link href="/" className="w-fit">
-            <p className="text-neutral-400 cursor-pointer">
+        <div className="col-span-1 lg:sticky lg:top-0 py-12 px-6 h-dvh md:h-fit lg:h-dvh 2xl:h-fit flex flex-col gap-24">
+          <Link
+            href="/"
+            className="w-fit h-5 flex flex-col text-sm *:text-neutral-400 overflow-hidden *:cursor-pointer *:transition-all *:ease-out *:duration-300 group">
+            <p className="group-hover:-translate-y-5 group-hover:invisible group-hover:opacity-0 before:content-['©'] before:me-1">
               M. Hibatillah Hasanin
+            </p>
+            <p className="invisible opacity-0 group-hover:-translate-y-5 group-hover:visible group-hover:opacity-100">
+              Hibatillah Habib
             </p>
           </Link>
 
@@ -28,10 +34,11 @@ export default function Home() {
           </nav>
 
           <Socials />
+          <ScrollTop />
         </div>
 
-        <div className="col-span-1 px-5 pt-12 pb-16 space-y-10">
-          <p className="ms-auto w-fit mb-16 text-neutral-400 text-end">
+        <div className="col-span-1 px-6 lg:pt-12 pb-24 lg:pb-16 space-y-10">
+          <p className="hidden lg:block ms-auto w-fit mb-16 text-neutral-400 text-end">
             Pekanbaru, Indonesia
           </p>
 

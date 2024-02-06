@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Featured() {
   return (
-    <section id="featured" className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+    <section id="featured" className="grid grid-cols-1 md:grid-cols-2 gap-5">
       <Link
         target="_blank"
         href="https://github.com/hibatillah"
@@ -50,12 +50,12 @@ export default function Featured() {
       <Link
         target="_blank"
         href="https://read.cv/hibatillah"
-        className="col-span-1 row-span-2 lg:col-start-2">
-        <div className="p-5 rounded-xl bg-glass flex flex-col gap-5 group">
+        className="col-span-1 row-span-2 row-start-1 md:col-start-2">
+        <div className="h-full p-5 rounded-xl bg-glass flex flex-col gap-5 group">
           <div className="flex-none space-y-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-5 text-teal-600"
+              className="size-5 object-contain text-teal-600"
               viewBox="0 0 256 256">
               <path
                 fill="currentColor"
@@ -78,9 +78,9 @@ export default function Featured() {
           <div className="grow rounded-lg border border-white/10 brightness-75 overflow-hidden">
             <Image
               src={poster}
-              alt="Recent Project"
+              alt="Portfolio"
               placeholder="blur"
-              className="size-full object-cover select-none pointer-events-none"
+              className="size-full object-cover object-center group-hover:scale-110 select-none pointer-events-none transition-all ease-out duration-300"
             />
           </div>
         </div>

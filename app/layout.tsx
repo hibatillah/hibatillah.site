@@ -14,7 +14,6 @@ export const metadata: Metadata = {
     name: "M. Hibatillah Hasanin",
     url: "https://hibatillah.site",
   },
-  colorScheme: "dark",
   icons: "./favicon.ico",
   openGraph: {
     type: "website",
@@ -31,6 +30,7 @@ export const metadata: Metadata = {
     ],
   },
   other: {
+    "color-scheme": "dark",
     "google-site-verification": "Lcm4vQuRXy2S0tVb6ZEp_p2BvIMCcuaBMB1WgbY0uOE",
   },
 };
@@ -45,7 +45,7 @@ export default function RootLayout({
       <body
         className={
           (sourceSans.className,
-          " before:fixed before:top-0 before:left-[20%] before:w-1/2 before:h-20 before:rotate-[25deg] before:rounded-full before:bg-primary before:opacity-70 before:blur-[80px] after:fixed after:-bottom-10 after:left-[20%] after:w-[500px] after:h-20 after:rotate-12 after:rounded-full after:bg-primary after:opacity-70 after:blur-[80px]")
+          "[overscroll-behavior:contain] before:fixed before:top-0 before:left-[20%] before:lg:w-1/2 before:w-full before:h-20 before:rotate-[25deg] before:rounded-full before:bg-primary before:opacity-70 before:blur-[80px] after:fixed after:-bottom-10 after:left-[20%] after:w-[500px] after:h-20 after:rotate-12 after:rounded-full after:bg-primary after:opacity-50 after:lg:opacity-70 after:blur-[80px] after:-z-10")
         }>
         <AnimatedCursor
           showSystemCursor={true}
@@ -62,7 +62,7 @@ export default function RootLayout({
           }}
         />
         {children}
-        <span className="fixed inset-0 -z-10 h-screen w-screen bg-black bg-[linear-gradient(to_right,#080808_1px,transparent_1px),linear-gradient(to_bottom,#080808_1px,transparent_1px)] bg-[size:4rem_4rem] [mask:linear-gradient(90deg,transparent,white_3%,white_97%,transparent)]" />
+        <span className="fixed inset-0 -z-20 h-screen w-screen bg-black bg-[linear-gradient(to_right,#080808_1px,transparent_1px),linear-gradient(to_bottom,#080808_1px,transparent_1px)] bg-[size:5rem_5rem] lg:bg-[size:4rem_4rem] lg:[mask:linear-gradient(90deg,transparent,white_3%,white_97%,transparent)]" />
       </body>
     </html>
   );
