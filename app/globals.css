@@ -2,18 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
 @layer base {
   html {
     @apply scroll-smooth;
   }
   body {
-    @apply bg-black cursor-[url('../assets/cursor.svg'),auto] [overscroll-behavior:contain] before:fixed before:top-0 before:left-[20%] before:lg:w-1/2 before:w-full before:h-20 before:rotate-[25deg] before:rounded-full before:bg-primary before:opacity-70 before:blur-[80px] after:fixed after:-bottom-10 after:left-[20%] after:w-[500px] after:h-20 after:rotate-12 after:rounded-full after:bg-primary after:opacity-50 after:lg:opacity-70 after:blur-[80px] after:-z-10;
+    @apply bg-black cursor-[url('../assets/cursor.svg'),auto] [overscroll-behavior:contain] before:fixed before:top-0 before:left-0 md:before:left-[20%] before:lg:w-1/2 before:w-full before:h-20 before:rotate-[25deg] before:rounded-full before:bg-primary before:opacity-70 before:blur-[80px] after:fixed after:bottom-0 md:after:-bottom-10 after:left-[20%] after:w-[500px] after:h-20 after:rotate-12 after:rounded-full after:bg-primary after:opacity-50 after:lg:opacity-70 after:blur-[80px] after:-z-10;
   }
   h1,
   h2,

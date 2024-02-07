@@ -2,9 +2,12 @@ import { Educations, Featured, Projects, Works } from "@/app/section";
 import Menu from "@/components/Menu";
 import ScrollTop from "@/components/ScrollTop";
 import Socials from "@/components/Socials";
+import { cn, isMobile } from "@/lib/util";
 import Link from "next/link";
 
 export default function Home() {
+  const mobile = isMobile();
+
   return (
     <main className="container space-y-28 antialiased">
       <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -12,10 +15,18 @@ export default function Home() {
           <Link
             href="/"
             className="w-fit h-5 flex flex-col text-sm *:text-neutral-400 overflow-hidden *:cursor-pointer *:transition-all *:ease-out *:duration-300 group">
-            <p className="group-hover:-translate-y-5 group-hover:invisible group-hover:opacity-0 before:content-['©'] before:me-1">
+            <p
+              className={cn("before:content-['©'] before:me-1", {
+                "lg:group-hover:-translate-y-5 lg:group-hover:invisible lg:group-hover:opacity-0":
+                  !mobile,
+              })}>
               M. Hibatillah Hasanin
             </p>
-            <p className="invisible opacity-0 group-hover:-translate-y-5 group-hover:visible group-hover:opacity-100">
+            <p
+              className={cn("invisible opacity-0", {
+                "lg:group-hover:-translate-y-5 lg:group-hover:visible lg:group-hover:opacity-100":
+                  !mobile,
+              })}>
               Hibatillah Habib
             </p>
           </Link>

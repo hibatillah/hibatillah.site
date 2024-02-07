@@ -16,6 +16,15 @@ const config: Config = {
         secondary:
           "linear-gradient(45deg, #fbc153 10%, #f74844 30%, #b528a6 45%, #5442d5 80%)",
       },
+      animation: {
+        "fade-in-out": "fade-in-out ease-in-out forwards",
+      },
+      keyframes: {
+        "fade-in-out": {
+          "0%, 100%": { scale: ".8", opacity: "0" },
+          "20%, 85%": { scale: "1", opacity: "1" },
+        },
+      },
     },
   },
   plugins: [],

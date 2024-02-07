@@ -1,7 +1,10 @@
+import { isMobile } from "@/lib/util";
 import AnimatedCursor from "react-animated-cursor";
 
 export default function Cursor() {
-  return (
+  const mobile = isMobile()
+
+  return !mobile ? (
     <AnimatedCursor
       showSystemCursor={true}
       innerSize={0}
@@ -16,5 +19,5 @@ export default function Cursor() {
         border: "2px solid rgb(13, 148, 136)",
       }}
     />
-  );
+  ) : null;
 }

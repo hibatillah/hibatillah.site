@@ -16,7 +16,7 @@ export default function Featured() {
             <h3 className="cursor-pointer">Front End Development</h3>
             <ExternalLink
               size={14}
-              className="hidden text-neutral-400 group-hover:block"
+              className="block lg:hidden text-neutral-400 lg:group-hover:block"
             />
           </div>
           <p className="cursor-pointer">
@@ -36,7 +36,7 @@ export default function Featured() {
             <h3 className="cursor-pointer">UI Design</h3>
             <ExternalLink
               size={14}
-              className="hidden text-neutral-400 group-hover:block"
+              className="block lg:hidden text-neutral-400 lg:group-hover:block"
             />
           </div>
           <p className="cursor-pointer">
@@ -66,7 +66,7 @@ export default function Featured() {
               <h3 className="cursor-pointer">Read.cv</h3>
               <ExternalLink
                 size={14}
-                className="hidden text-neutral-400 group-hover:block"
+                className="block lg:hidden text-neutral-400 lg:group-hover:block"
               />
             </div>
             <p className="cursor-pointer">

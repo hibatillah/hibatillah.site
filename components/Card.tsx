@@ -12,7 +12,7 @@ export function ProjectCard({ data }: { data: Project }) {
   const formattedDate = `${utcDate[2]} ${utcDate[1]}, ${utcDate[3]}`;
 
   return (
-    <div className="col-span-1 p-4 bg-glass rounded-xl flex flex-col lg:flex-row items-stretch gap-4 group">
+    <div className="col-span-1 p-4 bg-glass rounded-xl flex flex-col lg:flex-row items-stretch gap-4 group motion-safe:animate-fade-in-out motion-safe:[animation-timeline:view(-50px)]">
       <div className="flex-none w-full lg:w-44 aspect-video lg:aspect-square bg-neutral-800/60 border border-white/5 rounded-lg overflow-hidden">
         <Image
           src={thumbnail[image as keyof typeof thumbnail]}
@@ -76,7 +76,7 @@ export function ExperienceCard({ data }: { data: Experience }) {
   const { icon, title, subtitle, date } = data;
 
   return (
-    <div className="py-3 px-4 md:ps-3 md:pe-8 bg-glass rounded-xl md:rounded-full flex items-center gap-4 md:gap-3">
+    <div className="py-3 px-4 md:ps-3 md:pe-8 bg-glass rounded-xl md:rounded-full flex items-center gap-4 md:gap-3 motion-safe:animate-fade-in-out motion-safe:[animation-timeline:view(-50px)]">
       <div className="hidden size-12 flex-none md:flex justify-center items-center bg-neutral-800/60 border border-white/5 rounded-full">
         {icon}
       </div>
