@@ -19,11 +19,16 @@ const config: Config = {
       },
       animation: {
         "fade-in-out": "fade-in-out ease-in-out forwards",
+        dim: "dim 5s ease-in-out infinite",
       },
       keyframes: {
         "fade-in-out": {
           "0%, 100%": { scale: ".8", opacity: "0" },
           "20%, 85%": { scale: "1", opacity: "1" },
+        },
+        dim: {
+          "0%, 100%": { opacity: "0.8" },
+          "50%": { opacity: "0.6" },
         },
       },
     },

@@ -14,6 +14,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hibatillah.site"),
   title: "Hibatillah • Frontend Dev • UI Designer",
   description: "M. Hibatillah Hasanin Portfolio",
   authors: {
