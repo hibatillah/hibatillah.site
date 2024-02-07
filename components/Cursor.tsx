@@ -1,17 +1,18 @@
-import { isMobile } from "@/lib/util";
+import { isTouchScreen } from "@/lib/util";
 import AnimatedCursor from "react-animated-cursor";
 
 export default function Cursor() {
-  const mobile = isMobile()
+  const isTouched = isTouchScreen();
 
-  return !mobile ? (
+  return isTouched ? null : (
     <AnimatedCursor
       showSystemCursor={true}
       innerSize={0}
-      outerSize={15}
+      outerSize={25}
       innerScale={1}
-      outerScale={4}
+      outerScale={2}
       outerAlpha={0}
+      clickables={["a", "button", "abbr", "time"]}
       innerStyle={{
         backgroundColor: "transparent",
       }}
@@ -19,5 +20,5 @@ export default function Cursor() {
         border: "2px solid rgb(13, 148, 136)",
       }}
     />
-  ) : null;
+  );
 }

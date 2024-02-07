@@ -1,9 +1,12 @@
 import poster from "@/assets/poster.webp";
+import { cn, isTouchScreen } from "@/lib/util";
 import { Braces, Crop, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Featured() {
+  const isTouched = isTouchScreen();
+
   return (
     <section id="featured" className="grid grid-cols-1 md:grid-cols-2 gap-5">
       <Link
@@ -13,10 +16,12 @@ export default function Featured() {
         <div className="h-full p-5 rounded-xl bg-glass space-y-2 group">
           <Braces size={20} className="text-blue-600" />
           <div className="flex items-center gap-2">
-            <h3 className="cursor-pointer">Front End Development</h3>
+            <h3 className="line-clamp-1 cursor-pointer">Front End Development</h3>
             <ExternalLink
               size={14}
-              className="block lg:hidden text-neutral-400 lg:group-hover:block"
+              className={cn("block text-neutral-400", {
+                "lg:hidden lg:group-hover:block": !isTouched,
+              })}
             />
           </div>
           <p className="cursor-pointer">
@@ -33,10 +38,12 @@ export default function Featured() {
         <div className="h-full p-5 rounded-xl bg-glass space-y-2 group">
           <Crop size={20} className="text-indigo-600" />
           <div className="flex items-center gap-2">
-            <h3 className="cursor-pointer">UI Design</h3>
+            <h3 className="line-clamp-1 cursor-pointer">UI Design</h3>
             <ExternalLink
               size={14}
-              className="block lg:hidden text-neutral-400 lg:group-hover:block"
+              className={cn("block text-neutral-400", {
+                "lg:hidden lg:group-hover:block": !isTouched,
+              })}
             />
           </div>
           <p className="cursor-pointer">
@@ -63,10 +70,12 @@ export default function Featured() {
               />
             </svg>
             <div className="flex items-center gap-2">
-              <h3 className="cursor-pointer">Read.cv</h3>
+              <h3 className="line-clamp-1 cursor-pointer">Read.cv</h3>
               <ExternalLink
                 size={14}
-                className="block lg:hidden text-neutral-400 lg:group-hover:block"
+                className={cn("block text-neutral-400", {
+                  "lg:hidden lg:group-hover:block": !isTouched,
+                })}
               />
             </div>
             <p className="cursor-pointer">
@@ -80,7 +89,7 @@ export default function Featured() {
               src={poster}
               alt="Portfolio"
               placeholder="blur"
-              className="size-full object-cover object-center group-hover:scale-110 select-none pointer-events-none transition-all ease-out duration-300"
+              className="size-full object-cover object-center motion-safe:group-hover:scale-110 select-none pointer-events-none transition-all ease-out duration-300"
             />
           </div>
         </div>

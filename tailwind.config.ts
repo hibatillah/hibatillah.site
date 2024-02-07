@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   content: [
@@ -27,6 +28,15 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addVariant }) {
+      addVariant("group-enabled", ":merge(.group):not(:disabled) &");
+      addVariant("hover-within", ":is(&:hover,&:focus-within)");
+      addVariant(
+        "group-hover-within",
+        ":merge(.group):is(:hover,:focus-within) &"
+      );
+    }),
+  ],
 };
 export default config;

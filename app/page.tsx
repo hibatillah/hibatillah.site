@@ -2,11 +2,11 @@ import { Educations, Featured, Projects, Works } from "@/app/section";
 import Menu from "@/components/Menu";
 import ScrollTop from "@/components/ScrollTop";
 import Socials from "@/components/Socials";
-import { cn, isMobile } from "@/lib/util";
+import { cn, isTouchScreen } from "@/lib/util";
 import Link from "next/link";
 
 export default function Home() {
-  const mobile = isMobile();
+  const isTouched = isTouchScreen();
 
   return (
     <main className="container space-y-28 antialiased">
@@ -17,15 +17,15 @@ export default function Home() {
             className="w-fit h-5 flex flex-col text-sm *:text-neutral-400 overflow-hidden *:cursor-pointer *:transition-all *:ease-out *:duration-300 group">
             <p
               className={cn("before:content-['©'] before:me-1", {
-                "lg:group-hover:-translate-y-5 lg:group-hover:invisible lg:group-hover:opacity-0":
-                  !mobile,
+                "motion-safe:lg:group-hover:-translate-y-5 motion-safe:lg:group-hover:invisible motion-safe:lg:group-hover:opacity-0":
+                  !isTouched,
               })}>
               M. Hibatillah Hasanin
             </p>
             <p
               className={cn("invisible opacity-0", {
-                "lg:group-hover:-translate-y-5 lg:group-hover:visible lg:group-hover:opacity-100":
-                  !mobile,
+                "motion-safe:lg:group-hover:-translate-y-5 motion-safe:lg:group-hover:visible motion-safe:lg:group-hover:opacity-100":
+                  !isTouched,
               })}>
               Hibatillah Habib
             </p>

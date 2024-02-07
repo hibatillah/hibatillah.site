@@ -12,13 +12,13 @@ export function ProjectCard({ data }: { data: Project }) {
   const formattedDate = `${utcDate[2]} ${utcDate[1]}, ${utcDate[3]}`;
 
   return (
-    <div className="col-span-1 p-4 bg-glass rounded-xl flex flex-col lg:flex-row items-stretch gap-4 group motion-safe:animate-fade-in-out motion-safe:[animation-timeline:view(-50px)]">
+    <li className="min-h-[420px] lg:min-h-fit p-4 bg-glass rounded-xl flex flex-col lg:flex-row items-stretch gap-4 group motion-safe:animate-fade-in-out motion-safe:[animation-timeline:view(-50px)]">
       <div className="flex-none w-full lg:w-44 aspect-video lg:aspect-square bg-neutral-800/60 border border-white/5 rounded-lg overflow-hidden">
         <Image
           src={thumbnail[image as keyof typeof thumbnail]}
           alt={title}
           placeholder="blur"
-          className="size-full object-cover object-left brightness-75 select-none pointer-events-none group-hover:scale-110 transition-all ease-out duration-300"
+          className="size-full object-cover object-left brightness-75 select-none pointer-events-none motion-safe:group-hover:scale-110 transition-all ease-out duration-300"
         />
       </div>
       <div className="grow flex flex-col">
@@ -41,7 +41,7 @@ export function ProjectCard({ data }: { data: Project }) {
             </abbr>
           ))}
         </div>
-        <div className="mt-8 lg:mt-auto flex items-end justify-between">
+        <div className="mt-auto flex items-end justify-between">
           <time
             dateTime={date.toISOString().split("T")[0]}
             className="text-neutral-500 text-sm">
@@ -52,15 +52,16 @@ export function ProjectCard({ data }: { data: Project }) {
               <Link
                 href={source}
                 target="_blank"
-                className="flex items-center gap-2 py-2 px-6 rounded-full bg-neutral-800/50 text-base lg:text-sm text-neutral-300 hover:bg-neutral-800 active:bg-neutral-900/80 select-none">
-                <Github size={14} className="animate-pulse" /> Source
+                className="flex items-center gap-2 py-2 px-6 rounded-full bg-neutral-800/50 border border-white/5 text-base lg:text-sm text-neutral-300 hover:bg-neutral-800 active:bg-neutral-900/80 select-none">
+                <Github size={14} className="motion-safe:animate-pulse" />{" "}
+                Source
               </Link>
             )}
             {live && (
               <Link
                 href={live}
                 target="_blank"
-                className="flex items-center gap-3 py-2 px-5 rounded-full bg-neutral-800/50 text-base lg:text-sm text-neutral-300 hover:bg-neutral-800 active:bg-neutral-900/80 select-none">
+                className="flex items-center gap-3 py-2 px-5 rounded-full bg-neutral-800/50 border border-white/5 text-base lg:text-sm text-neutral-300 hover:bg-neutral-800 active:bg-neutral-900/80 select-none">
                 Live
                 <span className="size-2 rounded-full bg-blue-600 relative before:content-[''] before:absolute before:-inset-1 before:bg-blue-800 before:rounded-full before:-z-10 before:animate-ping" />
               </Link>
@@ -68,7 +69,7 @@ export function ProjectCard({ data }: { data: Project }) {
           </div>
         </div>
       </div>
-    </div>
+    </li>
   );
 }
 
@@ -76,7 +77,7 @@ export function ExperienceCard({ data }: { data: Experience }) {
   const { icon, title, subtitle, date } = data;
 
   return (
-    <div className="py-3 px-4 md:ps-3 md:pe-8 bg-glass rounded-xl md:rounded-full flex items-center gap-4 md:gap-3 motion-safe:animate-fade-in-out motion-safe:[animation-timeline:view(-50px)]">
+    <li className="py-3 px-4 md:ps-3 md:pe-8 bg-glass rounded-xl md:rounded-full flex items-center gap-4 md:gap-3 motion-safe:animate-fade-in-out motion-safe:[animation-timeline:view(-50px)]">
       <div className="hidden size-12 flex-none md:flex justify-center items-center bg-neutral-800/60 border border-white/5 rounded-full">
         {icon}
       </div>
@@ -88,6 +89,6 @@ export function ExperienceCard({ data }: { data: Experience }) {
       <p className="hidden md:block ms-auto text-neutral-500 text-end">
         {subtitle}
       </p>
-    </div>
+    </li>
   );
 }

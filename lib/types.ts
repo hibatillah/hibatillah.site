@@ -3,7 +3,6 @@ export type Project = {
   title: string;
   description: string;
   date: Date;
-  formattedDate?: string;
   source?: string;
   live?: string;
   stack?: Stack;
