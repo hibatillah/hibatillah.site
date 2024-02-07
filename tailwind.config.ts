@@ -27,8 +27,8 @@ const config: Config = {
           "20%, 85%": { scale: "1", opacity: "1" },
         },
         dim: {
-          "0%, 100%": { opacity: "0.8" },
-          "50%": { opacity: "0.6" },
+          "0%, 100%": { opacity: "0.9" },
+          "50%": { opacity: "0.7" },
         },
       },
     },

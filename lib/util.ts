@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { isMobile } from "react-device-detect";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -14,14 +15,6 @@ function isTouchDevices() {
   }
 }
 
-function isMobile() {
-  const toMatch = [/Android/i, /iPhone/i, /iPad/i, /webOS/i, /Windows Phone/i];
-
-  return toMatch.some((toMatchItem) => {
-    return navigator.userAgent.match(toMatchItem);
-  });
-}
-
 export function isTouchScreen() {
-  return isTouchDevices() || isMobile();
+  return isTouchDevices() || isMobile;
 }
