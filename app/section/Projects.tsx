@@ -1,4 +1,4 @@
-import projects from "@/assets/data/project";
+import projects from "@/assets/data/project.json";
 import { ProjectCard } from "@/components/Card";
 import { Stack } from "@/lib/types";
 

@@ -21,8 +21,7 @@ import linkedin from './linkedin.webp';
 import instagram from './instagram.webp';
 import dribbble from './dribbble.webp';
 import discord from './discord.webp';
-import monkeytype from './monkeytype.webp';
-import gmail from './gmail.webp';
+import behance from './behance.webp';
 
 export {
   reactjs,
@@ -48,6 +47,5 @@ export {
   instagram,
   dribbble,
   discord,
-  monkeytype,
-  gmail,
+  behance,
 }

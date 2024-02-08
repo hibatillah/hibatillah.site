@@ -2,9 +2,10 @@ export type Project = {
   image: string;
   title: string;
   description: string;
-  date: Date;
+  date: string;
   source?: string;
   live?: string;
+  docs?: string;
   stack?: Stack;
 };
 

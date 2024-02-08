@@ -13,20 +13,24 @@ export default function Socials() {
       url: "https://instagram.com/hibat.illah",
     },
     {
-      name: "github",
-      url: "https://github.com/hibatillah",
+      name: "discord",
+      url: "https://discordapp.com/users/701649381652168714",
     },
     {
-      name: "figma",
-      url: "https://figma.com/@hibatillah",
+      name: "github",
+      url: "https://github.com/hibatillah",
     },
     {
       name: "dribbble",
       url: "https://dribbble.com/hibatillah",
     },
     {
-      name: "discord",
-      url: "https://discordapp.com/users/701649381652168714",
+      name: "behance",
+      url: "https://www.behance.net/mhibatil",
+    },
+    {
+      name: "figma",
+      url: "https://figma.com/@hibatillah",
     },
   ];
 
