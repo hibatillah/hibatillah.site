@@ -1,5 +1,4 @@
 import Cursor from "@/components/Cursor";
-import SmoothScroll from "@/components/SmoothScroll";
 import type { Metadata, Viewport } from "next";
 import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
@@ -49,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <body className={sourceSans.className}>
-        <SmoothScroll>{children}</SmoothScroll>
+        {children}
         <Cursor />
         <span className="fixed inset-0 -z-20 h-screen w-screen bg-black bg-[linear-gradient(to_right,#090909_1px,transparent_1px),linear-gradient(to_bottom,#090909_1px,transparent_1px)] bg-[size:5rem_5rem] lg:bg-[size:4rem_4rem] lg:[mask:linear-gradient(90deg,transparent,white_3%,white_97%,transparent)]" />
       </body>

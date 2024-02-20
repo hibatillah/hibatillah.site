@@ -11,6 +11,7 @@
   "dependencies": {
     "@studio-freight/react-lenis": "^0.0.43",
     "clsx": "^2.1.0",
+    "locomotive-scroll": "^5.0.0-beta.11",
     "lucide-react": "^0.321.0",
     "next": "14.1.0",
     "react": "^18",

@@ -101,22 +101,18 @@ export function ExperienceCard({
   };
 
   return (
-    <li>
-      <Link
-        href={link[type]}
-        className="py-3 px-4 md:ps-3 md:pe-8 bg-glass rounded-xl md:rounded-full flex items-center gap-4 md:gap-3 motion-safe:animate-fade-in-out motion-safe:[animation-timeline:view(-50px)]">
-        <div className="hidden size-12 flex-none md:flex justify-center items-center bg-neutral-800/60 border border-white/5 rounded-full">
-          {icon}
-        </div>
-        <div className="grow *:cursor-pointer">
-          <h3 className="text-neutral-300 font-medium line-clamp-1">{title}</h3>
-          <p className="md:hidden text-sm text-neutral-500">{subtitle}</p>
-          <p className="w-fit text-neutral-600 text-xs md:text-sm">{date}</p>
-        </div>
-        <p className="hidden md:block ms-auto text-neutral-500 text-end cursor-pointer">
-          {subtitle}
-        </p>
-      </Link>
+    <li className="py-3 px-4 md:ps-3 md:pe-8 bg-glass rounded-xl md:rounded-full flex items-center gap-4 md:gap-3 motion-safe:animate-fade-in-out motion-safe:[animation-timeline:view(-50px)]">
+      <div className="hidden size-12 flex-none md:flex justify-center items-center bg-neutral-800/60 border border-white/5 rounded-full">
+        {icon}
+      </div>
+      <div className="grow">
+        <h3 className="text-neutral-300 font-medium line-clamp-1">{title}</h3>
+        <p className="md:hidden text-sm text-neutral-500">{subtitle}</p>
+        <p className="w-fit text-neutral-600 text-xs md:text-sm">{date}</p>
+      </div>
+      <p className="hidden md:block ms-auto text-neutral-500 text-end">
+        {subtitle}
+      </p>
     </li>
   );
 }

@@ -1,4 +1,4 @@
-import { Educations, Featured, Projects, Works } from "@/app/section";
+import { Educations, Featured, Projects } from "@/app/section";
 import Menu from "@/components/Menu";
 import ScrollTop from "@/components/ScrollTop";
 import Socials from "@/components/Socials";
@@ -31,8 +31,8 @@ export default function Home() {
             </p>
           </Link>
 
-          <div className="relative after:content-[url(../assets/gradient.svg)] after:absolute after:left-0 after:-bottom-4 after:w-40 after:h-1 after:object-contain">
-            <h1 className="text-3xl/snug text-neutral-300 font-medium text-balance">
+          <div className="relative after:content-[url(../assets/gradient.svg)] after:absolute after:left-0 after:-bottom-5 after:w-40 after:h-1 after:object-contain">
+            <h1 className="text-[32px]/tight text-neutral-300 font-medium text-balance">
               Interested and Passionate in FrontEnd Development and love to
               Designing <br /> Turn Design into system with Code
             </h1>
@@ -40,7 +40,6 @@ export default function Home() {
 
           <nav className="w-40 my-auto flex flex-col [counter-reset:nav]">
             <Menu name="Projects" />
-            <Menu name="Works" />
             <Menu name="Educations" />
           </nav>
 
@@ -55,7 +54,6 @@ export default function Home() {
 
           <Featured />
           <Projects />
-          <Works />
           <Educations />
         </div>
       </div>
