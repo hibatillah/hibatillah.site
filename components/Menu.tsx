@@ -1,7 +1,6 @@
 "use client";
 
 import { isTouchScreen } from "@/lib/util";
-import { useLenis } from "@studio-freight/react-lenis";
 import { useRouter } from "next/navigation";
 
 export default function Menu({
