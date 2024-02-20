@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main className="container space-y-28 antialiased">
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="col-span-1 lg:sticky lg:top-0 py-12 px-6 h-dvh md:h-fit lg:h-dvh 2xl:h-fit flex flex-col gap-24">
+        <div className="col-span-1 lg:sticky lg:top-0 py-12 px-6 h-svh md:h-fit lg:h-dvh 2xl:h-fit flex flex-col gap-24">
           <Link
             href="/"
             className="w-fit h-5 flex flex-col text-sm *:text-neutral-400 overflow-hidden *:cursor-pointer *:transition-all *:ease-out *:duration-300 group">

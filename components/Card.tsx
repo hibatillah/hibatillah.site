@@ -16,7 +16,7 @@ function LinkButton({
     <Link
       href={href}
       target="_blank"
-      className="flex items-center gap-2 py-2 px-5 rounded-full bg-neutral-800/50 border border-white/5 text-base lg:text-sm text-neutral-300 hover:bg-neutral-800 active:bg-neutral-900/80 select-none">
+      className="flex items-center gap-2 py-2 px-5 rounded-full bg-neutral-800/50 border border-white/5 text-base text-sm text-neutral-300 hover:bg-neutral-800 active:bg-neutral-900/80 select-none">
       {children}
     </Link>
   );
