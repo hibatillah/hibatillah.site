@@ -24,12 +24,9 @@ function LinkButton({
 
 export function ProjectCard({ data }: { data: Project }) {
   const { image, title, description, date, source, live, stack, docs } = data;
-  const name = title.toLowerCase().replace(/ /g, "-");
 
   return (
-    <li
-      id={name}
-      className="min-h-[420px] lg:min-h-fit p-4 bg-glass rounded-xl flex flex-col lg:flex-row items-stretch gap-4 group motion-safe:animate-fade-in-out motion-safe:[animation-timeline:view(-50px)] scroll-mt-12">
+    <li className="min-h-[420px] lg:min-h-fit p-4 bg-glass rounded-xl flex flex-col lg:flex-row items-stretch gap-4 group motion-safe:animate-fade-in-out motion-safe:[animation-timeline:view(-50px)] scroll-mt-12">
       <div className="flex-none w-full lg:w-44 aspect-video lg:aspect-square bg-neutral-800/60 border border-white/5 rounded-lg overflow-hidden">
         <Image
           src={thumbnail[image as keyof typeof thumbnail]}
