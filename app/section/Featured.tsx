@@ -14,7 +14,7 @@ export default function Featured() {
           <Braces size={20} className="text-blue-600" />
           <h3 className="line-clamp-1">Front End Development</h3>
         </div>
-        <div className="w-96 h-full rounded-lg bg-glass border border-neutral-700/80 shadow-[-8px_16px_10px_rgb(0_0_0)] translate-x-4 translate-y-4 overflow-hidden [mask:linear-gradient(90deg,white_60%,transparent)] md:[mask:linear-gradient(90deg,white_30%,transparent)] transition-all ease-out duration-300">
+        <div className="w-96 h-full rounded-lg bg-glass border border-neutral-700/80 shadow-[-8px_16px_10px_rgb(0_0_0)] translate-x-4 translate-y-4 overflow-hidden [mask:linear-gradient(90deg,white_60%,transparent)] md:[mask:linear-gradient(90deg,white_20%,transparent)] transition-all ease-out duration-300">
           <div className="border-b border-neutral-700/80">
             <div className="inline-block px-3 py-2 bg-neutral-900/50 text-xs text-yellow-400 border-r border-neutral-700/80">
               main.js
@@ -32,7 +32,7 @@ export default function Featured() {
         <MousePointerClick
           size={14}
           className={cn(
-            "text-white absolute top-[43%] left-[40%] md:left-1/2 transition-all ease-in-out duration-500 select-none",
+            "text-white absolute top-[43%] left-1/4  md:left-1/2 transition-all ease-in-out duration-500 select-none",
             {
               "md:group-hover:left-1/4": !isTouched,
             }
@@ -66,7 +66,7 @@ export default function Featured() {
           <div className="flex-none space-y-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="size-5 object-contain text-purple-500"
+              className="size-5 object-contain text-indigo-500"
               viewBox="0 0 256 256">
               <path
                 fill="currentColor"
@@ -84,8 +84,8 @@ export default function Featured() {
             </div>
             <p className="cursor-pointer">
               Student majoring in Information Systems. Interested in web
-              development especially in Frontend and create UI Designs in web
-              and mobile.
+              development especially in Frontend and create various UI Designs
+              in web and mobile.
             </p>
           </div>
           <div className="grow rounded-lg border border-white/10 brightness-75 group-hover:brightness-[.8] overflow-hidden">

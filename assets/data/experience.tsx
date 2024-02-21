@@ -6,7 +6,7 @@ const works: Experience[] = [
     title: "Front-End Javascript Developer Internship",
     subtitle: "BPPK Kementrian Keuangan",
     date: "Feb - Jun 2024",
-    icon: <Code size={16} className="text-teal-600" />,
+    icon: <Code size={16} className="text-indigo-600" />,
   },
 ];
 
@@ -15,7 +15,7 @@ const educations: Experience[] = [
     title: "Politeknik Caltex Riau",
     subtitle: "B.A.Sc in Information Systems",
     date: "Sep 2021 - Present",
-    icon: <GraduationCap size={20} className="text-indigo-600" />,
+    icon: <GraduationCap size={20} className="text-teal-600" />,
   },
   {
     title: "SMA IT Imam Syafi'i 2 Pekanbaru",

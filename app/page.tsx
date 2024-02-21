@@ -14,25 +14,27 @@ export default function Home() {
         <div className="col-span-1 lg:sticky lg:top-0 py-12 px-6 h-svh md:h-fit lg:h-dvh 2xl:h-fit flex flex-col gap-24">
           <Link
             href="/"
-            className="w-fit h-5 flex flex-col text-sm *:text-neutral-400 overflow-hidden *:cursor-pointer *:transition-all *:ease-out *:duration-300 group">
-            <p
-              className={cn("before:content-['©'] before:me-1", {
-                "motion-safe:lg:group-hover:-translate-y-5 motion-safe:lg:group-hover:invisible motion-safe:lg:group-hover:opacity-0":
-                  !isTouched,
-              })}>
-              M. Hibatillah Hasanin
-            </p>
-            <p
-              className={cn("invisible opacity-0", {
-                "motion-safe:lg:group-hover:-translate-y-5 motion-safe:lg:group-hover:visible motion-safe:lg:group-hover:opacity-100":
-                  !isTouched,
-              })}>
-              Hibatillah Habib
-            </p>
+            className="w-fit flex items-center before:content-['©'] before:me-1.5 before:text-neutral-400">
+            <div className="h-5 flex flex-col text-sm *:text-neutral-400 overflow-hidden *:cursor-pointer *:transition-all *:ease-out *:duration-300 group">
+              <p
+                className={cn("", {
+                  "motion-safe:lg:group-hover:-translate-y-5 motion-safe:lg:group-hover:invisible motion-safe:lg:group-hover:opacity-0":
+                    !isTouched,
+                })}>
+                M. Hibatillah Hasanin
+              </p>
+              <p
+                className={cn("invisible opacity-0", {
+                  "motion-safe:lg:group-hover:-translate-y-5 motion-safe:lg:group-hover:visible motion-safe:lg:group-hover:opacity-100":
+                    !isTouched,
+                })}>
+                Hibatillah Habib
+              </p>
+            </div>
           </Link>
 
           <div className="relative after:content-[url(../assets/gradient.svg)] after:absolute after:left-0 after:-bottom-5 after:w-40 after:h-1 after:object-contain">
-            <h1 className="text-[32px]/tight text-neutral-300 font-medium text-balance">
+            <h1 className="text-3xl md:text-[32px] leading-tight text-neutral-300 font-medium text-balance">
               Interested and Passionate in FrontEnd Development and love to
               Designing <br /> Turn Design into system with Code
             </h1>
