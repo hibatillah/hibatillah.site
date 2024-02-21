@@ -40,11 +40,7 @@ export default function Home() {
             </h1>
           </div>
 
-          <nav className="w-40 my-auto flex flex-col [counter-reset:nav]">
-            <Menu name="Projects" />
-            <Menu name="Educations" />
-          </nav>
-
+          <Menu />
           <Socials />
           <ScrollTop />
         </div>

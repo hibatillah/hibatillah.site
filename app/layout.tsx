@@ -54,7 +54,7 @@ export default function RootLayout({
         <Cursor />
         <Analytics />
         <SpeedInsights />
-        <span className="fixed inset-0 -z-20 h-screen w-screen bg-black bg-[linear-gradient(to_right,#090909_1px,transparent_1px),linear-gradient(to_bottom,#090909_1px,transparent_1px)] bg-[size:4rem_4rem] lg:[mask:linear-gradient(90deg,transparent,white_7%,white_92%,transparent)]" />
+        <span className="fixed inset-0 -z-20 h-screen w-screen bg-black bg-[linear-gradient(to_right,#090909_1px,transparent_1px),linear-gradient(to_bottom,#090909_1px,transparent_1px)] bg-[size:4rem_4rem] lg:[mask:linear-gradient(90deg,transparent,white_7%,white_92%,transparent)] pointer-events-none" />
       </body>
     </html>
   );
