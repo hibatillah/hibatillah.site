@@ -8,7 +8,7 @@ export default function Menu() {
   const isTouched = isTouchScreen();
 
   const menu = ["Projects", "Educations"];
-
+  
   return (
     <nav className="list-decimal-leading-zero list-outside w-40 my-auto flex flex-col [counter-reset:nav]">
       {menu.map((name, index) => (
