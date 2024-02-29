@@ -7,7 +7,7 @@
     @apply scroll-smooth;
   }
   body {
-    @apply bg-black cursor-[url('../assets/cursor.svg'),auto] before:fixed before:top-0 before:left-0 md:before:left-[20%] before:lg:w-1/2 before:w-full before:h-20 before:rotate-[25deg] before:rounded-full before:bg-primary before:opacity-70 before:blur-[80px] before:-z-10 before:transition-all before:animate-dim before:pointer-events-none after:fixed after:bottom-0 md:after:-bottom-10 after:left-[20%] after:w-[500px] after:h-20 after:rotate-12 after:rounded-full after:bg-primary after:opacity-50 after:lg:opacity-70 after:blur-[80px] after:-z-10 after:transition-all after:animate-dim after:pointer-events-none;
+    @apply bg-black cursor-[url('../assets/cursor.svg'),auto];
   }
   h1,
   h2,
@@ -37,5 +37,8 @@
 @layer components {
   .bg-glass {
     @apply bg-white/5 border border-white/5 backdrop-blur-md hover:border-white/10;
+  }
+  .overlay {
+    @apply fixed inset-0 -z-20 h-screen w-screen bg-black bg-[linear-gradient(to_right,#090909_1px,transparent_1px),linear-gradient(to_bottom,#090909_1px,transparent_1px)] bg-[size:4rem_4rem] lg:[mask:linear-gradient(90deg,transparent,white_7%,white_92%,transparent)] pointer-events-none before:fixed before:top-0 before:left-0 md:before:left-[20%] before:lg:w-1/2 before:w-full before:h-20 before:rotate-[25deg] before:rounded-full before:bg-primary before:opacity-70 before:blur-[80px] before:-z-10 before:transition-all before:animate-dim before:pointer-events-none after:fixed after:bottom-0 md:after:-bottom-10 after:left-[20%] after:w-[500px] after:h-20 after:rotate-12 after:rounded-full after:bg-primary after:opacity-50 after:lg:opacity-70 after:blur-[80px] after:-z-10 after:transition-all after:animate-dim after:pointer-events-none;
   }
 }

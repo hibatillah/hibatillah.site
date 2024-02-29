@@ -3,10 +3,10 @@ import { BookMarked, Code, GraduationCap } from "lucide-react";
 
 const works: Experience[] = [
   {
-    title: "Front-End Javascript Developer Internship",
+    title: "Full Stack Developer Internship",
     subtitle: "BPPK Kementrian Keuangan",
     date: "Feb - Jun 2024",
-    icon: <Code size={16} className="text-indigo-600" />,
+    icon: <Code size={16} className="text-red-600" />,
   },
 ];
 

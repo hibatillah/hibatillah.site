@@ -23,6 +23,7 @@ export default function ScrollTop() {
         { "text-neutral-500 cursor-not-allowed rotate-0": disableToTop }
       )}>
       <ArrowDown className="size-5 group-enabled:group-hover:scale-125 transition-all ease-out duration-200 motion-reduce:transition-none" />
+      <span className="sr-only">Scroll to Top</span>
     </button>
   );
 }

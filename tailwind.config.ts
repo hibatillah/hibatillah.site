@@ -19,7 +19,7 @@ const config: Config = {
       },
       animation: {
         "fade-in-out": "fade-in-out ease-in-out forwards",
-        dim: "dim 5s ease-in-out infinite",
+        dim: "dim 3s ease-in-out infinite",
       },
       keyframes: {
         "fade-in-out": {

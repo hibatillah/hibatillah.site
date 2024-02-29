@@ -13,7 +13,7 @@ export default function Cursor() {
         innerScale={1}
         outerScale={2}
         outerAlpha={0}
-        clickables={["a", "button", "abbr", "code"]}
+        clickables={["a", "button", "code", "[title]"]}
         innerStyle={{
           backgroundColor: "transparent",
         }}

@@ -8,13 +8,15 @@ export default function Featured() {
   const isTouched = isTouchScreen();
 
   return (
-    <section id="featured" className="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <section
+      id="featured"
+      className="grid grid-cols-1 md:grid-cols-2 gap-5">
       <div className="col-span-1 h-52 md:h-48  p-5 rounded-xl bg-glass space-y-2 relative group overflow-hidden">
         <div className="w-fit flex items-center gap-2">
           <Braces size={20} className="text-blue-600" />
           <h3 className="line-clamp-1">Front End Development</h3>
         </div>
-        <div className="w-96 h-full rounded-lg bg-glass border border-neutral-700/80 shadow-[-8px_16px_10px_rgb(0_0_0)] translate-x-4 translate-y-4 overflow-hidden [mask:linear-gradient(90deg,white_60%,transparent)] md:[mask:linear-gradient(90deg,white_20%,transparent)] transition-all ease-out duration-300">
+        <div className="w-96 h-full rounded-lg bg-glass border border-neutral-700/80 shadow-[-12px_10px_4px_rgb(0_0_0/0.3)] group-hover:shadow-[-16px_24px_10px_rgb(0_0_0/0.5)] translate-x-4 translate-y-4 overflow-hidden [mask:linear-gradient(90deg,white_60%,transparent)] md:[mask:linear-gradient(90deg,white_20%,transparent)] transition-all ease-out duration-300">
           <div className="border-b border-neutral-700/80">
             <div className="inline-block px-3 py-2 bg-neutral-900/50 text-xs text-yellow-400 border-r border-neutral-700/80">
               main.js
@@ -40,7 +42,7 @@ export default function Featured() {
         />
       </div>
 
-      <div className="col-span-1 h-52 md:h-48 lg:row-start-2 relative  p-5 rounded-xl bg-glass space-y-2 group overflow-hidden">
+      <div className="col-span-1 h-52 md:h-48 lg:row-start-2 relative p-5 rounded-xl bg-glass space-y-2 group overflow-hidden">
         <div className="w-fit flex items-center gap-2">
           <Crop size={20} className="text-teal-600" />
           <h3 className="line-clamp-1">UI Design</h3>

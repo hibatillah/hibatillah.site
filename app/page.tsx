@@ -1,4 +1,4 @@
-import { Educations, Featured, Projects } from "@/app/section";
+import { Educations, Featured, Projects, Works } from "@/app/section";
 import Menu from "@/components/Menu";
 import ScrollTop from "@/components/ScrollTop";
 import Socials from "@/components/Socials";
@@ -34,9 +34,9 @@ export default function Home() {
           </Link>
 
           <div className="relative after:content-[url(../assets/gradient.svg)] after:absolute after:left-0 after:-bottom-5 after:w-40 after:h-1 after:object-contain">
-            <h1 className="text-3xl md:text-[32px] leading-tight text-neutral-300 font-medium text-balance">
+            <h1 className="text-3xl md:text-[32px] leading-tight tracking-[0.015rem] text-neutral-300 font-medium text-balance">
               Interested and Passionate in FrontEnd Development and love to
-              Designing <br /> Turn Design into system with Code
+              Design <br /> Turn Design into system with Code
             </h1>
           </div>
 
@@ -45,13 +45,14 @@ export default function Home() {
           <ScrollTop />
         </div>
 
-        <div className="col-span-1 px-6 lg:pt-12 pb-24 lg:pb-16 space-y-10">
+        <div className="col-span-1 px-6 lg:pt-12 pb-24 lg:pb-14 space-y-10">
           <p className="hidden lg:block ms-auto w-fit mb-16 text-neutral-400 text-end">
             Pekanbaru, Indonesia
           </p>
 
           <Featured />
           <Projects />
+          <Works />
           <Educations />
         </div>
       </div>

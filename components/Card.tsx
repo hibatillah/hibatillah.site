@@ -7,15 +7,18 @@ import Link from "next/link";
 
 function LinkButton({
   href,
+  title,
   children,
 }: {
   href: string;
+  title: string;
   children: React.ReactNode;
 }) {
   return (
     <Link
       href={href}
       target="_blank"
+      title={title}
       className="flex items-center gap-2 py-2 px-5 rounded-full bg-neutral-800/50 border border-white/5 text-sm text-neutral-300 hover:bg-neutral-800 active:bg-neutral-900/80 select-none">
       {children}
     </Link>
@@ -27,7 +30,9 @@ export function ProjectCard({ data }: { data: Project }) {
 
   return (
     <li className="min-h-[420px] lg:min-h-fit p-4 bg-glass rounded-xl flex flex-col lg:flex-row items-stretch gap-4 group motion-safe:animate-fade-in-out motion-safe:[animation-timeline:view(-50px)] scroll-mt-12">
-      <div className="flex-none w-full lg:w-44 aspect-video lg:aspect-square bg-neutral-800/60 border border-white/5 rounded-lg overflow-hidden">
+      <div
+        title={title}
+        className="flex-none w-full lg:w-44 aspect-video lg:aspect-square bg-neutral-800/60 border border-white/5 rounded-lg overflow-hidden">
         <Image
           src={thumbnail[image as keyof typeof thumbnail]}
           alt={title}
@@ -36,42 +41,42 @@ export function ProjectCard({ data }: { data: Project }) {
         />
       </div>
       <div className="grow flex flex-col">
-        <abbr title={title} className="[text-decoration:unset]">
-          <h3 className="text-neutral-300 font-medium line-clamp-1 select-all">
+        <div title={title}>
+          <h3 className="text-neutral-300 font-medium tracking-[0.01rem] line-clamp-1 select-all">
             {title}
           </h3>
           <p className="mt-1 text-neutral-500 text-sm line-clamp-3">
             {description}
           </p>
-        </abbr>
-        <div className="flex items-center gap-2 mt-3 p-px">
+        </div>
+        <ul className="flex items-center gap-2 mt-3 p-px">
           {stack?.map((item, index) => (
-            <abbr key={index} title={item} className="[text-decoration:unset]">
+            <li key={index} title={item}>
               <Image
                 src={tech[item.toLocaleLowerCase() as keyof typeof tech]}
                 alt={item}
                 className="size-6 object-contain brightness-90 select-none pointer-events-none"
               />
-            </abbr>
+            </li>
           ))}
-        </div>
+        </ul>
         <div className="mt-auto flex items-end justify-between">
           <p className="text-neutral-500 text-sm">{date}</p>
           <div className="flex items-center gap-2.5">
             {source && (
-              <LinkButton href={source}>
+              <LinkButton href={source} title="Project's Source">
                 <Github size={14} className="motion-safe:animate-pulse" />{" "}
                 Source
               </LinkButton>
             )}
             {docs && (
-              <LinkButton href={docs}>
+              <LinkButton href={docs} title="Project's Docs">
                 <BookMarked size={14} className="motion-safe:animate-pulse" />{" "}
                 Docs
               </LinkButton>
             )}
             {live && (
-              <LinkButton href={live}>
+              <LinkButton href={live} title="Live Project">
                 Live
                 <span className="size-2 rounded-full bg-blue-600 relative before:content-[''] before:absolute before:-inset-1 before:bg-blue-800 before:rounded-full before:-z-10 before:animate-ping" />
               </LinkButton>
