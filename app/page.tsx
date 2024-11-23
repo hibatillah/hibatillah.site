@@ -35,8 +35,8 @@ export default function Home() {
 
           <div className="relative after:content-[url(../assets/gradient.svg)] after:absolute after:left-0 after:-bottom-5 after:w-40 after:h-1 after:object-contain">
             <h1 className="text-3xl md:text-[32px] leading-tight tracking-[0.015rem] text-neutral-300 font-medium text-balance">
-              Interested and Passionate in FrontEnd Development and love to
-              Design <br /> Turn Design into system with Code
+              Passionate in front-end development and love to
+              design, <br /> turn design into code
             </h1>
           </div>
 
