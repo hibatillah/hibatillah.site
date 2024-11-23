@@ -9,16 +9,12 @@ export default function Socials() {
       url: "https://linkedin.com/in/hibatillahhabib",
     },
     {
-      name: "instagram",
-      url: "https://instagram.com/hibat.illah",
-    },
-    {
-      name: "discord",
-      url: "https://discordapp.com/users/701649381652168714",
-    },
-    {
       name: "github",
       url: "https://github.com/hibatillah",
+    },
+    {
+      name: "instagram",
+      url: "https://instagram.com/hibat.illah",
     },
     {
       name: "dribbble",
