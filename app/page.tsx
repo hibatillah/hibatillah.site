@@ -12,9 +12,7 @@ export default function Home() {
     <main className="container space-y-28 antialiased">
       <div className="grid grid-cols-1 lg:grid-cols-2">
         <div className="col-span-1 lg:sticky lg:top-0 py-12 px-6 h-svh md:h-fit lg:h-dvh 2xl:h-fit flex flex-col gap-24">
-          <Link
-            href="/"
-            className="w-fit flex items-center before:content-['©'] before:me-1.5 before:text-neutral-400">
+          <Link href="/" className="w-fit flex items-center">
             <div className="h-5 flex flex-col text-sm *:text-neutral-400 overflow-hidden *:cursor-pointer *:transition-all *:ease-out *:duration-300 group">
               <p
                 className={cn("", {
@@ -35,8 +33,8 @@ export default function Home() {
 
           <div className="relative after:content-[url(../assets/gradient.svg)] after:absolute after:left-0 after:-bottom-5 after:w-40 after:h-1 after:object-contain">
             <h1 className="text-3xl md:text-[32px] leading-tight tracking-[0.015rem] text-neutral-300 font-medium text-balance">
-              Passionate in front-end development and love to
-              design, <br /> turn design into code
+              Passionate in front-end development and love to design, <br />{" "}
+              turn design into code
             </h1>
           </div>
 
@@ -46,9 +44,6 @@ export default function Home() {
         </div>
 
         <div className="col-span-1 px-6 lg:pt-12 pb-24 lg:pb-14 space-y-10">
-          <p className="hidden lg:block ms-auto w-fit mb-16 text-neutral-400 text-end">
-            Pekanbaru, Indonesia
-          </p>
 
           <Featured />
           <Projects />

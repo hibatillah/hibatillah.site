@@ -1,16 +1,18 @@
 import poster from "@/assets/poster.webp";
 import { cn, isTouchScreen } from "@/lib/util";
-import { Braces, Crop, ExternalLink, MousePointerClick } from "lucide-react";
+import {
+  Braces,
+  CircleUserIcon,
+  Crop,
+  MousePointerClick
+} from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Featured() {
   const isTouched = isTouchScreen();
 
   return (
-    <section
-      id="featured"
-      className="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <section id="featured" className="grid grid-cols-1 md:grid-cols-2 gap-5">
       <div className="col-span-1 h-52 md:h-48  p-5 rounded-xl bg-glass space-y-2 relative group overflow-hidden">
         <div className="w-fit flex items-center gap-2">
           <Braces size={20} className="text-blue-600" />
@@ -60,34 +62,14 @@ export default function Featured() {
         </div>
       </div>
 
-      <Link
-        target="_blank"
-        href="https://read.cv/hibatillah"
-        className="col-span-1 row-span-2 row-start-1 col-start-1">
+      <div className="col-span-1 row-span-2 row-start-1 col-start-1">
         <div className="h-full p-5 rounded-xl bg-glass flex flex-col gap-5 group">
           <div className="flex-none space-y-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="size-5 object-contain text-indigo-500"
-              viewBox="0 0 256 256">
-              <path
-                fill="currentColor"
-                d="m210.78 39.25l-130.25-23A16 16 0 0 0 62 29.23l-29.75 169a16 16 0 0 0 13 18.53l130.25 23a16 16 0 0 0 18.54-13l29.75-169a16 16 0 0 0-13.01-18.51ZM178.26 224L48 201L77.75 32L208 55ZM89.34 58.42a8 8 0 0 1 9.27-6.48l83 14.65a8 8 0 0 1-1.39 15.88a8.36 8.36 0 0 1-1.4-.12l-83-14.66a8 8 0 0 1-6.48-9.27ZM83.8 89.94a8 8 0 0 1 9.27-6.49l83 14.66a8 8 0 0 1-1.4 15.89a7.55 7.55 0 0 1-1.41-.13l-83-14.65a8 8 0 0 1-6.46-9.28Zm-5.55 31.51a8 8 0 0 1 9.27-6.45l41.48 7.29a8 8 0 0 1-1.38 15.88a8.27 8.27 0 0 1-1.4-.12l-41.5-7.33a8 8 0 0 1-6.47-9.27Z"
-              />
-            </svg>
-            <div className="flex items-center gap-2">
-              <h3 className="line-clamp-1 cursor-pointer">Resume</h3>
-              <ExternalLink
-                size={14}
-                className={cn("block text-neutral-400", {
-                  "lg:hidden lg:group-hover:block": !isTouched,
-                })}
-              />
-            </div>
-            <p className="cursor-pointer">
-              Student majoring in Information Systems. Interested in web
-              development especially in Frontend and create various UI Designs
-              in web and mobile.
+            <CircleUserIcon className="size-5 text-indigo-400" />
+            <p className="text-neutral-300">
+              Full Stack Developer dedicated to building high-quality web
+              applications. I have transitioned quickly into delivering
+              professional-grade software solutions.
             </p>
           </div>
           <div className="grow rounded-lg border border-white/10 brightness-75 group-hover:brightness-[.8] overflow-hidden">
@@ -99,7 +81,7 @@ export default function Featured() {
             />
           </div>
         </div>
-      </Link>
+      </div>
     </section>
   );
 }

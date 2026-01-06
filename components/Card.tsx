@@ -1,7 +1,7 @@
 import * as tech from "@/assets/icons";
 import * as thumbnail from "@/assets/projects";
 import { Experience, Project } from "@/lib/types";
-import { BookMarked, Github } from "lucide-react";
+import { BookMarked, GitMergeIcon, GitPullRequestIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -36,8 +36,7 @@ export function ProjectCard({ data }: { data: Project }) {
         <Image
           src={thumbnail[image as keyof typeof thumbnail]}
           alt={title}
-          placeholder="blur"
-          className="size-full object-cover object-left brightness-75 select-none pointer-events-none motion-safe:group-hover:scale-110 transition-all ease-out duration-300"
+          className="size-full object-cover object-left brightness-80 select-none pointer-events-none motion-safe:group-hover:scale-110 transition-all ease-out duration-300"
         />
       </div>
       <div className="grow flex flex-col">
@@ -65,7 +64,10 @@ export function ProjectCard({ data }: { data: Project }) {
           <div className="flex items-center gap-2.5">
             {source && (
               <LinkButton href={source} title="Project's Source">
-                <Github size={14} className="motion-safe:animate-pulse" />{" "}
+                <GitPullRequestIcon
+                  size={14}
+                  className="motion-safe:animate-pulse"
+                />{" "}
                 Source
               </LinkButton>
             )}
@@ -90,7 +92,6 @@ export function ProjectCard({ data }: { data: Project }) {
 
 export function ExperienceCard({
   data,
-  type,
 }: {
   data: Experience;
   type: "works" | "educations";

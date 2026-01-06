@@ -13,20 +13,12 @@ export default function Socials() {
       url: "https://github.com/hibatillah",
     },
     {
+      name: "x",
+      url: "https://x.com/hibatillahhabib",
+    },
+    {
       name: "instagram",
       url: "https://instagram.com/hibat.illah",
-    },
-    {
-      name: "dribbble",
-      url: "https://dribbble.com/hibatillah",
-    },
-    {
-      name: "behance",
-      url: "https://www.behance.net/mhibatil",
-    },
-    {
-      name: "figma",
-      url: "https://figma.com/@hibatillah",
     },
   ];
 
