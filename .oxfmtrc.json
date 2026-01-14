@@ -1,0 +1,12 @@
+{
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"bracketSameLine": false,
+	"semi": false,
+	"useTabs": true,
+	"experimentalTailwindcss": {
+		"stylesheet": "./src/app/globals.css",
+		"attributes": ["className"],
+		"functions": ["cn"]
+	},
+	"ignorePatterns": ["node_modules/**", ".next/**", "public/**"]
+}
