@@ -1,31 +1,31 @@
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 import { getCategoriesData, getContentData } from "@/lib/mdx"
-import { Experience } from "@/lib/types"
+import { Education } from "@/lib/types"
 import { Metadata } from "next"
 import Image from "next/image"
 
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-	const experiences = await getCategoriesData<Experience>("experiences")
-	return experiences.map((item) => ({ slug: item.slug }))
+	const educations = await getCategoriesData<Education>("educations")
+	return educations.map((item) => ({ slug: item.slug }))
 }
 
 export async function generateMetadata({
 	params,
-}: PageProps<"/experience/[slug]">): Promise<Metadata> {
+}: PageProps<"/education/[slug]">): Promise<Metadata> {
 	const { slug } = await params
-	const { data } = await getContentData<Experience>("experiences", slug)
+	const { data } = await getContentData<Education>("educations", slug)
 
 	return {
-		title: data.title,
+		title: data.degree,
 		description: data.description,
 	}
 }
 
-export default async function Page({ params }: PageProps<"/experience/[slug]">) {
+export default async function Page({ params }: PageProps<"/education/[slug]">) {
 	const { slug } = await params
-	const { Content, data } = await getContentData<Experience>("experiences", slug)
+	const { Content, data } = await getContentData<Education>("educations", slug)
 
 	return (
 		<>
@@ -33,19 +33,23 @@ export default async function Page({ params }: PageProps<"/experience/[slug]">) 
 				<CardHeader className="flex items-start justify-between gap-4 md:items-center">
 					<div className="flex flex-col gap-px space-y-1">
 						<CardTitle>
-							<h1 className="inline text-base/snug font-normal">{data.title}</h1>
+							<h1 className="inline text-base/snug font-normal">{data.degree}</h1>
 						</CardTitle>
 						<div className="flex flex-col gap-x-2 gap-y-0.5 text-sm/snug text-muted-foreground md:flex-row md:items-center">
-							<span>{data.company}</span>
+							<span>{data.college}</span>
 							<span aria-hidden="true" className="max-md:hidden">
 								•
 							</span>
 							<span>{data.range}</span>
+							<span aria-hidden="true" className="max-md:hidden">
+								•
+							</span>
+							<span>{data.score}</span>
 						</div>
 					</div>
 					<Image
 						src={data.icon}
-						alt={data.company}
+						alt={data.college}
 						width={1000}
 						height={1000}
 						placeholder="blur"

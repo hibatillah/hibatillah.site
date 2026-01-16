@@ -1,47 +1,86 @@
 import { TextLink } from "@/components/text-link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import experiences from "@/contents/experience.json"
+import { staggerItem } from "@/lib/animations"
+import { Education, Experience } from "@/lib/types"
 import { ArrowRightIcon } from "lucide-react"
 import Image from "next/image"
 
-export default function ExperienceSection() {
+export default function ExperienceSection({
+	experience,
+	education,
+}: {
+	experience: Experience
+	education: Education
+}) {
 	return (
 		<section>
-			<h2 className="font-mono! text-xs tracking-widest text-muted-foreground uppercase">
-				Experience
-			</h2>
-
-			<Card className="p-0">
+			<Card variants={staggerItem} className="p-0">
 				<CardContent className="relative grid grid-cols-1 gap-0 p-0 md:grid-cols-2">
-					{experiences.map((item, index) => (
-						<div key={index} className="flex flex-col gap-4 p-5">
-							<div className="flex items-center gap-3">
+					<div className="flex flex-col gap-4 p-5">
+						<h2 className="font-mono! text-xs tracking-widest text-muted-foreground uppercase">
+							Experience
+						</h2>
+
+						<div className="flex items-center gap-3">
+							<div className="size-7">
 								<Image
-									src={item.icon}
-									alt={item.company}
+									src={experience.icon}
+									alt={experience.company}
 									width={1000}
 									height={1000}
 									placeholder="blur"
-									blurDataURL={item.icon}
-									className="pointer-events-none h-8 w-auto max-w-20 object-contain"
+									blurDataURL={experience.icon}
+									className="pointer-events-none size-full object-contain"
 								/>
-								<div className="flex flex-col gap-px">
-									<TextLink
-										href={`/experience/${item.slug}`}
-										className="group hover:text-current focus-visible:text-current"
-										noUnderline
-									>
-										<h3 className="inline text-base/snug">{item.title}</h3>
-										<ArrowRightIcon className="ms-1 mb-1.5 inline size-3 stroke-2 duration-200 motion-safe:transition-opacity md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100" />
-									</TextLink>
-									<p className="text-sm/snug">{item.company}</p>
-								</div>
 							</div>
-
-							<p className="text-sm">{item.description}</p>
+							<div className="flex flex-col gap-px">
+								<TextLink
+									href={`/experience/${experience.slug}`}
+									underline="hover"
+									className="group hover:text-current focus-visible:text-current"
+								>
+									<h3 className="inline text-base/snug">{experience.title}</h3>
+									<ArrowRightIcon className="ms-1 mb-1 duration-200 md:hidden!" />
+								</TextLink>
+								<p className="text-sm/snug">{experience.company}</p>
+							</div>
 						</div>
-					))}
+
+						<p className="text-sm">{experience.description}</p>
+					</div>
+
+					<div className="flex flex-col gap-4 p-5">
+						<h2 className="font-mono! text-xs tracking-widest text-muted-foreground uppercase">
+							Education
+						</h2>
+
+						<div className="flex items-center gap-3">
+							<Image
+								src={education.icon}
+								alt={education.college}
+								width={1000}
+								height={1000}
+								placeholder="blur"
+								blurDataURL={education.icon}
+								className="pointer-events-none h-7 w-auto max-w-20 object-contain"
+							/>
+							<div className="flex flex-col gap-px">
+								<TextLink
+									href={`/education/${education.slug}`}
+									underline="hover"
+									className="group hover:text-current focus-visible:text-current"
+								>
+									<h3 className="inline text-base/snug">{education.degree}</h3>
+									<ArrowRightIcon className="ms-1 mb-1 duration-200 md:hidden!" />
+								</TextLink>
+								<p className="text-sm/snug">{education.college}</p>
+							</div>
+						</div>
+
+						<p className="text-sm">{education.description}</p>
+					</div>
+
 					<Separator className="absolute start-1/2 top-1/2 h-px! w-9/10! -translate-1/2 md:h-3/4! md:w-px!" />
 				</CardContent>
 			</Card>

@@ -39,8 +39,11 @@ export default function Navigation({ className }: { className?: string }) {
 			className={cn("flex items-center pb-0.5", className)}
 		>
 			{menu.map((item, index) => {
-				const isActive = pathname === item.url
 				const isHovered = hovered === item.url
+				const isActive =
+					item.url === "/"
+						? pathname === "/"
+						: pathname === item.url || pathname.startsWith(`${item.url}/`)
 
 				return (
 					<Tooltip key={index} delay={1000}>

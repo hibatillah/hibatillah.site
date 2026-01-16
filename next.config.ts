@@ -1,8 +1,15 @@
+import createMDX from "@next/mdx"
 import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
+	pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 	reactCompiler: true,
 	redirects: () => [
+		{
+			source: "/links/email",
+			destination: "mailto:hibatillahhabib@gmail.com",
+			permanent: true,
+		},
 		{
 			source: "/links/linkedin",
 			destination: "https://linkedin.com/in/hibatillahhabib",
@@ -26,4 +33,11 @@ const nextConfig: NextConfig = {
 	],
 }
 
-export default nextConfig
+const withMDX = createMDX({
+	options: {
+		remarkPlugins: ["remark-frontmatter", "remark-mdx-frontmatter"],
+		rehypePlugins: [],
+	},
+})
+
+export default withMDX(nextConfig)

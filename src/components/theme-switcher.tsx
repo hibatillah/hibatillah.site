@@ -8,6 +8,7 @@ import { Button } from "./ui/button"
 import { ButtonGroup } from "./ui/button-group"
 import { Kbd } from "./ui/kbd"
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 const themes = [
 	{ label: "system", icon: MonitorIcon, shortcut: "shift+a" },
@@ -20,6 +21,7 @@ export default function ThemeSwitcher({
 	...props
 }: React.ComponentProps<typeof ButtonGroup>) {
 	const { theme = "system", setTheme } = useTheme()
+	const isMobile = useIsMobile()
 
 	useHotkeys("shift+a", () => setTheme("system"), { enableOnFormTags: false })
 	useHotkeys("shift+s", () => setTheme("light"), { enableOnFormTags: false })
@@ -39,7 +41,7 @@ export default function ThemeSwitcher({
 						render={
 							<Button
 								variant="ghost"
-								size="icon-sm"
+								size={isMobile ? "icon" : "icon-sm"}
 								aria-label={item.label}
 								className={cn(
 									"rounded-full! focus-visible:border focus-visible:text-foreground focus-visible:ring-0",

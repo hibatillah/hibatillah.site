@@ -2,24 +2,27 @@
 
 import { ImageTheme } from "@/components/image-theme"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import projects from "@/contents/projects.json"
+import { staggerItem } from "@/lib/animations"
+import { Project } from "@/lib/types"
 import { cn, getSafeSrc } from "@/lib/utils"
 import { ChevronDownIcon } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 import Image from "next/image"
 import { useState } from "react"
 
-export default function FeaturedSection() {
+export default function FeaturedSection({ projects }: { projects: Project[] }) {
 	const [hoveredId, setHoveredId] = useState<number | null>(null)
 	const [openId, setOpenId] = useState(0)
 
-	const featured = projects.filter((item) => item.featured)
-	const activeProject = featured[openId]
+	const activeProject = projects[openId]
 
 	return (
 		<section>
-			<Card className="grid grid-cols-1 gap-0 py-0 md:h-100 md:grid-cols-[calc(var(--spacing)*90)_1fr] md:grid-rows-3">
-				<CardHeader className="order-1 px-5 py-5 md:h-fit">
+			<Card
+				variants={staggerItem}
+				className="grid grid-cols-1 gap-0 py-0 md:h-100 md:grid-cols-[calc(var(--spacing)*90)_1fr] md:grid-rows-3"
+			>
+				<CardHeader className="order-1 space-y-1 px-5 py-5 md:h-fit">
 					<h3 className="font-mono! text-xs tracking-widest text-muted-foreground uppercase">
 						Featured Projects
 					</h3>
@@ -34,7 +37,7 @@ export default function FeaturedSection() {
 					className="order-3 flex flex-col gap-1 px-2 py-2 md:order-2 md:col-start-1 md:row-span-2 md:row-start-2 md:mt-auto md:h-fit"
 					onMouseLeave={() => setHoveredId(null)}
 				>
-					{featured.map((item, index) => {
+					{projects.map((item, index) => {
 						const isOpen = openId === index
 						const isHovered = hoveredId === index
 
@@ -110,7 +113,7 @@ export default function FeaturedSection() {
 						width={1200}
 						height={1200}
 						placeholder="blur"
-						blurDataURL={getSafeSrc(activeProject.thumbnail)}
+						blurDataURL="/images/featured-background.webp"
 						className="pointer-events-none size-full object-cover select-none dark:brightness-90"
 						priority
 					/>
@@ -129,6 +132,8 @@ export default function FeaturedSection() {
 									alt={activeProject.title}
 									width={1800}
 									height={1800}
+									placeholder="blur"
+									blurDataURL={getSafeSrc(activeProject.thumbnail)}
 									className="pointer-events-none size-full bg-top-left dark:brightness-90"
 									priority
 								/>

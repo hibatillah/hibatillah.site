@@ -1,10 +1,10 @@
 "use client"
 
 import { cn } from "@/lib/utils"
+import { ArrowUpRightIcon } from "lucide-react"
 import Link from "next/link"
 import { GitHubIcon, LinkedInIcon, XTwitterIcon } from "./icons"
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip"
-import { ArrowUpRightIcon } from "lucide-react"
 
 const links = [
 	{ label: "GitHub", url: "/links/github", icon: GitHubIcon },
@@ -29,7 +29,7 @@ export default function Socials({ className }: { className?: string }) {
 							/>
 						}
 					>
-						<item.icon className="size-4 text-muted-foreground group-hover:text-foreground group-focus-visible:text-foreground" />
+						<item.icon className="size-5 text-muted-foreground group-hover:text-foreground group-focus-visible:text-foreground md:size-4" />
 					</TooltipTrigger>
 					<TooltipContent className="flex flex-row items-center gap-0.5 pe-2">
 						{item.label}
