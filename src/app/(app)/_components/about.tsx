@@ -9,8 +9,8 @@ export default function AboutSection() {
 	return (
 		<section>
 			<Card variants={staggerItem} className="p-0 lg:h-52">
-				<CardContent className="grid grid-cols-1 gap-0 p-0 md:grid-cols-[auto_1fr]">
-					<div className="h-40 w-full lg:h-full lg:w-72">
+				<CardContent className="grid grid-cols-1 gap-0 p-0 md:grid-cols-[calc(var(--spacing)*60)_1fr]">
+					<div className="aspect-2/1 md:aspect-square">
 						<Image
 							src="/images/about-background.webp"
 							alt=""

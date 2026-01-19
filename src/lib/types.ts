@@ -8,6 +8,11 @@ export interface Experience {
 	slug: string
 	description: string
 	featured: boolean
+
+	/**
+	 * Url to related contents. Could be internal or external links.
+	 * */
+	related?: string[]
 }
 
 export type ThumbnailSource = string | { light: string; dark: string }
@@ -22,7 +27,7 @@ export interface Project {
 	slug: string
 	featured: boolean
 	stacks: string[]
-	associate?: string
+	associates?: string[]
 	repo?: string
 	live?: string
 	docs?: string
@@ -37,6 +42,10 @@ export interface Education {
 	score: string
 	description: string
 	featured: boolean
+	/**
+	 * Url to related contents. Could be internal or external links.
+	 * */
+	related?: string[]
 }
 
 export interface MDXContent<T> {

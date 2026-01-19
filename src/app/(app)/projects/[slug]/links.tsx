@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { Project } from "@/lib/types"
 import { cn } from "@/lib/utils"
-import { BookIcon, GitPullRequestIcon, GlobeIcon } from "lucide-react"
+import { BookOpenIcon, GitPullRequestIcon, GlobeIcon } from "lucide-react"
 import Link from "next/link"
 
 export default function ProjectLinks({ data, className }: { data: Project; className?: string }) {
@@ -20,8 +20,8 @@ export default function ProjectLinks({ data, className }: { data: Project; class
 					render={<Link href={data.docs} target="_blank" rel="noopener noreferrer" />}
 					nativeButton={false}
 				>
-					<BookIcon />
-					<span>Docs</span>
+					<BookOpenIcon />
+					{isMobile ? "Docs" : "Documentation"}
 				</Button>
 			)}
 			{data.repo && (
@@ -33,7 +33,7 @@ export default function ProjectLinks({ data, className }: { data: Project; class
 					nativeButton={false}
 				>
 					<GitPullRequestIcon />
-					<span>Repository</span>
+					{isMobile ? "Repo" : "Repository"}
 				</Button>
 			)}
 			{data.live && (

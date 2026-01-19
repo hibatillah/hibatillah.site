@@ -46,7 +46,7 @@
 
 :root {
   --radius: 0.625rem;
-  --background: var(--color-neutral-50);
+  --background: var(--color-neutral-100);
   --foreground: oklch(0.145 0 0);
   --card: var(--color-white);
   --card-foreground: oklch(0.145 0 0);
@@ -118,9 +118,7 @@
     @apply border-border font-sans outline-ring/50;
   }
   html {
-    scrollbar-gutter: stable;
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-muted-foreground) transparent;
+    @apply md:[scrollbar-gutter:stable] md:[scrollbar-width:thin] md:[scrollbar-color:var(--color-muted-foreground)_transparent];
   }
   body {
     @apply bg-background text-foreground;

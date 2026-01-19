@@ -22,7 +22,7 @@ export default function Home({
 			initial="hidden"
 			whileInView="visible"
 			viewport={{ once: true, margin: "-50px" }}
-			className="space-y-5"
+			className="space-y-5 max-lg:px-4"
 		>
 			<AboutSection />
 			<ExperienceSection experience={experience} education={education} />

@@ -106,7 +106,7 @@ export default function FeaturedSection({ projects }: { projects: Project[] }) {
 					})}
 				</CardContent>
 
-				<div className="relative order-2 h-60 w-full overflow-hidden md:order-3 md:row-span-3 md:h-full">
+				<div className="relative order-2 w-full overflow-hidden max-md:aspect-4/3 md:order-3 md:row-span-3 md:h-full">
 					<Image
 						src="/images/featured-background.webp"
 						alt=""

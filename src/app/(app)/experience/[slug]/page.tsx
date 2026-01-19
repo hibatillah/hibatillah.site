@@ -29,13 +29,13 @@ export default async function Page({ params }: PageProps<"/experience/[slug]">) 
 
 	return (
 		<>
-			<Card>
+			<Card className="max-lg:mx-4">
 				<CardHeader className="flex items-start justify-between gap-4 md:items-center">
-					<div className="flex flex-col gap-px space-y-1">
+					<div className="flex flex-col gap-px space-y-px">
 						<CardTitle>
-							<h1 className="inline text-base/snug font-normal">{data.title}</h1>
+							<h1 className="inline text-lg/snug font-medium">{data.title}</h1>
 						</CardTitle>
-						<div className="flex flex-col gap-x-2 gap-y-0.5 text-sm/snug text-muted-foreground md:flex-row md:items-center">
+						<div className="flex flex-col gap-x-1.5 gap-y-0.5 text-base/snug text-muted-foreground md:flex-row md:items-center">
 							<span>{data.company}</span>
 							<span aria-hidden="true" className="max-md:hidden">
 								•

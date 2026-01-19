@@ -12,9 +12,9 @@ export default async function Page() {
 	const projects = await getCategoriesData<Project>("projects")
 
 	return (
-		<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-			{projects.map((project) => (
-				<ProjectCard key={project.slug} data={project} />
+		<div className="grid grid-cols-1 gap-4 max-lg:px-4 md:grid-cols-2">
+			{projects.map((project, index) => (
+				<ProjectCard key={index} data={project} />
 			))}
 		</div>
 	)

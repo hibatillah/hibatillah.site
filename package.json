@@ -13,6 +13,7 @@
 		"prepare": "husky"
 	},
 	"dependencies": {
+		"@base-ui-components/react": "^1.0.0-rc.0",
 		"@base-ui/react": "^1.0.0",
 		"@mdx-js/loader": "^3.1.1",
 		"@mdx-js/react": "^3.1.1",
@@ -29,6 +30,7 @@
 		"react-dom": "^19.2.3",
 		"react-hotkeys-hook": "^5.2.1",
 		"remark-frontmatter": "^5.0.0",
+		"remark-gfm": "^4.0.1",
 		"remark-mdx-frontmatter": "^5.2.0",
 		"sonner": "^2.0.7",
 		"tailwind-merge": "^3.4.0",

@@ -1,5 +1,5 @@
-import { Avatar, AvatarFallback, AvatarGroup, AvatarImage } from "@/components/ui/avatar"
-import { Card, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardTitle } from "@/components/ui/card"
 import { getCategoriesData, getContentData } from "@/lib/mdx"
 import { Project } from "@/lib/types"
 import { Metadata } from "next"
@@ -20,7 +20,7 @@ export async function generateMetadata({
 
 	return {
 		title: data.title,
-		description: data.description,
+		description: data.headline,
 	}
 }
 
@@ -30,33 +30,31 @@ export default async function Page({ params }: PageProps<"/projects/[slug]">) {
 
 	return (
 		<>
-			<Card>
-				<CardHeader className="grid grid-cols-1 gap-2 md:grid-cols-2">
-					<div className="flex flex-col gap-1">
-						<CardTitle>
-							<h1 className="inline text-base/snug font-normal">{data.title}</h1>
-						</CardTitle>
-						<div className="flex flex-row flex-wrap items-center gap-x-2 gap-y-0.5 text-sm/snug text-muted-foreground">
-							<span>{data.roles.join(", ")}</span>
-							<span aria-hidden="true" className="max-md:hidden">
-								•
-							</span>
-							<span>{data.range}</span>
-						</div>
+			<Card className="max-lg:mx-4">
+				<CardContent className="flex flex-col gap-1">
+					<CardTitle>
+						<h1 className="inline text-lg/snug font-medium text-pretty">{data.title}</h1>
+					</CardTitle>
+
+					<div className="flex flex-row flex-wrap items-center gap-x-1.5 gap-y-0.5 text-base/snug text-muted-foreground">
+						<span>{data.roles.join(", ")}</span>
+						<span aria-hidden="true" className="max-md:hidden">
+							•
+						</span>
+						<span>{data.range}</span>
 					</div>
 
-					<div className="flex w-full flex-col justify-start gap-2 place-self-end">
-						<AvatarGroup className="md:justify-end">
-							{Array.from({ length: data.stacks.length }).map((_, index) => (
-								<Avatar key={index}>
-									<AvatarImage src="" alt={data.title} />
-									<AvatarFallback>MH</AvatarFallback>
-								</Avatar>
+					<div className="flex flex-col items-end justify-between gap-1 md:flex-row md:gap-10">
+						<div className="flex flex-wrap items-center gap-1.5">
+							{data.stacks.map((item) => (
+								<Badge key={item} variant="secondary">
+									{item}
+								</Badge>
 							))}
-						</AvatarGroup>
-						<ProjectLinks data={data} className="mt-2 md:mt-1 md:justify-end" />
+						</div>
+						<ProjectLinks data={data} className="md:justify-end md:self-end" />
 					</div>
-				</CardHeader>
+				</CardContent>
 			</Card>
 
 			<Content />
