@@ -1,5 +1,6 @@
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
-import { getCategoriesData, getContentData } from "@/lib/mdx"
+import profile from "@/contents/profile.json"
+import { getContentByCategory, getContentData } from "@/lib/contents"
 import { Education } from "@/lib/types"
 import { Metadata } from "next"
 import Image from "next/image"
@@ -7,7 +8,7 @@ import Image from "next/image"
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-	const educations = await getCategoriesData<Education>("educations")
+	const educations = await getContentByCategory<Education>("educations")
 	return educations.map((item) => ({ slug: item.slug }))
 }
 
@@ -20,6 +21,19 @@ export async function generateMetadata({
 	return {
 		title: data.degree,
 		description: data.description,
+		openGraph: {
+			title: data.degree,
+			description: data.description,
+			siteName: profile.title,
+			url: `/education/${slug}`,
+			type: "article",
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: data.degree,
+			description: data.description,
+			creator: profile.links.x,
+		},
 	}
 }
 

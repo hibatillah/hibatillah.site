@@ -1,7 +1,16 @@
 {
 	"name": "portfolio",
 	"version": "0.1.0",
-	"private": true,
+	"homepage": "https://hibatillah.site",
+	"author": {
+		"name": "M. Hibatillah Hasanin",
+		"email": "hibatillahhabib@gmail.com",
+		"url": "https://github.com/hibatillah"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hibatillah/hibatillah.site"
+	},
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",

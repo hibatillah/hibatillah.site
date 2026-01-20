@@ -157,7 +157,7 @@ export function ImageItem({ src, className, ...props }: ImageItemProps) {
 			placeholder="blur"
 			blurDataURL={src}
 			className={cn(
-				"rounded-md border object-cover max-lg:max-w-[90vw]",
+				"rounded-md border object-cover max-lg:max-w-[90vw] dark:brightness-90",
 				"in-data-[slot=image-wrapper]:h-full in-data-[slot=image-wrapper]:w-auto",
 				"not-in-data-[slot=image-wrapper]:h-auto not-in-data-[slot=image-wrapper]:w-full not-in-data-[slot=image-wrapper]:max-lg:mx-4",
 				className,

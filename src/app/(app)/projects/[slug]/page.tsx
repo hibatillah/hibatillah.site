@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
-import { getCategoriesData, getContentData } from "@/lib/mdx"
+import profile from "@/contents/profile.json"
+import { getContentByCategory, getContentData } from "@/lib/contents"
 import { Project } from "@/lib/types"
 import { Metadata } from "next"
 import ProjectLinks from "./links"
@@ -8,7 +9,7 @@ import ProjectLinks from "./links"
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-	const projects = await getCategoriesData<Project>("projects")
+	const projects = await getContentByCategory<Project>("projects")
 	return projects.map((item) => ({ slug: item.slug }))
 }
 
@@ -21,6 +22,19 @@ export async function generateMetadata({
 	return {
 		title: data.title,
 		description: data.headline,
+		openGraph: {
+			title: data.title,
+			description: data.headline,
+			siteName: profile.title,
+			url: `/projects/${slug}`,
+			type: "article",
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: data.title,
+			description: data.headline,
+			creator: profile.links.x,
+		},
 	}
 }
 

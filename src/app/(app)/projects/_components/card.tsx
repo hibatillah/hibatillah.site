@@ -13,18 +13,18 @@ import { motion } from "motion/react"
 import Image from "next/image"
 import Link from "next/link"
 
-export default function ProjectCard({ data }: { data: Project }) {
+export function ProjectCard({ data, featured = false }: { data: Project; featured?: boolean }) {
 	const isMobile = useIsMobile()
-	const VISIBLE_STACKS_COUNT = 3
 
+	const visibleCount = isMobile || !featured ? 2 : 3
 	const stacks = {
-		visible: data.stacks.slice(0, VISIBLE_STACKS_COUNT),
-		hidden: data.stacks.slice(VISIBLE_STACKS_COUNT),
+		visible: data.stacks.slice(0, visibleCount),
+		hidden: data.stacks.slice(visibleCount),
 	}
 
 	return (
-		<Card className="group/card relative pt-0">
-			<div className="relative aspect-2/1 w-full overflow-hidden rounded-t-lg">
+		<Card data-featured={featured} className="group/card relative data-[featured=true]:pt-0">
+			<div className="relative aspect-2/1 w-full overflow-hidden rounded-t-lg in-data-[featured=false]:hidden">
 				<Image
 					src="/images/projects-background.webp"
 					alt=""
@@ -56,18 +56,18 @@ export default function ProjectCard({ data }: { data: Project }) {
 				</motion.div>
 			</div>
 
-			<CardContent className="flex grow flex-col">
-				<CardTitle>
-					<h3 className="inline text-base/snug text-pretty!">{data.title}</h3>
-				</CardTitle>
+			<CardContent className="flex grow flex-col md:in-data-[featured=false]:grid md:in-data-[featured=false]:grid-cols-[60%_1fr] md:in-data-[featured=false]:gap-4">
+				<div className="space-y-px md:in-data-[featured=true]:mb-2">
+					<CardTitle>
+						<h3 className="inline text-base/snug text-pretty!">{data.title}</h3>
+					</CardTitle>
 
-				<CardDescription className="mt-1 mb-2 line-clamp-2 text-pretty">
-					{data.headline}
-				</CardDescription>
+					<CardDescription className="line-clamp-2 text-pretty">{data.headline}</CardDescription>
+				</div>
 
-				<div className="mt-auto flex flex-row items-end justify-between gap-2">
+				<div className="flex flex-row justify-between gap-2 md:md:in-data-[featured=false]:items-center md:in-data-[featured=true]:mt-auto md:in-data-[featured=true]:items-end">
 					<div className="flex flex-row flex-wrap items-center gap-x-1.5 gap-y-0.5">
-						{data.stacks.length > VISIBLE_STACKS_COUNT ? (
+						{data.stacks.length > visibleCount ? (
 							<>
 								{stacks.visible.map((item) => (
 									<Badge key={item} variant="secondary">

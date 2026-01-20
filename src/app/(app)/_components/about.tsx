@@ -4,6 +4,7 @@ import Socials from "@/components/socials"
 import { Card, CardContent } from "@/components/ui/card"
 import { staggerItem } from "@/lib/animations"
 import Image from "next/image"
+import profile from "@/contents/profile.json"
 
 export default function AboutSection() {
 	return (
@@ -22,14 +23,8 @@ export default function AboutSection() {
 						/>
 					</div>
 					<div className="flex flex-col gap-2 px-6 py-5">
-						<h1 className="text-lg font-medium">M. Hibatillah Hasanin</h1>
-						<p className="text-sm/relaxed">
-							Fullstack Web Developer focused on TypeScript, React, Next.js, and modern backend
-							tools like Hono and Elysia. I prioritize user-centric design and type-safe
-							architecture to build scalable, high-performance applications. Currently, I am
-							expanding my engineering scope by exploring Vue for frontend and Go for backend
-							systems.
-						</p>
+						<h1 className="text-lg font-medium">{profile.name}</h1>
+						<p className="text-sm/relaxed">{profile.about}</p>
 						<Socials className="mt-1" />
 					</div>
 				</CardContent>

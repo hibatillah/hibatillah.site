@@ -1,0 +1,19 @@
+{
+	"url": "https://hibatillah.site",
+	"name": "M. Hibatillah Hasanin",
+	"title": "Hibatillah Hasanin",
+	"description": "Fullstack Web Developer focused on TypeScript, React, Next.js, and modern backendtools like Hono and Elysia. I prioritize user-centric design and type-safe architecture to build scalable, high-performance applications.",
+	"about": "Fullstack Web Developer focused on TypeScript, React, Next.js, and modern backendtools like Hono and Elysia. I prioritize user-centric design and type-safe architecture to build scalable, high-performance applications. Currently, I am expanding my engineering scope by exploring Vue for frontend and Go for backend systems.",
+	"featured": {
+		"experience": "ministry-finance",
+		"education": "politeknik-caltex-riau",
+		"projects": ["ministry-room-management", "furaya-hotel-management"]
+	},
+	"links": {
+		"email": "mailto:hibatillahhabib@gmail.com",
+		"linkedin": "https://linkedin.com/in/hibatillahhabib",
+		"github": "https://github.com/hibatillah",
+		"x": "https://x.com/hibatillahhabib",
+		"scheduling": "https://calendar.notion.so/meet/hibatillah/talk"
+	}
+}

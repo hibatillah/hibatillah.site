@@ -6,7 +6,7 @@
 	"experimentalTailwindcss": {
 		"stylesheet": "./src/app/globals.css",
 		"attributes": ["className"],
-		"functions": ["cn"]
+		"functions": ["cn", "cva"]
 	},
 	"ignorePatterns": ["node_modules/**", ".next/**", "public/**"]
 }

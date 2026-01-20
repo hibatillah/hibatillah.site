@@ -7,15 +7,15 @@ import AboutSection from "./about"
 import ExperienceSection from "./experience"
 import FeaturedSection from "./featured"
 
-export default function Home({
-	experience,
-	education,
-	projects,
-}: {
-	experience: Experience
-	education: Education
-	projects: Project[]
-}) {
+interface OverviewProps {
+	data: {
+		experience: Experience
+		education: Education
+		projects: Project[]
+	}
+}
+
+export default function Overview({ data: { experience, education, projects } }: OverviewProps) {
 	return (
 		<motion.div
 			variants={staggerContainer}
