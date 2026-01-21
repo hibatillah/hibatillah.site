@@ -1,13 +1,13 @@
 "use client"
 
-import { ImageTheme } from "@/components/image-theme"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { Project } from "@/lib/types"
-import { getSafeSrc } from "@/lib/utils"
+import * as generic from "@/static/generic"
+import * as thumbnails from "@/static/projects/thumbnails"
 import { ArrowUpRightIcon, BookOpenIcon, GitPullRequestIcon, GlobeIcon } from "lucide-react"
 import { motion } from "motion/react"
 import Image from "next/image"
@@ -26,12 +26,11 @@ export function ProjectCard({ data, featured = false }: { data: Project; feature
 		<Card data-featured={featured} className="group/card relative data-[featured=true]:pt-0">
 			<div className="relative aspect-2/1 w-full overflow-hidden rounded-t-lg in-data-[featured=false]:hidden">
 				<Image
-					src="/images/projects-background.webp"
+					src={generic.projects}
 					alt=""
 					width={1200}
 					height={1200}
 					placeholder="blur"
-					blurDataURL="/images/projects-background.webp"
 					className="pointer-events-none size-full object-cover select-none dark:brightness-90"
 					priority
 				/>
@@ -43,13 +42,12 @@ export function ProjectCard({ data, featured = false }: { data: Project; feature
 					transition={{ duration: 0.2, ease: "easeOut" }}
 					className="absolute start-10 top-10 w-95/100 origin-top-left overflow-hidden rounded-tl-lg shadow-2xl duration-200 ease-out group-hover/card:top-9 motion-safe:transition-all"
 				>
-					<ImageTheme
-						src={data.thumbnail}
+					<Image
+						src={thumbnails[data.thumbnail as keyof typeof thumbnails]}
 						alt={data.title}
 						width={1800}
 						height={1800}
 						placeholder="blur"
-						blurDataURL={getSafeSrc(data.thumbnail)}
 						className="size-full bg-top-left dark:brightness-90"
 						priority
 					/>
@@ -57,7 +55,7 @@ export function ProjectCard({ data, featured = false }: { data: Project; feature
 			</div>
 
 			<CardContent className="flex grow flex-col md:in-data-[featured=false]:grid md:in-data-[featured=false]:grid-cols-[60%_1fr] md:in-data-[featured=false]:gap-4 md:in-data-[featured=false]:pe-5">
-				<div className="space-y-px md:in-data-[featured=true]:mb-2">
+				<div className="space-y-px in-data-[featured=true]:mb-2 max-md:in-data-[featured=false]:mb-2">
 					<CardTitle>
 						<h3 className="inline text-base/snug text-pretty!">{data.title}</h3>
 					</CardTitle>
@@ -66,7 +64,7 @@ export function ProjectCard({ data, featured = false }: { data: Project; feature
 				</div>
 
 				<div className="flex flex-row justify-between gap-2 md:md:in-data-[featured=false]:items-center md:in-data-[featured=true]:mt-auto md:in-data-[featured=true]:items-end">
-					<div className="flex flex-row flex-wrap items-center gap-x-1.5 gap-y-0.5">
+					<div className="flex flex-row flex-wrap items-center gap-x-1.5 gap-y-0.5 max-md:items-end">
 						{data.stacks.length > visibleCount ? (
 							<>
 								{stacks.visible.map((item) => (

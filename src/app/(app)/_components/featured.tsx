@@ -1,10 +1,11 @@
 "use client"
 
-import { ImageTheme } from "@/components/image-theme"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { staggerItem } from "@/lib/animations"
 import { Project } from "@/lib/types"
-import { cn, getSafeSrc } from "@/lib/utils"
+import { cn } from "@/lib/utils"
+import * as generic from "@/static/generic"
+import * as thumbnails from "@/static/projects/thumbnails"
 import { ChevronDownIcon } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 import Image from "next/image"
@@ -108,12 +109,11 @@ export default function FeaturedSection({ projects }: { projects: Project[] }) {
 
 				<div className="relative order-2 w-full overflow-hidden max-md:aspect-4/3 md:order-3 md:row-span-3 md:h-full">
 					<Image
-						src="/images/featured-background.webp"
+						src={generic.featured}
 						alt=""
 						width={1200}
 						height={1200}
 						placeholder="blur"
-						blurDataURL="/images/featured-background.webp"
 						className="pointer-events-none size-full object-cover select-none dark:brightness-90"
 						priority
 					/>
@@ -127,13 +127,12 @@ export default function FeaturedSection({ projects }: { projects: Project[] }) {
 								transition={{ duration: 0.2, ease: "easeOut" }}
 								className="absolute start-10 top-10 w-full origin-top-left overflow-hidden rounded-tl-lg shadow-2xl md:start-16 md:top-16"
 							>
-								<ImageTheme
-									src={activeProject.thumbnail}
+								<Image
+									src={thumbnails[activeProject.thumbnail as keyof typeof thumbnails]}
 									alt={activeProject.title}
 									width={1800}
 									height={1800}
 									placeholder="blur"
-									blurDataURL={getSafeSrc(activeProject.thumbnail)}
 									className="pointer-events-none size-full bg-top-left dark:brightness-90"
 									priority
 								/>

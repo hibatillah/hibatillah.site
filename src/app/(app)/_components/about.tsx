@@ -4,6 +4,7 @@ import Socials from "@/components/socials"
 import { Card, CardContent } from "@/components/ui/card"
 import profile from "@/contents/profile.json"
 import { staggerItem } from "@/lib/animations"
+import * as generic from "@/static/generic"
 import Image from "next/image"
 
 export default function AboutSection() {
@@ -13,12 +14,11 @@ export default function AboutSection() {
 				<CardContent className="grid grid-cols-1 gap-0 p-0 md:grid-cols-[calc(var(--spacing)*60)_1fr]">
 					<div className="aspect-2/1 md:aspect-square">
 						<Image
-							src="/images/about-background.webp"
+							src={generic.about}
 							alt=""
 							width={1000}
 							height={1000}
 							placeholder="blur"
-							blurDataURL="/images/about-background.webp"
 							className="pointer-events-none size-full object-cover select-none dark:brightness-90"
 						/>
 					</div>

@@ -50,7 +50,7 @@ export default async function Page({ params }: PageProps<"/projects/[slug]">) {
 						<h1 className="inline text-lg/snug font-medium text-pretty">{data.title}</h1>
 					</CardTitle>
 
-					<div className="flex flex-row flex-wrap items-center gap-x-1.5 gap-y-0.5 text-base/snug text-muted-foreground">
+					<div className="flex flex-col flex-wrap gap-x-1.5 gap-y-0.5 text-base/snug text-muted-foreground md:flex-row md:items-center">
 						<span>{data.roles.join(", ")}</span>
 						<span aria-hidden="true" className="max-md:hidden">
 							•
@@ -58,7 +58,7 @@ export default async function Page({ params }: PageProps<"/projects/[slug]">) {
 						<span>{data.range}</span>
 					</div>
 
-					<div className="flex flex-col items-end justify-between gap-1 md:flex-row md:gap-10">
+					<div className="flex flex-col justify-between gap-4 max-md:mt-1.5 md:flex-row md:items-end md:gap-10">
 						<div className="flex flex-wrap items-center gap-1.5">
 							{data.stacks.map((item) => (
 								<Badge key={item} variant="secondary">
@@ -66,7 +66,7 @@ export default async function Page({ params }: PageProps<"/projects/[slug]">) {
 								</Badge>
 							))}
 						</div>
-						<ProjectLinks data={data} className="md:justify-end md:self-end" />
+						<ProjectLinks data={data} className="self-end md:justify-end" />
 					</div>
 				</CardContent>
 			</Card>

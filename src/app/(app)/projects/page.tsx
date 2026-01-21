@@ -27,6 +27,7 @@ export const metadata: Metadata = {
 	},
 }
 
+/* prettier-ignore */
 const list = {
 	featured: [
 		"furaya-hotel-management",
@@ -34,7 +35,12 @@ const list = {
 		"yaman-music-classification",
 		"indogrosir-scm",
 	],
-	others: ["massbeat", "ekolog-app", "rotte-scm", "rice-type-color"],
+	others: [
+		"massbeat",
+		"ekolog-app",
+		"rotte-scm",
+		"rice-type-color"
+	],
 }
 
 export default async function Page() {

@@ -1,3 +1,5 @@
+import { StaticImport } from "next/dist/shared/lib/get-img-props"
+
 export type ContentCategory = "educations" | "experiences" | "projects"
 
 export interface Experience {
@@ -15,14 +17,12 @@ export interface Experience {
 	related?: Record<string, string>
 }
 
-export type ThumbnailSource = string | { light: string; dark: string }
-
 export interface Project {
 	title: string
 	description: string
 	headline: string
 	roles: string[]
-	thumbnail: ThumbnailSource
+	thumbnail: string | StaticImport
 	range: string
 	slug: string
 	stacks: string[]

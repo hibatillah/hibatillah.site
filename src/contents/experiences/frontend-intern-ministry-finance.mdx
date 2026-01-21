@@ -12,7 +12,7 @@ description: >
   Executed Design Sprints and Agile Scrum cycles to drive iterative development within a cross-functional team. Managed deliverables and regularly presented milestones to stakeholders to ensure continuous project alignment.
 ---
 
-export const baseImagePath = "/experience/ministry-finance"
+import * as ministry from "@/static/experience/ministry-finance"
 
 ## Driving Digital Transformation via Agile at the Ministry of Finance
 
@@ -20,12 +20,10 @@ Stepping into enterprise modernization during my internship at <abbr title="Bada
 
 The challenge wasn't just technical, it was organizational. We needed to migrate complex workflows with outdated systems into a modern digital experience within a very tight three-month development window.
 
-export const featured = ["/group.webp", "/card.webp", "/habib.webp"]
-
 <ImageWrapper>
-  {featured.map((image) => (
-    <ImageItem key={image} src={`${baseImagePath}${image}`} />
-  ))}
+  <ImageItem src={ministry.group} alt="Internship Final Presentation" />
+  <ImageItem src={ministry.card} alt="Internship Card" />
+  <ImageItem src={ministry.habib} alt="Hibatillah during Internship Final Presentation" />
 </ImageWrapper>
 
 ### The Methodology
@@ -42,12 +40,9 @@ Stakeholder Collaboration & The Design Sprint One of the most valuable experienc
 
 We conducted an intensive Design Sprint involving 20 - 30 Ministry employees from various units as the actual future users of the system. Facilitating these face-to-face sessions was eye-opening. I moved from abstract assumptions to concrete user validation, witnessing first-hand the friction points in their existing daily operations. This direct interaction translated into a <abbr title="Business Requirement Document">BRD</abbr>, <abbr title="Business Process Model and Notation">BPMN</abbr> diagrams and High-Fidelity Mockups that truly reflected user needs rather than assumptions.
 
-export const sprint = ["/sprint-1.webp", "/sprint-2.webp"]
-
 <ImageWrapper>
-  {sprint.map((image) => (
-    <ImageItem key={image} src={`${baseImagePath}${image}`} />
-  ))}
+  <ImageItem src={ministry.sprint1} alt="Design Sprint 1" />
+  <ImageItem src={ministry.sprint2} alt="Design Sprint 2" />
 </ImageWrapper>
 
 ### Growth & Key Takeaways

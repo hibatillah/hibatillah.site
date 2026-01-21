@@ -15,7 +15,7 @@
 		"editor.defaultFormatter": "oxc.oxc-vscode"
 	},
 	"editor.codeActionsOnSave": {
-		"source.fixAll.oxc": "always"
+		"source.fixAll.oxc": "explicit"
 	},
 	"editor.formatOnPaste": false
 }

@@ -158,19 +158,14 @@ export function ImageWrapper({ size = "md", className, ...props }: ImageWrapperP
 	)
 }
 
-interface ImageItemProps extends Omit<React.ComponentProps<typeof Image>, "src" | "alt"> {
-	src: string
-}
-
-export function ImageItem({ src, className, ...props }: ImageItemProps) {
+export function ImageItem({ src, alt, className, ...props }: React.ComponentProps<typeof Image>) {
 	return (
 		<Image
 			src={src}
-			alt={src.split("/").pop()?.split(".").shift() ?? ""}
+			alt={alt}
 			width={1000}
 			height={1000}
 			placeholder="blur"
-			blurDataURL={src}
 			className={cn(
 				"rounded-md border object-cover max-lg:max-w-[90vw] dark:brightness-90",
 				"in-data-[slot=image-wrapper]:h-full in-data-[slot=image-wrapper]:w-auto in-data-[slot=image-wrapper]:max-w-md",

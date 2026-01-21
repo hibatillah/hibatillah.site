@@ -38,10 +38,10 @@ export default function ExperienceSection({
 								<TextLink
 									href={`/experience/${experience.slug}`}
 									underline="hover"
-									className="group hover:text-current focus-visible:text-current"
+									className="group flex items-center gap-1 hover:text-current focus-visible:text-current"
 								>
 									<h3 className="inline text-base/snug">{experience.title}</h3>
-									<ArrowRightIcon className="ms-1 mb-1 duration-200 md:hidden!" />
+									<ArrowRightIcon className="duration-200 md:hidden!" />
 								</TextLink>
 								<p className="text-sm/snug">{experience.company}</p>
 							</div>
@@ -69,10 +69,10 @@ export default function ExperienceSection({
 								<TextLink
 									href={`/education/${education.slug}`}
 									underline="hover"
-									className="group hover:text-current focus-visible:text-current"
+									className="group flex items-center gap-1 hover:text-current focus-visible:text-current"
 								>
 									<h3 className="inline text-base/snug">{education.degree}</h3>
-									<ArrowRightIcon className="ms-1 mb-1 duration-200 md:hidden!" />
+									<ArrowRightIcon className="duration-200 md:hidden!" />
 								</TextLink>
 								<p className="text-sm/snug">{education.college}</p>
 							</div>

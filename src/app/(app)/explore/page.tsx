@@ -2,7 +2,7 @@ import profile from "@/contents/profile.json"
 import { Metadata } from "next"
 
 const title = "Explore"
-const description = "Explore various stack innovations"
+const description = "Explore various interesting stacks"
 
 export const metadata: Metadata = {
 	title,
@@ -23,5 +23,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-	return <div className="">Explore</div>
+	return <div>What to explore?</div>
 }
