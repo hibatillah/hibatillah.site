@@ -1,24 +1,8 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
-import { ThumbnailSource } from "./types"
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
-}
-
-/**
- * Get the safe source of the thumbnail for image component.
- * @param src
- * @example
- * ```ts
- * const thumbnail = { dark: "...", light: "..." }
- * ---
- * <img src={getSafeSrc(thumbnail)} alt="..." />
- * ```
- */
-export function getSafeSrc(src: ThumbnailSource): string {
-	if (typeof src === "string") return src
-	return src.light
 }
 
 /**
