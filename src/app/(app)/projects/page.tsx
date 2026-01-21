@@ -2,6 +2,7 @@ import { Separator } from "@/components/ui/separator"
 import profile from "@/contents/profile.json"
 import { getContentByCategory } from "@/lib/contents"
 import { Project } from "@/lib/types"
+import { customSort } from "@/lib/utils"
 import { Metadata } from "next"
 import { ProjectCard } from "./_components/card"
 
@@ -26,34 +27,26 @@ export const metadata: Metadata = {
 	},
 }
 
-const order = {
+const list = {
 	featured: [
 		"furaya-hotel-management",
 		"ministry-room-management",
 		"yaman-music-classification",
-		"massbeat",
+		"indogrosir-scm",
 	],
-	others: ["ekolog-app", "indogrosir-scm", "rotte-scm", "rice-type-color"],
+	others: ["massbeat", "ekolog-app", "rotte-scm", "rice-type-color"],
 }
 
 export default async function Page() {
 	const projects = await getContentByCategory<Project>("projects")
 
 	const featured = projects
-		.filter((item) => item.featured && order.featured.includes(item.slug))
-		.sort((a, b) => {
-			const indexA = order.featured.indexOf(a.slug)
-			const indexB = order.featured.indexOf(b.slug)
-			return indexA - indexB
-		})
+		.filter((item) => list.featured.includes(item.slug))
+		.sort((a, b) => customSort(a.slug, b.slug, list.featured))
 
 	const others = projects
-		.filter((item) => !item.featured && order.others.includes(item.slug))
-		.sort((a, b) => {
-			const indexA = order.others.indexOf(a.slug)
-			const indexB = order.others.indexOf(b.slug)
-			return indexA - indexB
-		})
+		.filter((item) => !list.featured.includes(item.slug))
+		.sort((a, b) => customSort(a.slug, b.slug, list.others))
 
 	return (
 		<>

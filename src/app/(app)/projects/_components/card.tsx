@@ -56,7 +56,7 @@ export function ProjectCard({ data, featured = false }: { data: Project; feature
 				</motion.div>
 			</div>
 
-			<CardContent className="flex grow flex-col md:in-data-[featured=false]:grid md:in-data-[featured=false]:grid-cols-[60%_1fr] md:in-data-[featured=false]:gap-4">
+			<CardContent className="flex grow flex-col md:in-data-[featured=false]:grid md:in-data-[featured=false]:grid-cols-[60%_1fr] md:in-data-[featured=false]:gap-4 md:in-data-[featured=false]:pe-5">
 				<div className="space-y-px md:in-data-[featured=true]:mb-2">
 					<CardTitle>
 						<h3 className="inline text-base/snug text-pretty!">{data.title}</h3>

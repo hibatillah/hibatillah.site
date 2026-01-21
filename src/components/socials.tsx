@@ -18,14 +18,14 @@ export default function Socials({ className }: { className?: string }) {
 			{links.map((item, index) => (
 				<Tooltip delay={100} key={index}>
 					<TooltipTrigger
-						aria-label={item.label}
-						className="group text-sm font-normal focus-visible:outline-none"
+						className="group text-sm font-normal transition-colors focus-visible:outline-none"
 						render={
 							<Link
+								aria-label={item.label}
 								href={item.url}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="transition-colors"
+								prefetch={false}
 							/>
 						}
 					>

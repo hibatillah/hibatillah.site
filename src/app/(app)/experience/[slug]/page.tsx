@@ -54,6 +54,10 @@ export default async function Page({ params }: PageProps<"/experience/[slug]">) 
 							<span aria-hidden="true" className="max-md:hidden">
 								•
 							</span>
+							<span>{data.location}</span>
+							<span aria-hidden="true" className="max-md:hidden">
+								•
+							</span>
 							<span>{data.range}</span>
 						</div>
 					</div>

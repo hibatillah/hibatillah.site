@@ -5,15 +5,91 @@ range: Sep 2021 - Aug 2025
 score: GPA 3.79 / 4.00
 icon: /icons/pcr.webp
 slug: politeknik-caltex-riau
-featured: true
+location: Pekanbaru, Indonesia
 description: >
   Distinguished by the Best Capstone Project award and multiple podium finishes in national competitions. I complemented these academic achievements with professional experience as an intern at the Ministry of Finance from MSIB Batch 6 program.
 ---
 
-Tempor ea anim excepteur magna sunt duis incididunt sunt consequat. Sint ad culpa ea cupidatat sunt fugiat ad do qui eu cupidatat. Et enim Lorem quis ex minim. Sint laborum ut nulla commodo veniam nisi. Irure ipsum magna officia elit eu. Culpa in ad duis nulla consectetur cillum. Lorem pariatur sit veniam non ipsum aute non.
+import { getContentData } from "@/lib/contents"
 
-Adipisicing officia labore velit. Ipsum laborum ut Lorem laborum non elit ut sit excepteur irure nisi non pariatur sint elit. Sit sint dolor cillum commodo tempor nisi occaecat. Ipsum eiusmod reprehenderit eiusmod reprehenderit cupidatat tempor dolore quis veniam cillum ut sunt cupidatat. Laboris minim non ipsum duis reprehenderit ad eiusmod ad. Aute quis labore aliqua cillum. Enim Lorem esse eu. Culpa esse quis ex consectetur eu ad esse enim.
+export const { data: massbeat } = await getContentData("projects", "massbeat")
+export const baseImagePath = "/education/politeknik-caltex-riau"
 
-Quis incididunt sint duis sint aute ipsum cillum qui sit enim dolore enim. Do nulla reprehenderit ad velit nostrud ullamco esse id irure do. Nulla anim minim ex laborum commodo. Laborum cillum eiusmod excepteur duis duis proident commodo laborum eiusmod. Consequat ipsum magna reprehenderit occaecat Lorem anim aute occaecat tempor adipisicing cupidatat sint. In consectetur quis incididunt non ut elit Lorem amet eu mollit. Anim aliquip dolor deserunt excepteur laborum Lorem tempor ex dolor dolore laboris. Est consequat sit dolore adipisicing ullamco.
+# A Journey of Rapid Acceleration
 
-Voluptate duis in aliqua et magna et aliqua qui sunt Lorem aliquip aliqua proident. Proident laboris aliqua deserunt dolore. Exercitation in id dolor aute laboris laborum ut labore fugiat. Commodo reprehenderit occaecat nulla consectetur reprehenderit ad sit quis ad aute enim sunt in in reprehenderit.
+My time at Politeknik Caltex Riau was defined by a strict, fixed curriculum known as the Packet System. We couldn't pick and choose easy subjects, we had to master the full spectrum of the industry, from **Programming logic** and **Supply Chain Management** to **Enterprise Architecture**. This discipline transformed me from a complete beginner who questioned the utility of a `boolean` type into a _Cum Laude_ graduate capable of architecting complex systems.
+
+## The _Massbeat_ Initiative
+Born during the transition of the COVID-19 pandemic, **Massbeat** was my first step into the world of _Technopreneurship_. My team and I identified a critical need; a platform to bridge the gap between home workouts and professional trainer consultations.
+
+- We developed a comprehensive business plan and High-Fidelity UI/UX Mockups to validate the user journey.
+
+- The product's potential was recognized by the **1000 Startup Digital** program, where we were selected for incubation.
+
+- We refined the product through the fires of competition, securing 1st Runner Up at <TextLink href={massbeat.related?.genbi} external>GenBI Riau</TextLink> and 2nd Runner Up at <TextLink href={massbeat.related?.likmi} external>LIKMI #2</TextLink> and <TextLink href={massbeat.related?.pikmi} external>PIKMI</TextLink>.
+
+While we planned to build the full mobile app, we made the strategic decision to sunset the project to focus on our mandatory semester internships. This taught me a valuable lesson in resource allocation and project prioritization.
+
+export const team = ["/syahduu-1.webp", "/syahduu-2.webp"]
+
+<ImageWrapper>
+  {team.map((image) => (
+    <ImageItem key={image} src={`${baseImagePath}${image}`} />
+  ))}
+</ImageWrapper>
+
+## _Best Capstone_ Award
+
+In my second year, I led a team to win the **Best Capstone Project Group** award. This was a unique challenge that required integrating four distinct subjects into a single application:
+
+- Framework Programming: Built a robust web app using React and Express.
+
+- Supply Chain Systems: Implemented complex logic for inventory flow and logistics.
+
+- Data Visualization: Created dashboards for business insights.
+
+- Business Requirements: Drafted professional <abbr title="Business Requirement Document">BRD</abbr> to guide development.
+
+## _Internship_ at Ministry of Finance
+
+In my third semester, I achieved a major milestone by being selected for **MSIB Batch 6**, a highly competitive national internship program. I secured a position as a <TextLink href="/experience/frontend-intern-ministry-finance">Front End Developer</TextLink> at the Ministry of Finance at Jakarta, Indonesia.
+
+This was my first exposure to a professional engineering environment. I worked directly with stakeholders to build a web-based room management system for ministry units. This experience bridged the gap between academic theory and real-world software delivery, teaching me how to manage strict software development standards and tight deadlines.
+
+export const intern = ["/intern-1.webp", "/intern-2.webp"]
+
+<ImageWrapper>
+  {intern.map((image) => (
+    <ImageItem key={image} src={`${baseImagePath}${image}`} />
+  ))}
+</ImageWrapper>
+
+## _Final Thesis_ - Hotel Management System
+
+For my final year, I was recruited by a lecturer to co-develop a production-grade system, which became my <TextLink href="/projects/furaya-hotel-management">Furaya Project</TextLink>. I was assigned the role of a Fullstack Developer that responsible for the Front Desk Module. My tech stack consisted of Laravel, React, and Inertia.js.
+
+I managed the entire academic lifecycle of the software, from the Proposal Defense to structured Blackbox and Usability Testing, wrapping up with a successful Final Result Presentation.
+
+## Skills & Competencies
+Due to the comprehensive nature of the curriculum, I gained proficiency across the entire software lifecycle.
+
+| Domain | Proficiency |
+| :--- | :--- |
+| Languages | Java, JavaScript, TypeScript, Python, PHP, C#, Kotlin |
+| Stack     | MERN, Next.js, Laravel, CodeIgniter, Flask, .NET |
+| Business  | <abbr title="Customer Relationship Management">CRM</abbr>, <abbr title="Supply Chain Management">SCM</abbr>, Risk Management, <abbr title="Enterprise Resource Planning">ERP</abbr> |
+| Methods   | Agile, Design Thinking, UI/UX Design, Unit Testing, Blackbox Testing  |
+
+I graduated in **October 2025** with 128 Activity Points (well above the 75 required), a testament to my strategy of learning through competitive excellence rather than passive participation.
+
+---
+
+Beyond the metrics and awards, these four years gifted me an invaluable network of brilliant peers and mentors. I left the campus not just with a degree, but with deep friendships and the technical resilience that will define the rest of my professional journey.
+
+export const graduation = ["/graduation-1.webp", "/graduation-3.webp", "/graduation-2.webp"]
+
+<ImageWrapper size="lg">
+  {graduation.map((image) => (
+    <ImageItem key={image} src={`${baseImagePath}${image}`} />
+  ))}
+</ImageWrapper>

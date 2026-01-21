@@ -1,6 +1,7 @@
 import profile from "@/contents/profile.json"
 import { getContentByCategory, getContentData } from "@/lib/contents"
 import { Education, Experience, Project } from "@/lib/types"
+import { customSort } from "@/lib/utils"
 import { Metadata } from "next"
 import Overview from "./_components/overview"
 
@@ -36,7 +37,7 @@ export default async function Page() {
 	const projects = await getContentByCategory<Project>("projects")
 	const featured = projects
 		.filter((item) => profile.featured.projects.includes(item.slug))
-		.reverse()
+		.sort((a, b) => customSort(a.slug, b.slug, profile.featured.projects))
 
 	return <Overview data={{ experience, education, projects: featured }} />
 }

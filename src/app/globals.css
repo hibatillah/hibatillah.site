@@ -126,4 +126,7 @@
   p {
     @apply font-sans text-base/relaxed text-pretty text-muted-foreground;
   }
+  abbr {
+    @apply [[title]]:md:cursor-help max-md:no-underline [[title]]:md:underline [[title]]:decoration-dotted [[title]]:underline-offset-4
+  }
 }

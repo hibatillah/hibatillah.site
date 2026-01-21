@@ -4,19 +4,21 @@ import {
 	Heading1,
 	Heading2,
 	Heading3,
+	ImageItem,
+	ImageWrapper,
 	ListItem,
 	ListOrdered,
 	ListUnordered,
 	Paragraph,
+	Separator,
 	TableCell,
 	TableHead,
 	TableHeader,
 	TableRoot,
 	TableRow,
-	ImageWrapper,
 	Wrapper,
-	ImageItem,
 } from "./components/contents"
+import { cn } from "./lib/utils"
 
 const components: MDXComponents = {
 	wrapper: ({ children }) => <Wrapper>{children}</Wrapper>,
@@ -26,6 +28,18 @@ const components: MDXComponents = {
 	h3: Heading3,
 	p: Paragraph,
 	TextLink,
+	hr: Separator,
+	code: ({ className, ...props }) => {
+		return (
+			<code
+				{...props}
+				className={cn(
+					"relative rounded-sm bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground",
+					className,
+				)}
+			/>
+		)
+	},
 
 	ul: ListUnordered,
 	ol: ListOrdered,

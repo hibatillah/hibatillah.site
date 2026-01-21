@@ -1,5 +1,6 @@
 "use client"
 
+import { Separator as SeparatorComponent } from "@/components/ui/separator"
 import { staggerContainer, staggerItem } from "@/lib/animations"
 import { cn } from "@/lib/utils"
 import { motion } from "motion/react"
@@ -63,7 +64,7 @@ export function ListUnordered({ className, ...props }: React.ComponentProps<type
 	return (
 		<motion.ul
 			variants={staggerItem}
-			className={cn("my-4 ms-9 list-disc max-lg:me-4 lg:ms-6 [&>li]:mt-2", className)}
+			className={cn("my-3 ms-9 list-disc max-lg:me-4 lg:ms-6 [&>li]:mt-1", className)}
 			{...props}
 		/>
 	)
@@ -73,14 +74,20 @@ export function ListOrdered({ className, ...props }: React.ComponentProps<typeof
 	return (
 		<motion.ol
 			variants={staggerItem}
-			className={cn("my-4 ms-9 list-decimal max-lg:me-4 lg:ms-6 [&>li]:mt-2", className)}
+			className={cn("my-3 ms-9 list-decimal max-lg:me-4 lg:ms-6 [&>li]:mt-1", className)}
 			{...props}
 		/>
 	)
 }
 
 export function ListItem({ className, ...props }: React.ComponentProps<typeof motion.li>) {
-	return <motion.li variants={staggerItem} className={cn(className)} {...props} />
+	return (
+		<motion.li
+			variants={staggerItem}
+			className={cn("marker:text-muted-foreground", className)}
+			{...props}
+		/>
+	)
 }
 
 export function TableRoot({ className, ...props }: React.ComponentProps<"table">) {
@@ -114,10 +121,7 @@ export function TableHeader({ className, ...props }: React.ComponentProps<typeof
 	return (
 		<motion.th
 			variants={staggerItem}
-			className={cn(
-				"h-10 px-2 text-left align-middle font-medium text-muted-foreground",
-				className,
-			)}
+			className={cn("h-10 px-2 text-left align-middle font-medium text-foreground", className)}
 			{...props}
 		/>
 	)
@@ -125,17 +129,28 @@ export function TableHeader({ className, ...props }: React.ComponentProps<typeof
 
 export function TableCell({ className, ...props }: React.ComponentProps<typeof motion.td>) {
 	return (
-		<motion.td variants={staggerItem} className={cn("p-2 align-middle", className)} {...props} />
+		<motion.td
+			variants={staggerItem}
+			className={cn("p-2 align-middle text-muted-foreground", className)}
+			{...props}
+		/>
 	)
 }
 
-export function ImageWrapper({ className, ...props }: React.ComponentProps<typeof motion.div>) {
+interface ImageWrapperProps extends React.ComponentProps<typeof motion.div> {
+	size?: "sm" | "md" | "lg"
+}
+
+export function ImageWrapper({ size = "md", className, ...props }: ImageWrapperProps) {
 	return (
 		<motion.div
 			variants={staggerItem}
 			data-slot="image-wrapper"
 			className={cn(
-				"my-4 flex h-60 items-center gap-4 overflow-x-auto max-lg:scrollbar-hide max-lg:px-4",
+				"my-6 scrollbar-hide flex items-center gap-3 overflow-x-auto max-lg:px-4",
+				size === "sm" && "h-48",
+				size === "md" && "h-60",
+				size === "lg" && "h-72",
 				className,
 			)}
 			{...props}
@@ -151,18 +166,26 @@ export function ImageItem({ src, className, ...props }: ImageItemProps) {
 	return (
 		<Image
 			src={src}
-			alt={src.split("/").pop() ?? ""}
+			alt={src.split("/").pop()?.split(".").shift() ?? ""}
 			width={1000}
 			height={1000}
 			placeholder="blur"
 			blurDataURL={src}
 			className={cn(
 				"rounded-md border object-cover max-lg:max-w-[90vw] dark:brightness-90",
-				"in-data-[slot=image-wrapper]:h-full in-data-[slot=image-wrapper]:w-auto",
-				"not-in-data-[slot=image-wrapper]:h-auto not-in-data-[slot=image-wrapper]:w-full not-in-data-[slot=image-wrapper]:max-lg:mx-4",
+				"in-data-[slot=image-wrapper]:h-full in-data-[slot=image-wrapper]:w-auto in-data-[slot=image-wrapper]:max-w-md",
+				"not-in-data-[slot=image-wrapper]:my-6 not-in-data-[slot=image-wrapper]:h-auto not-in-data-[slot=image-wrapper]:w-full not-in-data-[slot=image-wrapper]:max-lg:mx-4",
 				className,
 			)}
 			{...props}
 		/>
+	)
+}
+
+export function Separator({ className, ...props }: React.ComponentProps<typeof motion.div>) {
+	return (
+		<motion.div variants={staggerItem} className={cn("my-4 max-md:px-4", className)} {...props}>
+			<SeparatorComponent />
+		</motion.div>
 	)
 }
