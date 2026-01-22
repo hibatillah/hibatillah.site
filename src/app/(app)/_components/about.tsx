@@ -11,7 +11,7 @@ export default function AboutSection() {
 	return (
 		<section>
 			<Card variants={staggerItem} className="p-0 lg:h-52">
-				<CardContent className="grid grid-cols-1 gap-0 p-0 md:grid-cols-[calc(var(--spacing)*60)_1fr]">
+				<CardContent className="grid grid-cols-1 gap-0 p-0 md:grid-cols-[calc(var(--spacing)*56)_1fr]">
 					<div className="aspect-2/1 md:aspect-square">
 						<Image
 							src={generic.about}
@@ -19,7 +19,7 @@ export default function AboutSection() {
 							width={1000}
 							height={1000}
 							placeholder="blur"
-							className="pointer-events-none size-full object-cover select-none dark:brightness-90"
+							className="pointer-events-none size-full object-cover object-top select-none md:object-center dark:brightness-90"
 						/>
 					</div>
 					<div className="flex flex-col gap-2 px-6 py-5">

@@ -39,10 +39,18 @@ export const metadata: Metadata = {
 		siteName: profile.title,
 		url: profile.url,
 		type: "website",
-		images: "",
+		images: [
+			{
+				url: "/og/homepage.png",
+				alt: "Hibatillah Hasanin Portfolio",
+				width: 1200,
+				height: 630,
+			},
+		],
 	},
 	twitter: {
 		card: "summary_large_image",
+		images: ["/og/homepage.png"],
 		title: profile.title,
 		description: profile.description,
 		creator: profile.links.x,

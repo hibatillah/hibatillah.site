@@ -1,32 +1,100 @@
 ---
-title: Furaya Hotel Front Desk Management System
-thumbnail: furaya
-range: Oct 2024 - Jul 2025
-slug: furaya-hotel-management
-roles: [Fullstack Developer]
-repo: https://github.com/hibatillah/furaya
-associate: Politeknik Caltex Riau
+title: "Furaya Hotel Front Desk Management System"
+thumbnail: "furaya"
+range: "Oct 2024 - Jul 2025"
+slug: "furaya-hotel-management"
+roles: ["Fullstack Developer"]
+repo: "https://github.com/hibatillah/furaya"
+associates: ["/education/politeknik-caltex-riau"]
+variant: "website"
 stacks:
   [
-    Laravel,
-    React,
-    Inertia.js,
-    Midtrans,
-    Mysql,
-    Tailwind CSS,
-    Shadcn UI,
+    "Laravel",
+    "React",
+    "Inertia.js",
+    "Midtrans",
+    "Mysql",
+    "Tailwind CSS",
+    "Shadcn UI",
   ]
-headline: Modernizing a legacy hotel management system
-description: >
-  Digitized complex manual workflows into a secure, role-based management system to streamline front desk operations and reduce administrative errors.
+headline: "Modernizing a legacy hotel management system"
+description: "Digitized complex manual workflows into a secure, role-based management system to streamline front desk operations and reduce administrative errors."
 ---
 
-# {frontmatter.title}
+# Upgrading Hotel Operations
 
-Irure aliqua eiusmod qui dolor excepteur elit occaecat qui. Commodo officia dolore ut voluptate est incididunt deserunt minim pariatur culpa velit dolore nulla elit Lorem. Non in cupidatat eiusmod sint voluptate anim velit elit cupidatat exercitation sunt laboris consequat proident Lorem. Magna consectetur voluptate Lorem ea aliqua nisi ullamco. Consequat elit ullamco magna irure proident cupidatat enim irure aliquip. Ex aliquip consectetur et culpa reprehenderit do ipsum exercitation laborum sunt dolor eiusmod. Amet tempor laboris eiusmod minim incididunt veniam Lorem cupidatat non ut adipisicing exercitation et tempor do. Anim ipsum cupidatat eiusmod esse ullamco ipsum proident officia esse non tempor.
+The hotel industry relies on speed and service, but many hotels still use systems built decades ago. The **Furaya Hotel Project** was built to fix this.
 
-Minim labore proident est reprehenderit velit nostrud. Adipisicing dolor nisi dolore ex nostrud pariatur sit adipisicing. Elit tempor do cillum Lorem proident sit minim irure anim cillum qui magna id. Ut ea aute tempor velit. Dolore irure labore fugiat incididunt et ut ipsum culpa ea exercitation nulla. Laborum irure minim pariatur eiusmod. Exercitation anim irure mollit pariatur non consequat dolor ipsum.
+I was recruited by a lecturer to join a team of four to build a real system for a client. Our goal was to replace their outdated desktop software with a modern, fast web application for the Front Desk.
 
-Consequat laborum aliquip sint eiusmod mollit minim dolore labore ea nostrud incididunt. Excepteur velit et sunt amet esse officia dolor proident nostrud sit ea id. Magna dolore excepteur quis amet cillum elit ad. Enim mollit tempor cupidatat ea magna mollit ad velit amet ad reprehenderit laborum est. Commodo officia quis proident anim adipisicing dolor adipisicing tempor commodo proident dolore minim proident cillum. Adipisicing esse excepteur consectetur id ea commodo veniam officia do labore cillum. Ex magna anim sunt minim ullamco.
+## _Navigation_ Bottleneck
 
-Ut exercitation qui pariatur ipsum incididunt cupidatat exercitation voluptate. Mollit ut esse mollit nulla sit ex est veniam ex et exercitation cupidatat. Nulla do laborum non nisi. Non adipisicing ipsum aliqua dolor nisi.
+The hotel was running on a legacy desktop app from the early 2000s. It looked like an old computer BIOS screen—blocky and rigid, but the real problem was how it worked.
+
+> The Back to Menu Trap
+
+The system did not have a navigation bar. To switch from _Check-In_ to _Room Status,_ a staff member had to:
+
+1.  Click a `Back` button to exit the current page.
+
+2.  Wait for the Main Menu list to load.
+
+3.  Click the new option.
+
+This constant back-and-forth was too slow for a busy hotel lobby with guests waiting in line.
+
+<ImageWrapper>
+  {/* <ImageItem src={Furaya.dashboard} alt="The new Dashboard with a persistent sidebar for instant navigation" /> */}
+</ImageWrapper>
+
+## Speed & Simplicity
+
+The main goal was to remove that friction. I replaced the _Main Menu_ page with a **Persistent Sidebar**. Now, staff can jump from _Booking_ to _Guest List_ in one click, without ever losing their place.
+
+We chose a tech stack that provided speed and stability:
+
+- `Laravel` to handle complex booking rules securely.
+
+- `React + Tailwind CSS` to make the interface responsive and modern.
+
+- `Inertia.js` enables smooth, seamless navigation and data handling between Laravel and the frontend.
+
+Using Inertia allowed us to build a fast, app-like experience (<abbr title="Single Page Application">SPA</abbr>) where pages load instantly, but kept the backend simple.
+
+## Key Features
+
+### 1. The Front Desk Dashboard
+Designed the dashboard to give an instant overview. Instead of digging through menus, staff immediately see _Today's Check-ins, Occupancy Rates, and VIP Guests_ the moment they log in.
+
+<ImageWrapper>
+  {/* <ImageItem src={Furaya.checkInFlow} alt="Easy Check-in Process" /> */}
+  {/* <ImageItem src={Furaya.roomGrid} alt="Room Status Grid" /> */}
+</ImageWrapper>
+
+### 2. Visual Room Grid
+
+In the old system, checking room status meant reading a text list. I changed this to a Data Table with Filtering and Sorting capabilities. Rooms are color-coded (Green for "Clean", Red for "Do Not Disturb"). This uses _Jacob's Law_ (using familiar patterns) to help staff process information instantly.
+
+### 3. Role-Based Access (RBAC)
+
+We set strict security rules to ensure data safety:
+
+- **Staff:** Can Check-in/Check-out guests.
+
+- **Admin:** Can manage Room Rates and Inventory.
+
+- **Manager:** Can only view sales reports.
+
+## Testing & Result
+
+We tested the system to make sure it was ready for the real world.
+
+- **Stress Test:** The system handled **100-200 users** at the same time without slowing down.
+
+- **User Test:** The new navigation was a success. Staff reported that the **Sidebar workflow** was much faster and easier to learn than the old _Menu Index_ system.
+
+---
+
+The final system successfully modernized the hotel's workflow. By removing the clunky _BIOS-style_ navigation and replacing it with a modern web design, we helped the staff work faster and reduced the waiting time for guests.
+
+This project was my **Final College Capstone**, and it was accepted because it solved a critical operational speed problem for the client.

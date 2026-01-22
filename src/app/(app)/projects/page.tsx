@@ -6,6 +6,8 @@ import { customSort } from "@/lib/utils"
 import { Metadata } from "next"
 import { ProjectCard } from "./_components/card"
 
+export const dynamicParams = false
+
 const title = "Projects"
 const description = "Crafted with passion and dedication to deliver innovative solutions."
 
@@ -18,9 +20,18 @@ export const metadata: Metadata = {
 		siteName: profile.title,
 		url: "/projects",
 		type: "website",
+		images: [
+			{
+				url: "/og/projects.png",
+				alt: "Hibatillah Hasanin Projects",
+				width: 1200,
+				height: 630,
+			},
+		],
 	},
 	twitter: {
 		card: "summary_large_image",
+		images: ["/og/projects.png"],
 		title,
 		description,
 		creator: profile.links.x,
@@ -32,12 +43,12 @@ const list = {
 	featured: [
 		"furaya-hotel-management",
 		"ministry-room-management",
+		"massbeat",
 		"yaman-music-classification",
-		"indogrosir-scm",
 	],
 	others: [
-		"massbeat",
 		"ekolog-app",
+		"indogrosir-scm",
 		"rotte-scm",
 		"rice-type-color"
 	],
@@ -58,15 +69,15 @@ export default async function Page() {
 		<>
 			<div className="grid grid-cols-1 gap-4 max-lg:px-4 md:grid-cols-2">
 				{featured.map((project, index) => (
-					<ProjectCard key={index} data={project} featured />
+					<ProjectCard key={index} data={project} variant={project.variant} featured />
 				))}
 			</div>
 			<div className="w-full max-lg:px-4">
 				<Separator />
 			</div>
-			<div className="space-y-4 max-lg:px-4">
+			<div className="space-y-3 max-lg:px-4">
 				{others.map((project, index) => (
-					<ProjectCard key={index} data={project} />
+					<ProjectCard key={index} data={project} variant={project.variant} />
 				))}
 			</div>
 		</>

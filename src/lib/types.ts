@@ -17,6 +17,8 @@ export interface Experience {
 	related?: Record<string, string>
 }
 
+export type ProjectVariant = "website" | "mobile" | "all"
+
 export interface Project {
 	title: string
 	description: string
@@ -26,6 +28,7 @@ export interface Project {
 	range: string
 	slug: string
 	stacks: string[]
+	variant: ProjectVariant
 	associates?: string[]
 	repo?: string
 	live?: string

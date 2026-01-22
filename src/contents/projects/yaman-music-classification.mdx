@@ -1,21 +1,81 @@
 ---
-title: Yaman Music Audio Classification
-thumbnail: yaman
-range: Nov 2024 - Jan 2025
-slug: yaman-music-classification
-roles: [Fullstack Developer]
-repo: https://github.com/hibatillah/deep-learning
-live: https://team1-deeplearning-sic.vercel.app
+title: "Yaman Music Audio Classification System"
+thumbnail: "yaman"
+range: "Nov 2024 - Jan 2025"
+slug: "yaman-music-classification"
+roles: ["Fullstack Developer"]
+repo: "https://github.com/hibatillah/deep-learning"
+live: "https://team1-deeplearning-sic.vercel.app"
+variant: "website"
 stacks:
   [
-    Flask,
-    Next.js,
-    React,
-    Typescript,
-    Tailwind CSS,
-    Shadcn UI,
+    "Flask",
+    "Python",
+    "Next.js",
+    "React",
+    "Typescript",
+    "Tailwind CSS",
+    "Shadcn UI",
   ]
-headline: Preserving cultural heritage by automating traditional music classification with 93.84% accuracy
-description: >
-  Full-stack deep learning solution that replaces manual archiving with high-precision AI analysis, streamlining the preservation of Yaman musical traditions
+headline: "Preserving cultural heritage by automating traditional music classification with 93.84% accuracy"
+description: "Full-stack deep learning solution that replaces manual archiving with high-precision AI analysis, streamlining the preservation of Yaman musical traditions"
 ---
+
+## AI for Cultural Preservation
+
+Traditional music is a vital part of Yemen's cultural identity, but much of it remains undocumented and unorganized. Manual classification is slow and requires expert knowledge.
+
+This project was built to solve this. It is an automated tool that uses `Deep Learning` to listen to audio files and categorize them into three distinct regional styles: **Adeni**, **Hadrami**, and **Lahji**.
+
+## Architecture
+
+This project required a seamless handshake between a modern _JavaScript_ frontend and a powerful Python backend. I architected a `Monorepo` setup to handle both concurrently.
+
+- **Frontend** - A clean, responsive interface for users to upload `.mp3` files and view results.
+
+- **Backend** - A robust <abbr title="Application Programming Interface">API</abbr> that receives the audio, processes it, and serves the _Deep Learning_ model.
+
+- **The Engine** - A Convolutional Neural Network (CNN) trained to recognize audio patterns.
+
+## The Engineering Challenge
+
+### From Audio to Image (Preprocessing)
+
+Machines cannot _hear_ music, but they can _see_ it. The core of our system relies on converting raw audio waves into **Mel-Spectrograms**, visual representations of sound frequencies over time.
+
+<ImageWrapper size="sm">
+  {/* <ImageItem src={Yaman.spectrogram} alt="Converting Audio to Mel-Spectrograms for CNN processing" /> */}
+</ImageWrapper>
+
+We built the _Python_ pipeline that:
+
+1.  Accepts the user's uploaded file.
+
+2.  Normalizes the audio duration.
+
+3.  Generates the Spectrogram image.
+
+4.  Feeds it into the CNN model for prediction.
+
+### Improving Accuracy (60% → 93%)
+
+Initially, our model struggled with a 60% accuracy rate due to a small dataset.
+Working closely with my teammate (who focused on the model architecture), we implemented **Data Augmentation** techniques. By adding noise, changing pitch, and stretching time in our training data, we made the model robust against poor recording quality.
+
+> This iterative tuning pushed our final accuracy to **93.84%**.
+
+## User Experience
+
+While the backend was complex, I ensured the frontend remained simple. Users don't need to know about _Spectrograms_ or _CNNs_. They simply upload a song and get an instant result.
+
+<ImageWrapper size="sm">
+  {/* <ImageItem src={Yaman.uiUpload} alt="The User Interface for music classification" /> */}
+</ImageWrapper>
+
+---
+
+- **Model Serving** - I learned that serving an AI model requires different considerations than a standard CRUD API, specifically regarding request timeouts and processing power.
+
+- **Cross-Language Integration** - Bridging `Next.js (JS)` and `Flask (Python)` taught me how to design efficient APIs that handle file streams effectively.
+
+- **Cultural Impact** - It proved that modern technology can be a powerful tool for archiving and preserving traditional art forms.

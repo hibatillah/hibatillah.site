@@ -4,7 +4,7 @@ import { Skeleton } from "../../../components/ui/skeleton"
 export default function Loading() {
 	return (
 		<div className="grid grid-cols-1 gap-4 max-lg:px-4 md:grid-cols-2">
-			{Array.from({ length: 6 }).map((_, index) => (
+			{Array.from({ length: 4 }).map((_, index) => (
 				<Card key={index} className="h-84 pt-0">
 					<Skeleton className="aspect-2/1 w-full rounded-b-none" />
 					<CardContent className="flex flex-col gap-2">

@@ -1,6 +1,7 @@
 import { TextLink } from "@/components/text-link"
 import type { MDXComponents } from "mdx/types"
 import {
+	Blockquote,
 	Heading1,
 	Heading2,
 	Heading3,
@@ -27,6 +28,7 @@ const components: MDXComponents = {
 	h2: Heading2,
 	h3: Heading3,
 	p: Paragraph,
+	blockquote: Blockquote,
 	TextLink,
 	hr: Separator,
 	code: ({ className, ...props }) => {

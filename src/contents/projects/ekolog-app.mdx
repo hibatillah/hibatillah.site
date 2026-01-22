@@ -1,17 +1,80 @@
 ---
-title: Ekolog App - Natural Disaster Reporting App
-thumbnail: rms
-range: Oct 2023 - Jan 2024
-slug: ekolog-app
-roles: [Fullstack Developer]
-repo: https://github.com/hibatillah/ekolog-app
+title: "Ekolog App - Natural Disaster Reporting App"
+thumbnail: "ekolog"
+range: "Oct 2023 - Jan 2024"
+slug: "ekolog-app"
+roles: ["Fullstack Developer"]
+repo: "https://github.com/hibatillah/ekolog-app"
+variant: "mobile"
 stacks:
   [
-    Android,
-    Kotlin,
-    Firebase,
+    "Android",
+    "Kotlin",
+    "Firebase",
   ]
-headline: Accelerating disaster response with automated severity triage
-description: >
-  A mobile-first platform that leverages K-Means clustering to instantly analyze and prioritize disaster reports, replacing manual sorting with data-driven classification
+headline: "Accelerating disaster response with automated severity triage"
+description: "A mobile-first platform that leverages K-Means clustering to instantly analyze and prioritize disaster reports, replacing manual sorting with data-driven classification"
 ---
+
+# Tech for _Life on Land_
+
+Climate change has increased the frequency of natural disasters, yet the flow of information remains slow. **Ekolog** is a mobile-first solution designed to bridge the gap between an incident occurring and the data being analyzed.
+
+Built in alignment with **<abbr title="Sustainable Development Goal">SDG</abbr> 15 (Life on Land)**, the app empowers users to report environmental damage while using <abbr title="Artificial Intelligence">AI</abbr> to instantly classify the severity of the event.
+
+## Subjective Reporting
+
+When a user reports a flood or landslide, their description is often subjective. One person might call a small flood `Severe`, while another calls it `Minor`.
+
+**The Goal** - We needed an objective way to categorize reports based on data (affected infrastructure, depth, area), not just feelings.
+
+## AI-Powered Classification
+
+We didn't just build a form, we built a smart analyzer.
+
+### The Brain
+I implemented a `K-Means Clustering` algorithm using `Python`. Unlike standard classification which needs labeled data, this unsupervised model analyzes historical disaster data to find natural groupings.
+
+- It looks at factors like *infrastructure damage* and *casualty count*.
+
+- It automatically clusters the report into `High Severity` or `Low Severity` buckets without human intervention.
+
+<ImageWrapper>
+  {/* <ImageItem src={Ekolog.clusteringPlot} alt="K-Means Clustering Logic for Severity Classification" /> */}
+</ImageWrapper>
+
+### Native Android Architecture
+
+On the frontend, We used `Kotlin` and `XML` to build a robust native Android experience. The priority was speed—users in disaster zones need an interface that loads instantly and works reliably.
+
+### Serverless Backend
+
+To handle real-time data without managing physical servers, We integrated `Firebase`.
+
+* **Authentication** - Secure sign-up and login flows.
+
+* **Database** - Storing reports and syncing them across devices.
+
+<ImageWrapper>
+  {/* <ImageItem src={Ekolog.appScreens} alt="Mobile App Interface built with Kotlin" /> */}
+</ImageWrapper>
+
+## Key Features
+
+- **Geo-Tagged Reporting** - Users can submit photos and location data, which helps authorities map the spread of damage.
+
+- **Severity Auto-Tagging** - The moment a report is submitted, the system tags it as High/Low Risk based on the `K-Means model`.
+
+- **Educational Hub** - The app includes a section for _Environmental Tips,_ educating users on how to prevent degradation before it happens.
+
+## Challenges
+
+The biggest technical hurdle was _bridging the gap_ between a Python-based Model and a Kotlin-based App.
+
+- **Integration Strategy** - I learned how to decouple the Data Science model (which runs on Python) from the Mobile Client, using APIs to pass data back and forth.
+
+- **Real-World Data** - Working with actual Indonesian disaster datasets taught me that real-world data is messy and requires significant preprocessing before it can be useful for AI.
+
+---
+
+Ekolog proved that mobile technology can be more than just social media, it can be a tool for environmental resilience. By automating the classification process, we created a proof-of-concept for faster, data-driven disaster response.

@@ -44,7 +44,7 @@ export function Heading3({ className, ...props }: React.ComponentProps<typeof mo
 	return (
 		<motion.h3
 			variants={staggerItem}
-			className={cn("mt-4 text-base/snug font-normal max-lg:px-4", className)}
+			className={cn("mt-4 text-base/snug font-medium max-lg:px-4", className)}
 			{...props}
 		/>
 	)
@@ -55,6 +55,22 @@ export function Paragraph({ className, ...props }: React.ComponentProps<typeof m
 		<motion.p
 			variants={staggerItem}
 			className={cn("text-base/relaxed max-lg:px-4", className)}
+			{...props}
+		/>
+	)
+}
+
+export function Blockquote({
+	className,
+	...props
+}: React.ComponentProps<typeof motion.blockquote>) {
+	return (
+		<motion.blockquote
+			variants={staggerItem}
+			className={cn(
+				"my-2 border-s-3 border-muted-foreground py-1 ps-4 text-muted-foreground italic",
+				className,
+			)}
 			{...props}
 		/>
 	)

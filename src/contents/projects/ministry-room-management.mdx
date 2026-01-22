@@ -1,48 +1,53 @@
 ---
-title: Ministry Unit Room Management System
-thumbnail: rms
-range: Oct 2024 - Jul 2025
-slug: ministry-room-management
-roles: [Frontend Developer]
-repo: https://github.com/hibatillah/rms
+title: "Ministry Unit Room Management System"
+thumbnail: "rms"
+range: "Oct 2024 - Jul 2025"
+slug: "ministry-room-management"
+roles: ["Frontend Developer"]
+variant: "website"
 stacks:
   [
-    Next.js,
-    React,
-    Typescript,
-    NextAuth,
-    Prisma ORM,
-    Mysql,
-    Tailwind CSS,
-    Shadcn UI,
+    "Next.js",
+    "React",
+    "Typescript",
+    "NextAuth",
+    "Prisma ORM",
+    "Mysql",
+    "Tailwind CSS",
+    "Shadcn UI",
   ]
-headline: Centralizing room bookings for efficient resource sharing
-description: >
-  Modernized facility management by centralizing room bookings into a single secure platform enabling efficient resource sharing across multiple organizational units.
+headline: "Centralizing room bookings for efficient resource sharing"
+description: "Modernized facility management by centralizing room bookings into a single secure platform enabling efficient resource sharing across multiple organizational units."
 ---
 
-# KLC Rooms: Ministry Unit Room Booking Platform
+# _KLC Rooms_ as Ministry Unit Room Booking Platform
 
-The Challenge: The Limits of Legacy Monoliths The Indonesian Ministry of Finance relied on a legacy PHP-based system to manage thousands of bookable assets (classrooms, dormitories, labs) across the country. The system was suffering from severe performance bottlenecks, an outdated user interface that frustrated staff, and a codebase that was nearly impossible to maintain or upgrade efficiently.
+_Challenge_
+
+The Indonesian Ministry of Finance relied on a legacy PHP-based system to manage thousands of bookable assets (classrooms, dormitories, labs) across the country. The system was suffering from severe performance bottlenecks, an outdated user interface that frustrated staff, and a codebase that was nearly impossible to maintain or upgrade efficiently.
 
 The stakeholders demanded a radical shift: they needed an enterprise-grade internal tool that felt as fast, modern, and intuitive as consumer platforms like Airbnb or Traveloka.
 
-The Solution: A Modern, Scalable Architecture We re-engineered the entire platform from the ground up using a modern React-based ecosystem. The decision to move to Next.js and TypeScript was driven by the need for speed (server-side rendering for fast initial loads), type safety across complex data structures, and long-term maintainability.
+_Solution_
 
-Key Technical Implementation
+We re-engineered the entire platform from the ground up using a modern React-based ecosystem. The decision to move to Next.js and TypeScript was driven by the need for speed (server-side rendering for fast initial loads), type safety across complex data structures, and long-term maintainability.
 
-1. Complex Role-Based Access Control (RBAC) & SSO The system required managing five distinct user roles (Public, Employee, Treasurer, Admin, Superadmin), each with unique dashboards and permission sets.
+### Complex Role-Based Access Control & SSO
 
-Challenge: We had to integrate with the Ministry's existing Single Sign-On (SSO) for internal employees while maintaining a separate, secure authentication flow for public users.
+We had to integrate with the Ministry's existing Single Sign-On (SSO) for internal employees while maintaining a separate, secure authentication flow for public users.
 
-Solution: We utilized NextAuth to handle this hybrid authentication strategy, creating middleware matchers to secure routes and ensure users only accessed data pertinent to their role.
+We utilized NextAuth to handle this hybrid authentication strategy, creating middleware matchers to secure routes and ensure users only accessed data pertinent to their role.
 
-2. Building a Reusable Component System To achieve the Airbnb-style UI/UX requested by stakeholders, off-the-shelf components weren't enough.
+### Building a Reusable Component System
 
 I leveraged TailwindCSS and shadcn/ui as a foundation to build a robust design system.
 
-I developed complex, custom UI components from scratch, including dynamic multi-select filters for deeply nested unit locations and interactive, large-scale booking calendars that had to handle conflicting schedules in real-time.
+I developed complex, custom UI components from scratch, including filters and calendars for deeply nested unit locations and interactive, large-scale booking calendars that had to handle conflicting schedules in real-time.
 
-3. Advanced Search & Filtering Data Flow A core requirement was allowing users to find available rooms across different geographical units and room types on specific dates. This required designing efficient frontend interfaces that could handle complex query parameters and display organized results from the backend API, ensuring a snappy user experience even when filtering large datasets.
+### Advanced Search & Filtering Data Flow
+
+A core requirement was allowing users to find available rooms across different geographical units and room types on specific dates. This required designing efficient frontend interfaces that could handle complex query parameters and display organized results from the backend API, ensuring a snappy user experience even when filtering large datasets.
+
+---
 
 Results Despite the constraints of a small 3-person team and a 3-month timeline, we successfully delivered a fully functional, modern replacement system ready for deployment preview. The new KLC Rooms platform drastically improved the user experience, streamlined the booking workflow, and provided a scalable foundation for future Ministry operations.

@@ -1,20 +1,74 @@
 ---
-title: Rotte Bakery Supply Chain System Case Study
-thumbnail: rotte
-range: May - Jul 2023
-slug: rotte-scm
-roles: [Fullstack Developer]
-repo: https://github.com/hibatillah/capstone-tim1
-live: https://rotte-supply-chain.vercel.app
+title: "Rotte Bakery Supply Chain System Case Study"
+thumbnail: "rotte"
+range: "May - Jul 2023"
+slug: "rotte-scm"
+roles: ["Fullstack Developer"]
+repo: "https://github.com/hibatillah/capstone-tim1"
+live: "https://rotte-supply-chain.vercel.app"
+variant: "website"
 stacks:
   [
-    Node.js,
-    Express.js,
-    React,
-    MongoDB,
-    Tailwind CSS,
+    "Node.js",
+    "Express.js",
+    "React",
+    "MongoDB",
+    "Tailwind CSS",
   ]
-headline: Data-driven supply chain management for high-volume production
-description: >
-  A comprehensive MERN platform that automates complex supply chains using Bill of Materials (BoM) and Reorder Point (ROP) logic, ensuring raw materials align perfectly with production demand.
+headline: "Data-driven supply chain management for high-volume production"
+description: "A comprehensive MERN platform that automates complex supply chains using Bill of Materials (BoM) and Reorder Point (ROP) logic, ensuring raw materials align perfectly with production demand."
 ---
+
+## The Award-Winning Capstone
+
+This project was a milestone in my academic journey. In my second year, I led a team to build a comprehensive system that integrated three distinct subjects: **Framework Programming**, **Supply Chain Management (SCM)**, and **Data Visualization**.
+
+Our efforts were recognized when this system won the **Best Capstone Project Group** award, standing out for its complex logic and practical application.
+
+## Bakeries are Complex
+
+Managing a bakery is more difficult than it looks. You don't just "sell bread." You have to manage the raw materials (flour, eggs, sugar) that go _into_ the bread.
+
+- **The Disconnect** - If you sell 50 breads, you need to know exactly how much flour was used.
+
+- **The Risk** - If you run out of flour, production stops.
+
+- **The Solution** - We needed a system that automates this entire chain, from the Supplier to the Oven to the Customer.
+
+## Key Logic
+
+The heart of this system is the **Bill of Materials (BoM)** engine. I implemented logic that treats every product as a "recipe" of components.
+
+When a customer orders **10 Chocolate Breads**, the system doesn't just deduct "10 Breads" from inventory. It triggers a **chain reaction**:
+
+1.  It looks up the _BoM_ for Chocolate Bread.
+
+2.  It calculates the required raw materials (e.g., 2kg Flour, 500g Cocoa).
+
+3.  It automatically deducts those specific amounts from the Raw Material Inventory.
+
+<ImageWrapper>
+  {/* <ImageItem src={Rotte.bomLogic} alt="Inventory Management with BoM Logic" /> */}
+</ImageWrapper>
+
+## Automated Procurement
+
+We didn't just track stock, we automated the reordering process. I implemented a **Reorder Point (ROP)** system.
+
+The moment a raw material (like Sugar) drops below a specific safety threshold, the system automatically triggers a **Pre-order Alert** for the Supplier. This ensures the bakery never faces a stockout during peak production.
+
+## Building from Scratch
+
+This project was built **entirely from scratch** using Tailwind CSS.
+
+- **Why?** To truly master the fundamentals of CSS layouting and React state management without relying on pre-made UI kits.
+
+- **The Result** - I built custom data tables, modal dialogs, giving me complete control over the design system.
+
+---
+
+This project was my first experience building a _Logic-Heavy_ application.
+
+* **SCM Principles** - I learned that software isn't just about code, it's about mapping real-world business rules (like BoM and ROP) into database relationships.
+
+* **MERN Mastery** - It solidified my understanding of the Fullstack `Javascript` ecosystem, specifically how to handle relational data (Products vs. Ingredients) in a NoSQL database like `MongoDB`.
