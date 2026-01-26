@@ -1,7 +1,10 @@
 import profile from "@/contents/profile.json"
+import { ASSETS_BASE_URL } from "@/lib/constants"
 import { getContentByCategory, getContentData } from "@/lib/contents"
+import { getRemoteImages } from "@/lib/remote-image"
 import { Education, Experience, Project } from "@/lib/types"
 import { customSort } from "@/lib/utils"
+import { all } from "better-all"
 import { Metadata } from "next"
 import Overview from "./_components/overview"
 
@@ -24,20 +27,31 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-	const { data: experience } = await getContentData<Experience>(
-		"experiences",
-		profile.featured.experience,
-	)
+	const { experience, education, featuredProjects, images } = await all({
+		async experience() {
+			const { data } = await getContentData<Experience>("experiences", profile.featured.experience)
+			return data
+		},
+		async education() {
+			const { data } = await getContentData<Education>("educations", profile.featured.education)
+			return data
+		},
+		async projects() {
+			return getContentByCategory<Project>("projects")
+		},
+		async featuredProjects() {
+			const projects = await this.$.projects
+			return projects
+				.filter((item) => profile.featured.projects.includes(item.slug))
+				.sort((a, b) => customSort(a.slug, b.slug, profile.featured.projects))
+		},
+		async images() {
+			return getRemoteImages([
+				{ key: "about", src: `${ASSETS_BASE_URL}/about-background.webp` },
+				{ key: "featured", src: `${ASSETS_BASE_URL}/featured-background.webp` },
+			])
+		},
+	})
 
-	const { data: education } = await getContentData<Education>(
-		"educations",
-		profile.featured.education,
-	)
-
-	const projects = await getContentByCategory<Project>("projects")
-	const featured = projects
-		.filter((item) => profile.featured.projects.includes(item.slug))
-		.sort((a, b) => customSort(a.slug, b.slug, profile.featured.projects))
-
-	return <Overview data={{ experience, education, projects: featured }} />
+	return <Overview data={{ experience, education, projects: featuredProjects }} images={images} />
 }

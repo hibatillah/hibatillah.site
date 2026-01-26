@@ -11,7 +11,18 @@ related: {
 description: "Executed Design Sprints and Agile Scrum cycles to drive iterative development within a cross-functional team. Managed deliverables and regularly presented milestones to stakeholders to ensure continuous project alignment."
 ---
 
-import * as ministry from "@/static/experience/ministry-finance"
+import { ASSETS_BASE_URL } from "@/lib/constants"
+import { getRemoteImages } from "@/lib/remote-image"
+
+export const baseUrl = `${ASSETS_BASE_URL}/exp/ministry`
+
+export const images = await getRemoteImages([
+  { key: "group", src: `${baseUrl}/group.webp` },
+  { key: "card", src: `${baseUrl}/card.webp` },
+  { key: "habib", src: `${baseUrl}/habib.webp` },
+  { key: "sprint1", src: `${baseUrl}/sprint-1.webp` },
+  { key: "sprint2", src: `${baseUrl}/sprint-2.webp` },
+])
 
 ## Driving Digital Transformation via Agile at the Ministry of Finance
 
@@ -20,9 +31,15 @@ Stepping into enterprise modernization during my internship at <abbr title="Bada
 The challenge wasn't just technical, it was organizational. We needed to migrate complex workflows with outdated systems into a modern digital experience within a very tight three-month development window.
 
 <ImageWrapper>
-  <ImageItem src={ministry.group} alt="Internship Final Presentation" />
-  <ImageItem src={ministry.card} alt="Internship Card" />
-  <ImageItem src={ministry.habib} alt="Hibatillah during Internship Final Presentation" />
+  <ImageItem
+    image={images["group"]}
+    alt="Internship Final Presentation" />
+  <ImageItem
+    image={images["card"]}
+    alt="Internship Card" />
+  <ImageItem
+    image={images["habib"]}
+    alt="Hibatillah during Internship Final Presentation" />
 </ImageWrapper>
 
 ### The Methodology
@@ -40,8 +57,12 @@ Stakeholder Collaboration & The Design Sprint One of the most valuable experienc
 We conducted an intensive Design Sprint involving 20 - 30 Ministry employees from various units as the actual future users of the system. Facilitating these face-to-face sessions was eye-opening. I moved from abstract assumptions to concrete user validation, witnessing first-hand the friction points in their existing daily operations. This direct interaction translated into a <abbr title="Business Requirement Document">BRD</abbr>, <abbr title="Business Process Model and Notation">BPMN</abbr> diagrams and High-Fidelity Mockups that truly reflected user needs rather than assumptions.
 
 <ImageWrapper>
-  <ImageItem src={ministry.sprint1} alt="Design Sprint 1" />
-  <ImageItem src={ministry.sprint2} alt="Design Sprint 2" />
+  <ImageItem
+    image={images["sprint1"]}
+    alt="Design Sprint 1" />
+  <ImageItem
+    alt="Design Sprint 2"
+    image={images["sprint2"]} />
 </ImageWrapper>
 
 ### Growth & Key Takeaways

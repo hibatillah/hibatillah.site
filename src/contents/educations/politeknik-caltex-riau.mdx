@@ -9,10 +9,24 @@ location: "Pekanbaru, Indonesia"
 description: "Distinguished by the Best Capstone Project award and multiple podium finishes in national competitions. I complemented these academic achievements with professional experience as an intern at the Ministry of Finance from MSIB Batch 6 program."
 ---
 
+import { ASSETS_BASE_URL } from "@/lib/constants"
 import { getContentData } from "@/lib/contents"
-import * as pcr from "@/static/education/politeknik-caltex-riau"
+import { getRemoteImages } from "@/lib/remote-image"
 
 export const { data: massbeat } = await getContentData("projects", "massbeat")
+
+export const baseUrl = `${ASSETS_BASE_URL}/edu/pcr`
+
+export const images = await getRemoteImages([
+  { key: "syahduu-1", src: `${baseUrl}/syahduu-1.webp` },
+  { key: "syahduu-2", src: `${baseUrl}/syahduu-2.webp` },
+  { key: "intern-1", src: `${baseUrl}/intern-1.webp` },
+  { key: "intern-2", src: `${baseUrl}/intern-2.webp` },
+  { key: "graduation-1", src: `${baseUrl}/graduation-1.webp` },
+  { key: "graduation-2", src: `${baseUrl}/graduation-2.webp` },
+  { key: "graduation-3", src: `${baseUrl}/graduation-3.webp` },
+])
+
 
 # A Journey of Rapid Acceleration
 
@@ -30,8 +44,12 @@ Born during the transition of the COVID-19 pandemic, **Massbeat** was my first s
 While we planned to build the full mobile app, we made the strategic decision to sunset the project to focus on our mandatory semester internships. This taught me a valuable lesson in resource allocation and project prioritization.
 
 <ImageWrapper>
-  <ImageItem src={pcr.team1} alt="Team Syahduu during competition" />
-  <ImageItem src={pcr.team2} alt="Team Syahduu photoshot" />
+  <ImageItem
+    image={images["syahduu-2"]}
+    alt="Team Syahduu photoshot" />
+  <ImageItem
+    image={images["syahduu-1"]}
+    alt="Team Syahduu during competition" />
 </ImageWrapper>
 
 ## _Best Capstone_ Award
@@ -51,8 +69,12 @@ In my third year, I achieved a major milestone by being selected for **MSIB Batc
 This was my first exposure to a professional engineering environment. I worked directly with stakeholders to build a web-based room management system for ministry units. This experience bridged the gap between academic theory and real-world software delivery, teaching me how to manage strict software development standards and tight deadlines.
 
 <ImageWrapper>
-  <ImageItem src={pcr.intern1} alt="Ministry of Finance Member" />
-  <ImageItem src={pcr.intern2} alt="Hibatillah during internship final presentation" />
+  <ImageItem
+    image={images["intern-1"]}
+    alt="Ministry of Finance Member" />
+  <ImageItem
+    image={images["intern-2"]}
+    alt="Hibatillah during internship final presentation" />
 </ImageWrapper>
 
 ## _Final Thesis_ - Hotel Management System
@@ -78,7 +100,13 @@ I graduated in **October 2025** with 128 Activity Points (well above the 75 requ
 Beyond the metrics and awards, these four years gifted me an invaluable network of brilliant peers and mentors. I left the campus not just with a degree, but with deep friendships and the technical resilience that will define the rest of my professional journey.
 
 <ImageWrapper size="lg">
-  <ImageItem src={pcr.graduation1} alt="ClasSIC Graduation Photoshot" />
-  <ImageItem src={pcr.graduation3} alt="ClasSIC Graduation Photoshot" />
-  <ImageItem src={pcr.graduation2} alt="ClasSIC Graduation Photoshot" />
+  <ImageItem
+    image={images["graduation-1"]}
+    alt="ClasSIC Graduation Photoshot" />
+  <ImageItem
+    image={images["graduation-3"]}
+    alt="ClasSIC Graduation Photoshot" />
+  <ImageItem
+    image={images["graduation-2"]}
+    alt="ClasSIC Graduation Photoshot" />
 </ImageWrapper>

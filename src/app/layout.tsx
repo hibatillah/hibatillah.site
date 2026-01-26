@@ -3,11 +3,11 @@ import type { Metadata, Viewport } from "next"
 import { MotionConfig } from "motion/react"
 import { Geist, Geist_Mono } from "next/font/google"
 
-import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
 import profile from "@/contents/profile.json"
 import { cn } from "@/lib/utils"
 import "./globals.css"
+import Provider from "./provider"
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -39,18 +39,9 @@ export const metadata: Metadata = {
 		siteName: profile.title,
 		url: profile.url,
 		type: "website",
-		images: [
-			{
-				url: "/og/homepage.png",
-				alt: "Hibatillah Hasanin Portfolio",
-				width: 1200,
-				height: 630,
-			},
-		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		images: ["/og/homepage.png"],
 		title: profile.title,
 		description: profile.description,
 		creator: profile.links.x,
@@ -76,15 +67,10 @@ export default function RootLayout({
 		<html lang="en" suppressHydrationWarning>
 			<body className={cn("isolate antialiased", geistSans.variable, geistMono.variable)}>
 				<MotionConfig reducedMotion="user">
-					<ThemeProvider
-						attribute="class"
-						defaultTheme="system"
-						enableSystem
-						disableTransitionOnChange
-					>
+					<Provider>
 						{children}
 						<Toaster />
-					</ThemeProvider>
+					</Provider>
 				</MotionConfig>
 			</body>
 		</html>

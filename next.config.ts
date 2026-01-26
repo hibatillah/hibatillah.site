@@ -5,6 +5,16 @@ import profile from "./src/contents/profile.json"
 const nextConfig: NextConfig = {
 	pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 	reactCompiler: true,
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "cdn.hibatillah.site",
+				port: "",
+				pathname: "/**",
+			},
+		],
+	},
 	redirects: () => {
 		return Object.entries(profile.links).map(([label, url]) => ({
 			source: `/links/${label}`,

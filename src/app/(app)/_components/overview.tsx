@@ -6,6 +6,7 @@ import { motion } from "motion/react"
 import AboutSection from "./about"
 import ExperienceSection from "./experience"
 import FeaturedSection from "./featured"
+import { RemoteImage } from "@/lib/remote-image"
 
 interface OverviewProps {
 	data: {
@@ -13,9 +14,13 @@ interface OverviewProps {
 		education: Education
 		projects: Project[]
 	}
+	images: Record<string, RemoteImage>
 }
 
-export default function Overview({ data: { experience, education, projects } }: OverviewProps) {
+export default function Overview({
+	data: { experience, education, projects },
+	images,
+}: OverviewProps) {
 	return (
 		<motion.div
 			variants={staggerContainer}
@@ -24,9 +29,9 @@ export default function Overview({ data: { experience, education, projects } }: 
 			viewport={{ once: true, margin: "-50px" }}
 			className="space-y-5 max-lg:px-4"
 		>
-			<AboutSection />
+			<AboutSection image={images.about} />
 			<ExperienceSection experience={experience} education={education} />
-			<FeaturedSection projects={projects} />
+			<FeaturedSection projects={projects} backgroundImage={images.featured} />
 		</motion.div>
 	)
 }

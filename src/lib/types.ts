@@ -1,4 +1,4 @@
-import { StaticImport } from "next/dist/shared/lib/get-img-props"
+import { RemoteImage } from "./remote-image"
 
 export type ContentCategory = "educations" | "experiences" | "projects"
 
@@ -24,7 +24,7 @@ export interface Project {
 	description: string
 	headline: string
 	roles: string[]
-	thumbnail: string | StaticImport
+	thumbnail?: RemoteImage
 	range: string
 	slug: string
 	stacks: string[]

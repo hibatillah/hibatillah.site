@@ -2,9 +2,11 @@
 
 import { Separator as SeparatorComponent } from "@/components/ui/separator"
 import { staggerContainer, staggerItem } from "@/lib/animations"
+import { RemoteImage } from "@/lib/remote-image"
 import { cn } from "@/lib/utils"
 import { motion } from "motion/react"
 import Image from "next/image"
+import { createContext, useContext } from "react"
 
 export function Wrapper({ children }: { children: React.ReactNode }) {
 	return (
@@ -153,50 +155,79 @@ export function TableCell({ className, ...props }: React.ComponentProps<typeof m
 	)
 }
 
-interface ImageWrapperProps extends React.ComponentProps<typeof motion.div> {
-	size?: "sm" | "md" | "lg"
-}
-
-export function ImageWrapper({ size = "md", className, ...props }: ImageWrapperProps) {
-	return (
-		<motion.div
-			variants={staggerItem}
-			data-slot="image-wrapper"
-			className={cn(
-				"my-6 scrollbar-hide flex items-center gap-3 overflow-x-auto max-lg:px-4",
-				size === "sm" && "h-48",
-				size === "md" && "h-60",
-				size === "lg" && "h-72",
-				className,
-			)}
-			{...props}
-		/>
-	)
-}
-
-export function ImageItem({ src, alt, className, ...props }: React.ComponentProps<typeof Image>) {
-	return (
-		<Image
-			src={src}
-			alt={alt}
-			width={1000}
-			height={1000}
-			placeholder="blur"
-			className={cn(
-				"rounded-md border object-cover max-lg:max-w-[90vw] dark:brightness-90",
-				"in-data-[slot=image-wrapper]:h-full in-data-[slot=image-wrapper]:w-auto in-data-[slot=image-wrapper]:max-w-md",
-				"not-in-data-[slot=image-wrapper]:my-6 not-in-data-[slot=image-wrapper]:h-auto not-in-data-[slot=image-wrapper]:w-full not-in-data-[slot=image-wrapper]:max-lg:mx-4",
-				className,
-			)}
-			{...props}
-		/>
-	)
-}
-
 export function Separator({ className, ...props }: React.ComponentProps<typeof motion.div>) {
 	return (
 		<motion.div variants={staggerItem} className={cn("my-4 max-md:px-4", className)} {...props}>
 			<SeparatorComponent />
 		</motion.div>
+	)
+}
+
+const ImageContext = createContext<{ height: number } | null>(null)
+
+const SIZE_MAP = {
+	md: 240, // h-60
+	lg: 288, // h-72
+}
+
+interface ImageWrapperProps extends React.ComponentProps<typeof motion.div> {
+	size?: "md" | "lg"
+}
+
+export function ImageWrapper({ size = "md", className, children, ...props }: ImageWrapperProps) {
+	return (
+		<ImageContext.Provider value={{ height: SIZE_MAP[size] }}>
+			<motion.div
+				variants={staggerItem}
+				data-slot="image-wrapper"
+				className={cn(
+					"my-6 scrollbar-hide flex items-center gap-3 overflow-x-auto max-lg:px-4",
+					size === "md" && "h-60",
+					size === "lg" && "h-72",
+					className,
+				)}
+				{...props}
+			>
+				{children}
+			</motion.div>
+		</ImageContext.Provider>
+	)
+}
+
+interface ImageItemProps extends Omit<React.ComponentProps<typeof Image>, "src"> {
+	image: RemoteImage
+}
+
+export function ImageItem({ image, alt, className, ...props }: ImageItemProps) {
+	const context = useContext(ImageContext)
+	const { width, height } = image
+
+	let styles = {}
+
+	if (context && width && height) {
+		const aspectRatio = Number(width) / Number(height)
+		const targetWidth = context.height * aspectRatio
+
+		styles = { width: Math.round(targetWidth) }
+	}
+
+	return (
+		<Image
+			src={image?.src}
+			alt={alt}
+			width={image.width}
+			height={image.height}
+			placeholder={image.blurData ? "blur" : "empty"}
+			blurDataURL={image.blurData}
+			style={styles}
+			className={cn(
+				"rounded-md border object-cover dark:brightness-90",
+				"in-data-[slot=image-wrapper]:h-full in-data-[slot=image-wrapper]:max-w-md",
+				"not-in-data-[slot=image-wrapper]:my-6 not-in-data-[slot=image-wrapper]:h-auto not-in-data-[slot=image-wrapper]:w-full not-in-data-[slot=image-wrapper]:max-lg:mx-4",
+
+				className,
+			)}
+			{...props}
+		/>
 	)
 }

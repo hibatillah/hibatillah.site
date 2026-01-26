@@ -14,7 +14,7 @@ export default function Loading() {
 						<div className="mt-0.5 flex items-end justify-between gap-6">
 							<div className="flex items-center gap-2">
 								{Array.from({ length: 3 }).map((_, i) => (
-									<Skeleton key={i} className="h-5 w-14" />
+									<Skeleton key={i} className="h-4 w-14" />
 								))}
 								<Skeleton className="h-5 w-6" />
 							</div>

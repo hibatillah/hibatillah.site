@@ -1,21 +1,35 @@
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { useRemoteImages } from "@/hooks/use-remote-image"
 import { staggerItem } from "@/lib/animations"
+import { ASSETS_BASE_URL } from "@/lib/constants"
+import { RemoteImage } from "@/lib/remote-image"
 import { Project } from "@/lib/types"
 import { cn } from "@/lib/utils"
-import * as generic from "@/static/generic"
-import * as thumbnails from "@/static/projects/thumbnails"
 import { ChevronDownIcon } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 import Image from "next/image"
 import { useState } from "react"
 
-export default function FeaturedSection({ projects }: { projects: Project[] }) {
+interface FeaturedSectionProps {
+	projects: Project[]
+	backgroundImage: RemoteImage
+}
+
+export default function FeaturedSection({ projects, backgroundImage }: FeaturedSectionProps) {
 	const [hoveredId, setHoveredId] = useState<number | null>(null)
 	const [openId, setOpenId] = useState(0)
 
+	const imageSources = projects.map(({ slug }) => ({
+		key: slug,
+		src: `${ASSETS_BASE_URL}/projects/thumbnails/${slug}.webp`,
+	}))
+
+	const { images } = useRemoteImages(imageSources)
+
 	const activeProject = projects[openId]
+	const activeImage = images[activeProject.slug]
 
 	return (
 		<section>
@@ -109,16 +123,17 @@ export default function FeaturedSection({ projects }: { projects: Project[] }) {
 
 				<div className="relative order-2 w-full overflow-hidden max-md:aspect-4/3 md:order-3 md:row-span-3 md:h-full">
 					<Image
-						src={generic.featured}
+						src={backgroundImage.src}
 						alt=""
-						width={1200}
-						height={1200}
-						placeholder="blur"
+						width={backgroundImage?.width}
+						height={backgroundImage?.height}
+						placeholder={backgroundImage.blurData ? "blur" : "empty"}
+						blurDataURL={backgroundImage.blurData}
 						className="pointer-events-none size-full object-cover select-none dark:brightness-90"
 						priority
 					/>
 					<AnimatePresence mode="popLayout">
-						{activeProject && (
+						{activeProject && activeImage && (
 							<motion.div
 								key={activeProject.title}
 								initial={{ opacity: 0, y: 10 }}
@@ -128,11 +143,12 @@ export default function FeaturedSection({ projects }: { projects: Project[] }) {
 								className="absolute start-10 top-10 w-full origin-top-left overflow-hidden rounded-tl-lg shadow-2xl md:start-16 md:top-16"
 							>
 								<Image
-									src={thumbnails[activeProject.thumbnail as keyof typeof thumbnails]}
+									src={activeImage.src}
 									alt={activeProject.title}
-									width={1800}
-									height={1800}
-									placeholder="blur"
+									width={activeImage.width}
+									height={activeImage.height}
+									placeholder={activeImage.blurData ? "blur" : "empty"}
+									blurDataURL={activeImage.blurData}
 									className="pointer-events-none size-full bg-top-left dark:brightness-90"
 									priority
 								/>

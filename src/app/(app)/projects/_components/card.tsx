@@ -5,10 +5,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { useIsMobile } from "@/hooks/use-mobile"
+import { RemoteImage } from "@/lib/remote-image"
 import { Project, ProjectVariant } from "@/lib/types"
 import { cn } from "@/lib/utils"
-import * as generic from "@/static/generic"
-import * as thumbnails from "@/static/projects/thumbnails"
 import {
 	ArrowUpRightIcon,
 	BookOpenIcon,
@@ -24,6 +23,7 @@ interface ProjectCardProps {
 	data: Project
 	featured?: boolean
 	variant?: ProjectVariant
+	bgImage: RemoteImage
 }
 
 interface ProjectAction {
@@ -32,7 +32,7 @@ interface ProjectAction {
 	Icon: LucideIcon
 }
 
-export function ProjectCard({ data, featured = false, variant }: ProjectCardProps) {
+export function ProjectCard({ data, featured = false, variant, bgImage }: ProjectCardProps) {
 	const isMobile = useIsMobile()
 
 	const visibleCount = isMobile || !featured ? 2 : 3
@@ -63,11 +63,12 @@ export function ProjectCard({ data, featured = false, variant }: ProjectCardProp
 				})}
 			>
 				<Image
-					src={generic.projects}
+					src={bgImage.src}
 					alt=""
-					width={1200}
-					height={1200}
-					placeholder="blur"
+					width={bgImage.width}
+					height={bgImage.height}
+					placeholder={bgImage.blurData ? "blur" : "empty"}
+					blurDataURL={bgImage.blurData}
 					className="pointer-events-none size-full object-cover object-top brightness-110 select-none dark:brightness-90"
 					priority
 				/>
@@ -85,11 +86,12 @@ export function ProjectCard({ data, featured = false, variant }: ProjectCardProp
 					)}
 				>
 					<Image
-						src={thumbnails[data.thumbnail as keyof typeof thumbnails]}
+						src={data.thumbnail?.src ?? ""}
 						alt={data.title}
-						width={1800}
-						height={1800}
-						placeholder="blur"
+						width={data.thumbnail?.width}
+						height={data.thumbnail?.height}
+						placeholder={data.thumbnail?.blurData ? "blur" : "empty"}
+						blurDataURL={data.thumbnail?.blurData}
 						className="size-full object-top dark:brightness-90"
 						priority
 					/>

@@ -4,22 +4,23 @@ import Socials from "@/components/socials"
 import { Card, CardContent } from "@/components/ui/card"
 import profile from "@/contents/profile.json"
 import { staggerItem } from "@/lib/animations"
-import * as generic from "@/static/generic"
+import { RemoteImage } from "@/lib/remote-image"
 import Image from "next/image"
 
-export default function AboutSection() {
+export default function AboutSection({ image }: { image: RemoteImage }) {
 	return (
 		<section>
-			<Card variants={staggerItem} className="p-0 lg:h-52">
-				<CardContent className="grid grid-cols-1 gap-0 p-0 md:grid-cols-[calc(var(--spacing)*56)_1fr]">
-					<div className="aspect-2/1 md:aspect-square">
+			<Card variants={staggerItem} className="p-0">
+				<CardContent className="grid grid-cols-1 gap-0 p-0 md:grid-cols-[calc(var(--spacing)*48)_1fr]">
+					<div className="relative h-full w-auto max-md:hidden">
 						<Image
-							src={generic.about}
+							src={image.src}
 							alt=""
-							width={1000}
-							height={1000}
-							placeholder="blur"
-							className="pointer-events-none size-full object-cover object-top select-none md:object-center dark:brightness-90"
+							width={image.width}
+							height={image.height}
+							placeholder={image.blurData ? "blur" : "empty"}
+							blurDataURL={image.blurData}
+							className="pointer-events-none size-full object-cover object-center select-none dark:brightness-90"
 						/>
 					</div>
 					<div className="flex flex-col gap-2 px-6 py-5">

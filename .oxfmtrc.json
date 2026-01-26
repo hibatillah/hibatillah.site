@@ -5,7 +5,7 @@
 	"useTabs": true,
 	"experimentalTailwindcss": {
 		"stylesheet": "./src/app/globals.css",
-		"attributes": ["className"],
+		"attributes": ["className", "tw"],
 		"functions": ["cn", "cva"]
 	},
 	"ignorePatterns": ["node_modules/**", ".next/**", "public/**"]

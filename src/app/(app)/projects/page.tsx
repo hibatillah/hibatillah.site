@@ -1,8 +1,11 @@
 import { Separator } from "@/components/ui/separator"
 import profile from "@/contents/profile.json"
+import { ASSETS_BASE_URL } from "@/lib/constants"
 import { getContentByCategory } from "@/lib/contents"
+import { getRemoteImage, getRemoteImages } from "@/lib/remote-image"
 import { Project } from "@/lib/types"
 import { customSort } from "@/lib/utils"
+import { all } from "better-all"
 import { Metadata } from "next"
 import { ProjectCard } from "./_components/card"
 
@@ -20,18 +23,9 @@ export const metadata: Metadata = {
 		siteName: profile.title,
 		url: "/projects",
 		type: "website",
-		images: [
-			{
-				url: "/og/projects.png",
-				alt: "Hibatillah Hasanin Projects",
-				width: 1200,
-				height: 630,
-			},
-		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		images: ["/og/projects.png"],
 		title,
 		description,
 		creator: profile.links.x,
@@ -55,13 +49,39 @@ const list = {
 }
 
 export default async function Page() {
-	const projects = await getContentByCategory<Project>("projects")
+	const { background, projectsWithThumbnails } = await all({
+		async background() {
+			return getRemoteImage(`${ASSETS_BASE_URL}/projects-background.webp`)
+		},
+		async projects() {
+			return getContentByCategory<Project>("projects")
+		},
+		async thumbnails() {
+			const projects = await this.$.projects
 
-	const featured = projects
+			return getRemoteImages(
+				projects.map((project) => ({
+					key: project.slug,
+					src: `${ASSETS_BASE_URL}/projects/thumbnails/${project.slug}.webp`,
+				})),
+			)
+		},
+		async projectsWithThumbnails() {
+			const projects = await this.$.projects
+			const thumbnails = await this.$.thumbnails
+
+			return projects.map((project) => ({
+				...project,
+				thumbnail: thumbnails[project.slug],
+			}))
+		},
+	})
+
+	const featured = projectsWithThumbnails
 		.filter((item) => list.featured.includes(item.slug))
 		.sort((a, b) => customSort(a.slug, b.slug, list.featured))
 
-	const others = projects
+	const others = projectsWithThumbnails
 		.filter((item) => !list.featured.includes(item.slug))
 		.sort((a, b) => customSort(a.slug, b.slug, list.others))
 
@@ -69,7 +89,13 @@ export default async function Page() {
 		<>
 			<div className="grid grid-cols-1 gap-4 max-lg:px-4 md:grid-cols-2">
 				{featured.map((project, index) => (
-					<ProjectCard key={index} data={project} variant={project.variant} featured />
+					<ProjectCard
+						key={index}
+						data={project}
+						variant={project.variant}
+						bgImage={background}
+						featured
+					/>
 				))}
 			</div>
 			<div className="w-full max-lg:px-4">
@@ -77,7 +103,7 @@ export default async function Page() {
 			</div>
 			<div className="space-y-3 max-lg:px-4">
 				{others.map((project, index) => (
-					<ProjectCard key={index} data={project} variant={project.variant} />
+					<ProjectCard key={index} data={project} variant={project.variant} bgImage={background} />
 				))}
 			</div>
 		</>
