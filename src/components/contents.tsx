@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils"
 import { motion } from "motion/react"
 import Image from "next/image"
 import { createContext, useContext } from "react"
+import { Card, CardContent } from "./ui/card"
+import { Skeleton } from "./ui/skeleton"
 
 export function Wrapper({ children }: { children: React.ReactNode }) {
 	return (

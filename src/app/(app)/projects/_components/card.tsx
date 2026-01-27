@@ -138,7 +138,7 @@ export function ProjectCard({ data, featured = false, variant, bgImage }: Projec
 						)}
 					</div>
 
-					<div className="z-20 flex flex-row flex-wrap items-end justify-end gap-3 md:gap-2">
+					<div className="flex flex-row flex-wrap items-end justify-end gap-3 md:gap-2">
 						{actions.map(({ href, label, Icon }) => (
 							<Tooltip key={label}>
 								<TooltipTrigger
@@ -147,9 +147,16 @@ export function ProjectCard({ data, featured = false, variant, bgImage }: Projec
 											size={isMobile ? "icon-lg" : "icon"}
 											variant="outline"
 											aria-label={label}
-											render={<Link href={href} target="_blank" rel="noopener noreferrer" />}
-											nativeButton={false}
 											onClick={(event) => event.stopPropagation()}
+											render={
+												<Link
+													href={href}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="z-20"
+												/>
+											}
+											nativeButton={false}
 										>
 											<Icon />
 										</Button>

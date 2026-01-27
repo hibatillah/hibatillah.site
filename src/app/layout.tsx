@@ -6,6 +6,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { Toaster } from "@/components/ui/sonner"
 import profile from "@/contents/profile.json"
 import { cn } from "@/lib/utils"
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import Provider from "./provider"
 
@@ -69,6 +70,7 @@ export default function RootLayout({
 				<MotionConfig reducedMotion="user">
 					<Provider>
 						{children}
+						<Analytics />
 						<Toaster />
 					</Provider>
 				</MotionConfig>

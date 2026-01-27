@@ -5,7 +5,7 @@ export default function Loading() {
 	return (
 		<div className="grid grid-cols-1 gap-4 max-lg:px-4 md:grid-cols-2">
 			{Array.from({ length: 4 }).map((_, index) => (
-				<Card key={index} className="h-84 pt-0">
+				<Card key={index} className="pt-0 md:h-84">
 					<Skeleton className="aspect-2/1 w-full rounded-b-none" />
 					<CardContent className="flex flex-col gap-2">
 						<Skeleton className="h-6 w-8/10" />
