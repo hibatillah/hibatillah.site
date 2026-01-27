@@ -17,7 +17,7 @@ function getFiles(category: ContentCategory) {
 export async function getContentByCategory<T>(category: ContentCategory): Promise<T[]> {
 	const files = getFiles(category)
 
-	return await Promise.all(
+	return Promise.all(
 		files.map(async (filename) => {
 			const { data } = await getContentData<T>(category, filename)
 			return data
@@ -30,8 +30,5 @@ export async function getContentData<T>(
 	slug: string,
 ): Promise<MDXContent<T>> {
 	const { default: Content, frontmatter } = await import(`@/contents/${category}/${slug}.mdx`)
-	return {
-		Content,
-		data: frontmatter,
-	}
+	return { Content, data: frontmatter }
 }

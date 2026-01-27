@@ -11,7 +11,7 @@ export default function AboutSection({ image }: { image: RemoteImage }) {
 	return (
 		<section>
 			<Card variants={staggerItem} className="p-0">
-				<CardContent className="grid grid-cols-1 gap-0 p-0 md:grid-cols-[calc(var(--spacing)*48)_1fr]">
+				<CardContent className="grid grid-cols-1 gap-0 p-0 md:grid-cols-[calc(var(--spacing)*52)_1fr]">
 					<div className="relative h-full w-auto max-md:hidden">
 						<Image
 							src={image.src}

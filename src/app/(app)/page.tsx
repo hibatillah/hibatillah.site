@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-	const { experience, education, featuredProjects, images } = await all({
+	const { experience, education, featured, images } = await all({
 		async experience() {
 			const { data } = await getContentData<Experience>("experiences", profile.featured.experience)
 			return data
@@ -39,19 +39,20 @@ export default async function Page() {
 		async projects() {
 			return getContentByCategory<Project>("projects")
 		},
-		async featuredProjects() {
+		async featured() {
 			const projects = await this.$.projects
+
 			return projects
 				.filter((item) => profile.featured.projects.includes(item.slug))
 				.sort((a, b) => customSort(a.slug, b.slug, profile.featured.projects))
 		},
 		async images() {
 			return getRemoteImages([
-				{ key: "about", src: `${ASSETS_BASE_URL}/about-background.webp` },
-				{ key: "featured", src: `${ASSETS_BASE_URL}/featured-background.webp` },
+				{ key: "about", src: `${ASSETS_BASE_URL}/about-bg.webp` },
+				{ key: "featured", src: `${ASSETS_BASE_URL}/featured-bg.webp` },
 			])
 		},
 	})
 
-	return <Overview data={{ experience, education, projects: featuredProjects }} images={images} />
+	return <Overview data={{ experience, education, projects: featured }} images={images} />
 }

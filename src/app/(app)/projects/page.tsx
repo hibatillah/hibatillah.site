@@ -51,7 +51,7 @@ const list = {
 export default async function Page() {
 	const { background, projectsWithThumbnails } = await all({
 		async background() {
-			return getRemoteImage(`${ASSETS_BASE_URL}/projects-background.webp`)
+			return getRemoteImage(`${ASSETS_BASE_URL}/projects-bg.webp`)
 		},
 		async projects() {
 			return getContentByCategory<Project>("projects")

@@ -18,12 +18,13 @@ export async function generateMetadata({
 }: PageProps<"/projects/[slug]">): Promise<Metadata> {
 	const { slug } = await params
 	const { data } = await getContentData<Project>("projects", slug)
+	const title = `${data.title} - Project`
 
 	return {
-		title: data.title,
+		title,
 		description: data.headline,
 		openGraph: {
-			title: data.title,
+			title,
 			description: data.headline,
 			siteName: profile.title,
 			url: `/projects/${slug}`,
@@ -31,7 +32,7 @@ export async function generateMetadata({
 		},
 		twitter: {
 			card: "summary_large_image",
-			title: data.title,
+			title,
 			description: data.headline,
 			creator: profile.links.x,
 		},

@@ -1,4 +1,6 @@
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
 import profile from "@/contents/profile.json"
+import { SparklesIcon } from "lucide-react"
 import { Metadata } from "next"
 
 const title = "Explore"
@@ -23,5 +25,17 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-	return <div>What to explore?</div>
+	return (
+		<Empty className="min-h-[50vh] border bg-card">
+			<EmptyHeader>
+				<EmptyMedia variant="icon">
+					<SparklesIcon />
+				</EmptyMedia>
+				<EmptyTitle>Something exciting is coming</EmptyTitle>
+				<EmptyDescription>
+					A curated collection of stacks, tools, and insights is on the way. Stay tuned!
+				</EmptyDescription>
+			</EmptyHeader>
+		</Empty>
+	)
 }

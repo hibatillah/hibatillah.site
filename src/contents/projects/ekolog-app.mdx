@@ -5,12 +5,7 @@ slug: "ekolog-app"
 roles: ["Fullstack Developer"]
 repo: "https://github.com/hibatillah/ekolog-app"
 variant: "mobile"
-stacks:
-  [
-    "Android",
-    "Kotlin",
-    "Firebase",
-  ]
+stacks: ["Android", "Kotlin", "Firebase"]
 headline: "Accelerating disaster response with automated severity triage"
 description: "A mobile-first platform that leverages K-Means clustering to instantly analyze and prioritize disaster reports, replacing manual sorting with data-driven classification"
 ---
@@ -32,14 +27,15 @@ When a user reports a flood or landslide, their description is often subjective.
 We didn't just build a form, we built a smart analyzer.
 
 ### The Brain
+
 I implemented a `K-Means Clustering` algorithm using `Python`. Unlike standard classification which needs labeled data, this unsupervised model analyzes historical disaster data to find natural groupings.
 
-- It looks at factors like *infrastructure damage* and *casualty count*.
+- It looks at factors like _infrastructure damage_ and _casualty count_.
 
 - It automatically clusters the report into `High Severity` or `Low Severity` buckets without human intervention.
 
 {/* <ImageWrapper> */}
-  {/* <ImageItem src={Ekolog.clusteringPlot} alt="K-Means Clustering Logic for Severity Classification" /> */}
+{/* <ImageItem src={Ekolog.clusteringPlot} alt="K-Means Clustering Logic for Severity Classification" /> */}
 {/* </ImageWrapper> */}
 
 ### Native Android Architecture
@@ -50,12 +46,12 @@ On the frontend, We used `Kotlin` and `XML` to build a robust native Android exp
 
 To handle real-time data without managing physical servers, We integrated `Firebase`.
 
-* **Authentication** - Secure sign-up and login flows.
+- **Authentication** - Secure sign-up and login flows.
 
-* **Database** - Storing reports and syncing them across devices.
+- **Database** - Storing reports and syncing them across devices.
 
 {/* <ImageWrapper> */}
-  {/* <ImageItem src={Ekolog.appScreens} alt="Mobile App Interface built with Kotlin" /> */}
+{/* <ImageItem src={Ekolog.appScreens} alt="Mobile App Interface built with Kotlin" /> */}
 {/* </ImageWrapper> */}
 
 ## Key Features

@@ -1,19 +1,70 @@
 ---
-title: "Rice Type Color Detection System"
+title: "Rice Identification based on Color"
 range: "Dec 2022 - Jan 2023"
 slug: "rice-type-color"
 roles: ["Frontend Developer"]
 repo: "https://github.com/hibatillah/ProjectPD/"
 live: "https://hibatillah.github.io/ProjectPD"
 variant: "website"
-stacks:
-  [
-    "Flask",
-    "Python",
-    "JQuery",
-    "Tailwind CSS",
-  ]
-headline: "Automating rice variety detection with deep learning."
+stacks: ["Flask", "Python", "JQuery", "Tailwind CSS"]
+headline: "Automating rice variety detection with data mining"
 description: "A web-accessible AI tool that leverages a custom-curated dataset to identify rice types based on color, streamlining the classification process with 99% consistency"
 ---
 
+# The API Transition
+
+While I had built full-stack applications using PHP before, this Rice Identification project was my first venture into **API-driven architecture**.
+
+In my previous projects, the frontend and backend were tightly coupled (Monolithic <abbr title="Model-View-Controller">MVC</abbr>). This project required a different approach. I had to build a standalone web interface that could _talk_ to a separate Python backend. It was my first time implementing a true `API endpoint` to bridge the gap between a user's browser and a Deep Learning model.
+
+## The _Research_ Problem
+
+In the agricultural industry, manually sorting rice based on quality (often determined by color consistency) is labor-intensive and prone to error.
+
+- **The Goal:** Automate the quality check process using Computer Vision to classify rice grains based on their color profile.
+
+- **The Challenge:** We needed a way to make this complex Python processing accessible to a non-technical user through a simple web interface.
+
+## _Data Mining_ Methodology
+
+This project was part of our **Data Mining** curriculum, where we applied the standard pipeline:
+
+### 1. Data Collection & Cleaning
+
+We gathered a dataset of various rice types. Before feeding them into the model, we had to _clean_ the data, standardizing image sizes and removing noise, to ensure our color classification algorithm wouldn't be biased by lighting conditions.
+
+### 2. Model Training
+
+We used `Python` to build a model that could differentiate rice types based on RGB color histograms.
+
+## Building the _Bridge_
+
+The hardest part wasn't the UI, but the **Integration**.
+
+At the time, I was comfortable with HTML and CSS, but connecting them to a running Python script was a mystery.
+
+- **The Backend:** We used `Flask`, a micro-framework, to expose our Python model as an API endpoint.
+
+- **The Frontend:** I built a Vanilla HTML/CSS interface and used `jQuery` to handle the communication.
+
+{/* <ImageWrapper> */}
+{/* <ImageItem src={Rice.uiMain} alt="The Flask-powered Web Interface" /> */}
+{/* </ImageWrapper> */}
+
+## The _Mentorship_ Factor
+
+I focused heavily on the frontend implementation, ensuring the user could upload an image and see the result without a page reload.
+
+However, the _handshake_ between the frontend and the Flask backend was complex for my skill level at the time. Working closely with our laboratory assistant, I learned how to structure **AJAX requests** to send image data asynchronously.
+
+> This collaboration demystified the concept of `API endpoints` for me, teaching me that a backend is simply a function waiting to be called by the frontend.
+
+## Key _Takeaways_
+
+This project was simple by industry standards, but it was a massive leap for my understanding of software architecture.
+
+- **First Python Integration:** I moved from writing standalone scripts to building a web-accessible application.
+
+- **Async Logic:** I learned why _Asynchronous_ operations (via `jQuery AJAX`) are crucial for heavy tasks like image processing, so the UI doesn't freeze while the server thinks.
+
+- **Model-View-Controller:** Without realizing it then, I was implementing my first MVC pattern, separating the Data (Model), the Interface (View), and the Flask Logic (Controller).

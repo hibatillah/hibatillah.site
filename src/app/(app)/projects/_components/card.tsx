@@ -7,7 +7,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { useIsMobile } from "@/hooks/use-mobile"
 import { RemoteImage } from "@/lib/remote-image"
 import { Project, ProjectVariant } from "@/lib/types"
-import { cn } from "@/lib/utils"
+import { cn, getProjectStacks } from "@/lib/utils"
 import {
 	ArrowUpRightIcon,
 	BookOpenIcon,
@@ -36,10 +36,7 @@ export function ProjectCard({ data, featured = false, variant, bgImage }: Projec
 	const isMobile = useIsMobile()
 
 	const visibleCount = isMobile || !featured ? 2 : 3
-	const stacks = {
-		visible: data.stacks.slice(0, visibleCount),
-		hidden: data.stacks.slice(visibleCount),
-	}
+	const stacks = getProjectStacks(data.stacks, visibleCount)
 
 	const actions = [
 		{ href: data.docs, label: "Documentation", Icon: BookOpenIcon },

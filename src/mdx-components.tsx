@@ -36,7 +36,7 @@ const components: MDXComponents = {
 			<code
 				{...props}
 				className={cn(
-					"relative rounded-sm bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground",
+					"relative rounded-sm bg-card px-1.5 py-0.5 font-mono text-sm text-foreground not-dark:border dark:bg-muted",
 					className,
 				)}
 			/>

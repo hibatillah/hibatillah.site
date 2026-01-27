@@ -27,8 +27,8 @@ export default function ExperienceSection({
 								<Image
 									src={experience.icon}
 									alt={experience.company}
-									width={1000}
-									height={1000}
+									width={100}
+									height={100}
 									placeholder="blur"
 									blurDataURL={experience.icon}
 									className="pointer-events-none size-full object-contain"
@@ -56,15 +56,17 @@ export default function ExperienceSection({
 						</h2>
 
 						<div className="flex items-center gap-3">
-							<Image
-								src={education.icon}
-								alt={education.college}
-								width={1000}
-								height={1000}
-								placeholder="blur"
-								blurDataURL={education.icon}
-								className="pointer-events-none h-7 w-auto max-w-20 object-contain"
-							/>
+							<div className="size-7">
+								<Image
+									src={education.icon}
+									alt={education.college}
+									width={100}
+									height={100}
+									placeholder="blur"
+									blurDataURL={education.icon}
+									className="pointer-events-none size-full object-contain"
+								/>
+							</div>
 							<div className="flex flex-col gap-px">
 								<TextLink
 									href={`/education/${education.slug}`}
