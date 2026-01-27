@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/sonner"
 import profile from "@/contents/profile.json"
 import { cn } from "@/lib/utils"
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css"
 import Provider from "./provider"
 
@@ -47,9 +48,6 @@ export const metadata: Metadata = {
 		description: profile.description,
 		creator: profile.links.x,
 	},
-	other: {
-		"google-site-verification": "Lcm4vQuRXy2S0tVb6ZEp_p2BvIMCcuaBMB1WgbY0uOE",
-	},
 }
 
 export const viewport: Viewport = {
@@ -70,8 +68,9 @@ export default function RootLayout({
 				<MotionConfig reducedMotion="user">
 					<Provider>
 						{children}
-						<Analytics />
 						<Toaster />
+						<Analytics />
+						<SpeedInsights />
 					</Provider>
 				</MotionConfig>
 			</body>
