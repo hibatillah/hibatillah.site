@@ -9,10 +9,10 @@ related: { project: "/projects/ministry-room-management" }
 description: "Executed Design Sprints and Agile Scrum cycles to drive iterative development within a cross-functional team. Managed deliverables and regularly presented milestones to stakeholders to ensure continuous project alignment."
 ---
 
-import { ASSETS_BASE_URL } from "@/lib/constants"
+import profile from "@/contents/profile.json"
 import { getRemoteImages } from "@/lib/remote-image"
 
-export const baseUrl = `${ASSETS_BASE_URL}/exp/ministry`
+export const baseUrl = `${profile.asssets}/exp/ministry`
 
 export const images = await getRemoteImages([
 	{ key: "group", src: `${baseUrl}/group.webp` },

@@ -9,13 +9,13 @@ location: "Pekanbaru, Indonesia"
 description: "Distinguished by the Best Capstone Project award and multiple podium finishes in national competitions. I complemented these academic achievements with professional experience as an intern at the Ministry of Finance from MSIB Batch 6 program."
 ---
 
-import { ASSETS_BASE_URL } from "@/lib/constants"
+import profile from "@/contents/profile.json"
 import { getContentData } from "@/lib/contents"
 import { getRemoteImages } from "@/lib/remote-image"
 
 export const { data: massbeat } = await getContentData("projects", "massbeat")
 
-export const baseUrl = `${ASSETS_BASE_URL}/edu/pcr`
+export const baseUrl = `${profile.asssets}/edu/pcr`
 
 export const images = await getRemoteImages([
 	{ key: "syahduu-1", src: `${baseUrl}/syahduu-1.webp` },

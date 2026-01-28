@@ -48,7 +48,8 @@ export function ProjectCard({ data, featured = false, variant, bgImage }: Projec
 		<Card
 			role="button"
 			className={cn(
-				"group/card relative active:scale-99 has-[a[data-label='project']:focus-visible]:ring-4 has-[a[data-label='project']:focus-visible]:ring-ring/50 motion-safe:transition-transform",
+				"group/card relative has-[a[data-label='project']:focus-visible]:ring-4 has-[a[data-label='project']:focus-visible]:ring-ring/50 motion-safe:transition-transform",
+				"active:not-has-[[data-action]:active]:scale-99",
 				{
 					"pt-0": featured,
 				},
@@ -153,7 +154,8 @@ export function ProjectCard({ data, featured = false, variant, bgImage }: Projec
 													href={href}
 													target="_blank"
 													rel="noopener noreferrer"
-													className="z-20"
+													data-action
+													className="z-20 md:active:scale-90"
 												/>
 											}
 											nativeButton={false}

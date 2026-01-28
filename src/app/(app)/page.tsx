@@ -1,5 +1,4 @@
 import profile from "@/contents/profile.json"
-import { ASSETS_BASE_URL } from "@/lib/constants"
 import { getContentByCategory, getContentData } from "@/lib/contents"
 import { getRemoteImages } from "@/lib/remote-image"
 import { Education, Experience, Project } from "@/lib/types"
@@ -48,8 +47,8 @@ export default async function Page() {
 		},
 		async images() {
 			return getRemoteImages([
-				{ key: "about", src: `${ASSETS_BASE_URL}/about-bg.webp` },
-				{ key: "featured", src: `${ASSETS_BASE_URL}/featured-bg.webp` },
+				{ key: "about", src: `${profile.asssets}/about-bg.webp` },
+				{ key: "featured", src: `${profile.asssets}/featured-bg.webp` },
 			])
 		},
 	})

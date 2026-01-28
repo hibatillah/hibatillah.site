@@ -1,9 +1,9 @@
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import profile from "@/contents/profile.json"
 import { useRemoteImages } from "@/hooks/use-remote-image"
 import { staggerItem } from "@/lib/animations"
-import { ASSETS_BASE_URL } from "@/lib/constants"
 import { RemoteImage } from "@/lib/remote-image"
 import { Project } from "@/lib/types"
 import { cn } from "@/lib/utils"
@@ -23,7 +23,7 @@ export default function FeaturedSection({ projects, backgroundImage }: FeaturedS
 
 	const imageSources = projects.map(({ slug }) => ({
 		key: slug,
-		src: `${ASSETS_BASE_URL}/projects/thumbnails/${slug}.webp`,
+		src: `${profile.asssets}/projects/thumbnails/${slug}.webp`,
 	}))
 
 	const { images } = useRemoteImages(imageSources)

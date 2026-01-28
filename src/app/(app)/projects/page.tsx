@@ -1,6 +1,5 @@
 import { Separator } from "@/components/ui/separator"
 import profile from "@/contents/profile.json"
-import { ASSETS_BASE_URL } from "@/lib/constants"
 import { getContentByCategory } from "@/lib/contents"
 import { getRemoteImage, getRemoteImages } from "@/lib/remote-image"
 import { Project } from "@/lib/types"
@@ -51,7 +50,7 @@ const list = {
 export default async function Page() {
 	const { background, projectsWithThumbnails } = await all({
 		async background() {
-			return getRemoteImage(`${ASSETS_BASE_URL}/projects-bg.webp`)
+			return getRemoteImage(`${profile.asssets}/projects-bg.webp`)
 		},
 		async projects() {
 			return getContentByCategory<Project>("projects")
@@ -62,7 +61,7 @@ export default async function Page() {
 			return getRemoteImages(
 				projects.map((project) => ({
 					key: project.slug,
-					src: `${ASSETS_BASE_URL}/projects/thumbnails/${project.slug}.webp`,
+					src: `${profile.asssets}/projects/thumbnails/${project.slug}.webp`,
 				})),
 			)
 		},

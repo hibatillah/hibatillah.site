@@ -17,12 +17,13 @@ export async function generateMetadata({
 }: PageProps<"/education/[slug]">): Promise<Metadata> {
 	const { slug } = await params
 	const { data } = await getContentData<Education>("educations", slug)
+	const title = `${data.degree} - Education`
 
 	return {
-		title: data.degree,
+		title,
 		description: data.description,
 		openGraph: {
-			title: data.degree,
+			title,
 			description: data.description,
 			siteName: profile.title,
 			url: `/education/${slug}`,
@@ -30,7 +31,7 @@ export async function generateMetadata({
 		},
 		twitter: {
 			card: "summary_large_image",
-			title: data.degree,
+			title,
 			description: data.description,
 			creator: profile.links.x,
 		},
@@ -68,8 +69,8 @@ export default async function Page({ params }: PageProps<"/education/[slug]">) {
 					<Image
 						src={data.icon}
 						alt={data.college}
-						width={1000}
-						height={1000}
+						width={500}
+						height={500}
 						placeholder="blur"
 						blurDataURL={data.icon}
 						className="pointer-events-none size-10 max-w-20 object-contain max-md:mt-1.5"
