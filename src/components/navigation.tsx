@@ -46,7 +46,7 @@ export default function Navigation({ className }: { className?: string }) {
 						: pathname === item.url || pathname.startsWith(`${item.url}/`)
 
 				return (
-					<Tooltip key={index} delay={1000}>
+					<Tooltip key={index} delay={500}>
 						<TooltipTrigger
 							onMouseEnter={() => setHovered(item.url)}
 							render={

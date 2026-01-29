@@ -26,16 +26,18 @@ export const metadata: Metadata = {
 
 export default function Page() {
 	return (
-		<Empty className="min-h-[50vh] border bg-card">
-			<EmptyHeader>
-				<EmptyMedia variant="icon">
-					<SparklesIcon />
-				</EmptyMedia>
-				<EmptyTitle>Something exciting is coming</EmptyTitle>
-				<EmptyDescription>
-					A curated collection of stacks, tools, and insights is on the way. Stay tuned!
-				</EmptyDescription>
-			</EmptyHeader>
-		</Empty>
+		<div className="max-md:px-4">
+			<Empty className="min-h-[50vh] border bg-card">
+				<EmptyHeader>
+					<EmptyMedia variant="icon">
+						<SparklesIcon />
+					</EmptyMedia>
+					<EmptyTitle>Something exciting is coming</EmptyTitle>
+					<EmptyDescription>
+						A curated collection of stacks, tools, and insights is on the way. Stay tuned!
+					</EmptyDescription>
+				</EmptyHeader>
+			</Empty>
+		</div>
 	)
 }

@@ -8,9 +8,9 @@ import profile from "@/contents/profile.json"
 import { cn } from "@/lib/utils"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Script from "next/script"
 import "./globals.css"
 import Provider from "./provider"
-import Script from "next/script"
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -69,14 +69,14 @@ export default function RootLayout({
 				<MotionConfig reducedMotion="user">
 					<Provider>
 						{children}
-						<Script
-							defer
-							src="https://static.cloudflareinsights.com/beacon.min.js"
-							data-cf-beacon='{"token": "95733bfa7c5a497ab02dbf9fcf2b6327"}'
-						/>
 						<Toaster />
 						<Analytics />
 						<SpeedInsights />
+						<Script
+							src="https://static.cloudflareinsights.com/beacon.min.js"
+							data-cf-beacon='{"token": "95733bfa7c5a497ab02dbf9fcf2b6327"}'
+							defer
+						/>
 					</Provider>
 				</MotionConfig>
 			</body>
