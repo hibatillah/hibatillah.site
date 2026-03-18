@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import profile from "@/contents/profile.json"
 import { staggerItem } from "@/lib/animations"
 import { RemoteImage } from "@/lib/remote-image"
+import { decodeThumbhash } from "@/lib/thumbhash"
 import Image from "next/image"
 
 export default function AboutSection({ image }: { image: RemoteImage }) {
@@ -19,7 +20,7 @@ export default function AboutSection({ image }: { image: RemoteImage }) {
 							width={image.width}
 							height={image.height}
 							placeholder={image.blurData ? "blur" : "empty"}
-							blurDataURL={image.blurData}
+							blurDataURL={image.blurData ? decodeThumbhash(image.blurData) : undefined}
 							className="pointer-events-none size-full object-cover object-center select-none dark:brightness-90"
 						/>
 					</div>

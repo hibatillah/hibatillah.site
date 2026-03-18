@@ -5,6 +5,7 @@ import profile from "@/contents/profile.json"
 import { useRemoteImage } from "@/hooks/use-remote-image"
 import { staggerItem } from "@/lib/animations"
 import { RemoteImage } from "@/lib/remote-image"
+import { decodeThumbhash } from "@/lib/thumbhash"
 import { Project } from "@/lib/types"
 import { cn } from "@/lib/utils"
 import { ChevronDownIcon } from "lucide-react"
@@ -130,7 +131,9 @@ export default function FeaturedSection({ projects, backgroundImage }: FeaturedS
 						width={backgroundImage?.width}
 						height={backgroundImage?.height}
 						placeholder={backgroundImage.blurData ? "blur" : "empty"}
-						blurDataURL={backgroundImage.blurData}
+						blurDataURL={
+							backgroundImage.blurData ? decodeThumbhash(backgroundImage.blurData) : undefined
+						}
 						className="pointer-events-none size-full object-cover select-none dark:brightness-90"
 						priority
 					/>
@@ -150,7 +153,9 @@ export default function FeaturedSection({ projects, backgroundImage }: FeaturedS
 									width={activeImage.width}
 									height={activeImage.height}
 									placeholder={activeImage.blurData ? "blur" : "empty"}
-									blurDataURL={activeImage.blurData}
+									blurDataURL={
+										activeImage.blurData ? decodeThumbhash(activeImage.blurData) : undefined
+									}
 									className="pointer-events-none size-full bg-top-left dark:brightness-90"
 									priority
 								/>

@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/c
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { RemoteImage } from "@/lib/remote-image"
+import { decodeThumbhash } from "@/lib/thumbhash"
 import { Project, ProjectVariant } from "@/lib/types"
 import { cn, getProjectStacks } from "@/lib/utils"
 import {
@@ -66,7 +67,7 @@ export function ProjectCard({ data, featured = false, variant, bgImage }: Projec
 					width={bgImage.width}
 					height={bgImage.height}
 					placeholder={bgImage.blurData ? "blur" : "empty"}
-					blurDataURL={bgImage.blurData}
+					blurDataURL={bgImage.blurData ? decodeThumbhash(bgImage.blurData) : undefined}
 					className="pointer-events-none size-full object-cover object-top brightness-110 select-none dark:brightness-90"
 					priority
 				/>
@@ -90,7 +91,9 @@ export function ProjectCard({ data, featured = false, variant, bgImage }: Projec
 							width={data.thumbnail.width}
 							height={data.thumbnail.height}
 							placeholder={data.thumbnail.blurData ? "blur" : "empty"}
-							blurDataURL={data.thumbnail.blurData}
+							blurDataURL={
+								data.thumbnail.blurData ? decodeThumbhash(data.thumbnail.blurData) : undefined
+							}
 							className="size-full object-top dark:brightness-90"
 							priority
 						/>

@@ -3,6 +3,7 @@
 import { Separator as SeparatorComponent } from "@/components/ui/separator"
 import { staggerContainer, staggerItem } from "@/lib/animations"
 import { RemoteImage } from "@/lib/remote-image"
+import { decodeThumbhash } from "@/lib/thumbhash"
 import { cn } from "@/lib/utils"
 import { motion } from "motion/react"
 import Image from "next/image"
@@ -220,7 +221,7 @@ export function ImageItem({ image, alt, className, ...props }: ImageItemProps) {
 			width={image.width}
 			height={image.height}
 			placeholder={image.blurData ? "blur" : "empty"}
-			blurDataURL={image.blurData}
+			blurDataURL={image.blurData ? decodeThumbhash(image.blurData) : undefined}
 			style={styles}
 			className={cn(
 				"rounded-md border object-cover dark:brightness-90",
