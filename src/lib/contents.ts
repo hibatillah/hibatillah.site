@@ -29,6 +29,12 @@ export async function getContentData<T>(
 	category: ContentCategory,
 	slug: string,
 ): Promise<MDXContent<T>> {
-	const { default: Content, frontmatter } = await import(`@/contents/${category}/${slug}.mdx`)
-	return { Content, data: frontmatter }
+	try {
+		const { default: Content, frontmatter: data } = await import(
+			`@/contents/${category}/${slug}.mdx`
+		)
+		return { Content, data: data as T }
+	} catch {
+		throw new Error(`Content not found: ${category}/${slug}`)
+	}
 }

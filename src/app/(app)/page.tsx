@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		title: "Overview",
 		description: profile.description,
-		creator: profile.links.x,
+		creator: profile.twitterHandle,
 	},
 }
 

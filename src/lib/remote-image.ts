@@ -1,6 +1,7 @@
 "use server"
 
 import { getPlaiceholder } from "plaiceholder"
+import { cache } from "react"
 
 export interface RemoteImage {
 	src: string
@@ -10,7 +11,7 @@ export interface RemoteImage {
 	error?: string
 }
 
-export async function getRemoteImage(src: string): Promise<RemoteImage> {
+export const getRemoteImage = cache(async (src: string): Promise<RemoteImage> => {
 	try {
 		const buffer = await fetch(src, { cache: "force-cache" }).then(async (res) => {
 			if (!res.ok) throw new Error(`Failed to fetch image: ${res.status}`)
@@ -34,7 +35,7 @@ export async function getRemoteImage(src: string): Promise<RemoteImage> {
 			error: "Failed to load blur data",
 		}
 	}
-}
+})
 
 export async function getRemoteImages(
 	sources: { key: string; src: string }[],

@@ -33,7 +33,7 @@ export async function generateMetadata({
 			card: "summary_large_image",
 			title,
 			description: data.description,
-			creator: profile.links.x,
+			creator: profile.twitterHandle,
 		},
 	}
 }
@@ -71,8 +71,6 @@ export default async function Page({ params }: PageProps<"/education/[slug]">) {
 						alt={data.college}
 						width={500}
 						height={500}
-						placeholder="blur"
-						blurDataURL={data.icon}
 						className="pointer-events-none size-10 max-w-20 object-contain max-md:mt-1.5"
 					/>
 				</CardHeader>

@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import profile from "@/contents/profile.json"
-import { useRemoteImages } from "@/hooks/use-remote-image"
+import { useRemoteImage } from "@/hooks/use-remote-image"
 import { staggerItem } from "@/lib/animations"
 import { RemoteImage } from "@/lib/remote-image"
 import { Project } from "@/lib/types"
@@ -26,7 +26,9 @@ export default function FeaturedSection({ projects, backgroundImage }: FeaturedS
 		src: `${profile.asssets}/projects/thumbnails/${slug}.webp`,
 	}))
 
-	const { images } = useRemoteImages(imageSources)
+	const { images } = useRemoteImage(imageSources)
+
+	if (!projects.length) return null
 
 	const activeProject = projects[openId]
 	const activeImage = images[activeProject.slug]

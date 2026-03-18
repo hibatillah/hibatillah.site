@@ -83,16 +83,18 @@ export function ProjectCard({ data, featured = false, variant, bgImage }: Projec
 						},
 					)}
 				>
-					<Image
-						src={data.thumbnail?.src ?? ""}
-						alt={data.title}
-						width={data.thumbnail?.width}
-						height={data.thumbnail?.height}
-						placeholder={data.thumbnail?.blurData ? "blur" : "empty"}
-						blurDataURL={data.thumbnail?.blurData}
-						className="size-full object-top dark:brightness-90"
-						priority
-					/>
+					{data.thumbnail && (
+						<Image
+							src={data.thumbnail.src}
+							alt={data.title}
+							width={data.thumbnail.width}
+							height={data.thumbnail.height}
+							placeholder={data.thumbnail.blurData ? "blur" : "empty"}
+							blurDataURL={data.thumbnail.blurData}
+							className="size-full object-top dark:brightness-90"
+							priority
+						/>
+					)}
 				</motion.div>
 			</div>
 

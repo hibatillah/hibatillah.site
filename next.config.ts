@@ -16,11 +16,13 @@ const nextConfig: NextConfig = {
 		],
 	},
 	redirects: () => {
-		return Object.entries(profile.links).map(([label, url]) => ({
-			source: `/links/${label}`,
-			destination: url,
-			permanent: true,
-		}))
+		return Object.entries(profile.links)
+			.filter(([, url]) => !url.startsWith("mailto:"))
+			.map(([label, url]) => ({
+				source: `/links/${label}`,
+				destination: url,
+				permanent: true,
+			}))
 	},
 }
 

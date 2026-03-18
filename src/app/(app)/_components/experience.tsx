@@ -29,8 +29,6 @@ export default function ExperienceSection({
 									alt={experience.company}
 									width={100}
 									height={100}
-									placeholder="blur"
-									blurDataURL={experience.icon}
 									className="pointer-events-none size-full object-contain"
 								/>
 							</div>
@@ -62,8 +60,6 @@ export default function ExperienceSection({
 									alt={education.college}
 									width={100}
 									height={100}
-									placeholder="blur"
-									blurDataURL={education.icon}
 									className="pointer-events-none size-full object-contain"
 								/>
 							</div>
