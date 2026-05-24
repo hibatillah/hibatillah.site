@@ -1,0 +1,42 @@
+---
+title: "Description List"
+description: "A semantic description list with a responsive grid layout."
+type: "registry:ui"
+slug: "description-list"
+---
+
+`DescriptionList` wraps the native `<dl>` element in a responsive CSS grid — a single column on small screens and a two-column `label / value` layout on `sm` and above. Pair it with `DescriptionListItem` to render each row.
+
+## Installation
+
+Add this component into your project using Shadcn CLI. It has no external dependencies beyond `clsx` and `tailwind-merge`.
+
+<Snippet path="https://hibatillah.site/registry/description-list" />
+
+## Usage
+
+```tsx
+import {
+  DescriptionList,
+  DescriptionListItem,
+} from "@/components/ui/description-list"
+
+export function Example() {
+  return (
+    <DescriptionList>
+      <DescriptionListItem label="Name" value="M. Hibatillah" />
+      <DescriptionListItem label="Role" value="Fullstack Developer" />
+      <DescriptionListItem label="Stack" value="Next.js, TypeScript" />
+      <DescriptionListItem label="Location" value="Indonesia" />
+    </DescriptionList>
+  )
+}
+```
+
+Customize label and value styles via the `className` prop on `<DescriptionList>`:
+
+```tsx
+<DescriptionList className="[&_dt]:text-primary [&_dd]:font-mono">
+  <DescriptionListItem label="Status" value="active" />
+</DescriptionList>
+```

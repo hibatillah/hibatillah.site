@@ -46,7 +46,7 @@ export default function Navigation({ className }: { className?: string }) {
 						: pathname === item.url || pathname.startsWith(`${item.url}/`)
 
 				return (
-					<Tooltip key={index} delay={500}>
+					<Tooltip key={index}>
 						<TooltipTrigger
 							onMouseEnter={() => setHovered(item.url)}
 							render={
@@ -74,7 +74,7 @@ export default function Navigation({ className }: { className?: string }) {
 										<motion.div
 											layoutId="nav-underline"
 											transition={{ type: "spring", bounce: 0.2, duration: 0.8 }}
-											className="absolute inset-x-0 -bottom-[3.5px] h-0.5 rounded-sm bg-primary"
+											className="absolute inset-x-0 bottom-[-3.5px] h-0.5 rounded-sm bg-primary"
 										/>
 									)}
 								</Link>

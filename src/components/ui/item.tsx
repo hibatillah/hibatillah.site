@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import { mergeProps } from "@base-ui/react/merge-props"
 import { useRender } from "@base-ui/react/use-render"
@@ -7,8 +5,6 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 import { Separator } from "@/components/ui/separator"
-import { HTMLMotionProps, motion } from "motion/react"
-import { fadeSlideUp } from "@/lib/animations"
 
 function ItemGroup({ className, ...props }: React.ComponentProps<"div">) {
 	return (
@@ -41,7 +37,7 @@ const itemVariants = cva(
 		variants: {
 			variant: {
 				default: "border-transparent",
-				outline: "border-border bg-card",
+				outline: "border-border",
 				muted: "border-transparent bg-muted/50",
 			},
 			size: {
@@ -57,21 +53,22 @@ const itemVariants = cva(
 	},
 )
 
-type ItemProps = useRender.ComponentProps<"div"> &
-	VariantProps<typeof itemVariants> &
-	HTMLMotionProps<"div">
-
-function Item({ className, variant = "default", size = "default", render, ...props }: ItemProps) {
+function Item({
+	className,
+	variant = "default",
+	size = "default",
+	render,
+	...props
+}: useRender.ComponentProps<"div"> & VariantProps<typeof itemVariants>) {
 	return useRender({
 		defaultTagName: "div",
-		render: render || ((elementProps) => <motion.div {...(elementProps as any)} />),
-		props: mergeProps(
+		props: mergeProps<"div">(
 			{
 				className: cn(itemVariants({ variant, size, className })),
-				...fadeSlideUp,
 			},
 			props,
 		),
+		render,
 		state: {
 			slot: "item",
 			variant,
@@ -130,7 +127,7 @@ function ItemTitle({ className, ...props }: React.ComponentProps<"div">) {
 		<div
 			data-slot="item-title"
 			className={cn(
-				"line-clamp-1 flex w-fit items-center gap-2 text-sm leading-snug font-medium underline-offset-4",
+				"font-heading line-clamp-1 flex w-fit items-center gap-2 text-sm leading-snug font-normal underline-offset-4",
 				className,
 			)}
 			{...props}

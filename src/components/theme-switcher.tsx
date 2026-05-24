@@ -1,14 +1,14 @@
 "use client"
 
+import { useIsMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
 import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react"
-import { useTheme } from "next-themes"
+import { useTheme } from "@ecosy/next-themes"
 import { useHotkeys } from "react-hotkeys-hook"
 import { Button } from "./ui/button"
 import { ButtonGroup } from "./ui/button-group"
 import { Kbd } from "./ui/kbd"
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip"
-import { useIsMobile } from "@/hooks/use-mobile"
 
 const themes = [
 	{ label: "system", icon: MonitorIcon, shortcut: "shift+a" },
@@ -30,7 +30,7 @@ export default function ThemeSwitcher({
 	return (
 		<ButtonGroup
 			className={cn(
-				"*:data-[slot=button]: *:data-[slot=button]: overflow-hidden rounded-full border bg-card",
+				"*:data-[slot=button]: z-100 rounded-full border bg-card *:data-[slot=button]:overflow-hidden",
 				className,
 			)}
 			{...props}

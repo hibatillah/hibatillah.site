@@ -68,7 +68,7 @@ Local public-folder paths (e.g. `data.icon`) are **not** remote images — do no
 - `src/components/ui/` — shadcn-style primitives (built on **Base UI** `@base-ui/react`, not Radix)
 - Animations use **Motion** (`motion/react`) with shared layout animations (e.g., nav underline via `layoutId`)
 - Keyboard shortcuts via `react-hotkeys-hook` (keys `1`/`2`/`3` navigate between main routes)
-- Theme switching via `next-themes`
+- Theme switching via `@ecosy/next-themes` (a React 19-compatible fork of `next-themes`)
 
 ### Key conventions
 
