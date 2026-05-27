@@ -12,10 +12,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			return getContentByCategory<Project>("projects")
 		},
 		async experiences() {
-			return getContentByCategory<Experience>("experiences")
+			return getContentByCategory<Experience>("exp")
 		},
 		async educations() {
-			return getContentByCategory<Education>("educations")
+			return getContentByCategory<Education>("edu")
 		},
 	})
 
@@ -26,36 +26,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			changeFrequency: "monthly",
 			priority: 1,
 		},
-		{
-			url: `${baseUrl}/projects`,
-			lastModified: new Date(),
-			changeFrequency: "monthly",
-			priority: 0.9,
-		},
-		{
-			url: `${baseUrl}/explore`,
-			lastModified: new Date(),
-			changeFrequency: "monthly",
-			priority: 0.5,
-		},
 	]
 
 	const projectPages: MetadataRoute.Sitemap = projects.map((project) => ({
-		url: `${baseUrl}/projects/${project.slug}`,
+		url: `${baseUrl}/project/${project.slug}`,
 		lastModified: new Date(),
 		changeFrequency: "monthly",
 		priority: 0.8,
 	}))
 
 	const experiencePages: MetadataRoute.Sitemap = experiences.map((experience) => ({
-		url: `${baseUrl}/experience/${experience.slug}`,
+		url: `${baseUrl}/work/${experience.slug}`,
 		lastModified: new Date(),
 		changeFrequency: "yearly",
 		priority: 0.7,
 	}))
 
 	const educationPages: MetadataRoute.Sitemap = educations.map((education) => ({
-		url: `${baseUrl}/education/${education.slug}`,
+		url: `${baseUrl}/edu/${education.slug}`,
 		lastModified: new Date(),
 		changeFrequency: "yearly",
 		priority: 0.7,

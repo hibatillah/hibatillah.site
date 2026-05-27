@@ -30,10 +30,7 @@ const calloveya = localFont({
 })
 
 export const metadata: Metadata = {
-	title: {
-		default: profile.title,
-		template: `%s | ${profile.title}`,
-	},
+	title: profile.title,
 	description: profile.description,
 	authors: {
 		name: profile.name,
@@ -60,7 +57,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
 	themeColor: [
-		{ media: "(prefers-color-scheme: light)", color: "#F5F5F5" },
+		{ media: "(prefers-color-scheme: light)", color: "#FCFCFC" },
 		{ media: "(prefers-color-scheme: dark)", color: "#0A0A0A" },
 	],
 }
@@ -91,6 +88,13 @@ export default function RootLayout({
 							data-cf-beacon='{"token": "95733bfa7c5a497ab02dbf9fcf2b6327"}'
 							defer
 						/>
+						{process.env.NODE_ENV === "development" && (
+							<Script
+								src="//unpkg.com/react-grab/dist/index.global.js"
+								crossOrigin="anonymous"
+								strategy="beforeInteractive"
+							/>
+						)}
 					</Provider>
 				</MotionConfig>
 			</body>

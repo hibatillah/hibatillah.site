@@ -110,7 +110,7 @@ export function ProjectSection({ ...props }: React.ComponentProps<"section">) {
 						variant="default"
 						role="listitem"
 						className="group"
-						render={<Link href={item.url} />}
+						render={<Link href={`/project/${item.url}`} />}
 					>
 						<ItemMedia>
 							<ImageFrameGrid layout="stack">
@@ -122,6 +122,7 @@ export function ProjectSection({ ...props }: React.ComponentProps<"section">) {
 											placeholder="blur"
 											width={400}
 											height={400}
+											className="object-top"
 										/>
 									</ImageFrame>
 								))}

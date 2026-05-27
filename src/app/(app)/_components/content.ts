@@ -1,15 +1,18 @@
 import { StackOffset } from "@/components/image-frame"
 import { StaticImageData } from "next/image"
 
-import bg from "@/static/bg.jpg"
+import ministry3 from "@/static/exp/ministry/card.webp"
+import ministry1 from "@/static/exp/ministry/group.webp"
+import ministry2 from "@/static/exp/ministry/intern.webp"
 
-import ministry1 from "@/static/experiences/ministry/1.jpg"
-import ministry2 from "@/static/experiences/ministry/2.jpg"
-import ministry3 from "@/static/experiences/ministry/3.jpg"
+import pcr1 from "@/static/edu/pcr/1.jpg"
+import pcr2 from "@/static/edu/pcr/2.jpg"
+import pcr3 from "@/static/edu/pcr/3.jpg"
 
-import pcr1 from "@/static/educations/pcr/1.jpg"
-import pcr2 from "@/static/educations/pcr/2.jpg"
-import pcr3 from "@/static/educations/pcr/3.jpg"
+import furaya from "@/static/project/furaya-hotel/thumbnail.webp"
+import massbeat from "@/static/project/massbeat/thumbnail.webp"
+import klc from "@/static/project/klc-room/thumbnail.webp"
+import yemeni from "@/static/project/yemeni-music/thumbnail.webp"
 
 export interface Thumbnail {
 	src: StaticImageData | string
@@ -45,43 +48,12 @@ export const works: Work[] = [
 		role: "Frontend Developer",
 		company: "Ministry Finance Indonesia",
 		year: "2024",
-		url: "frontend-intern-ministry-finance",
+		url: "frontend-ministry-finance",
 		images: [
 			{ src: ministry3, offsets: "bl" },
 			{ src: ministry2, offsets: "tr" },
 			{ src: ministry1, offsets: "c" },
 		],
-	},
-]
-
-export const projects: Project[] = [
-	{
-		title: "Furaya Hotel",
-		description: "Front desk hotel management.",
-		year: "2025",
-		url: "frontend-intern-ministry-finance",
-		images: [{ src: bg, offsets: "c" }],
-	},
-	{
-		title: "Ministry Finance Unit Room",
-		description: "Ministry's Unit's room management.",
-		year: "2024",
-		url: "frontend-intern-ministry-finance",
-		images: [{ src: bg, offsets: "c" }],
-	},
-	{
-		title: "Yemeni Music Classification",
-		description: "Deep learning audio classification.",
-		year: "2024",
-		url: "frontend-intern-ministry-finance",
-		images: [{ src: bg, offsets: "c" }],
-	},
-	{
-		title: "MassBeat",
-		description: "Workout and trainer consultation app",
-		year: "2023",
-		url: "frontend-intern-ministry-finance",
-		images: [{ src: bg, offsets: "c" }],
 	},
 ]
 
@@ -96,5 +68,36 @@ export const educations: Education[] = [
 			{ src: pcr2, offsets: "tl" },
 			{ src: pcr1, offsets: "c" },
 		],
+	},
+]
+
+export const projects: Project[] = [
+	{
+		title: "Furaya Hotel Management",
+		description: "Modernizing a legacy hotel management system.",
+		year: "2025",
+		url: "furaya-hotel-management",
+		images: [{ src: furaya, offsets: "c" }],
+	},
+	{
+		title: "KLC Room",
+		description: "Ministry's Unit's room management system.",
+		year: "2024",
+		url: "klc-room",
+		images: [{ src: klc, offsets: "c" }],
+	},
+	{
+		title: "Yemeni Music Classification",
+		description: "Deep learning audio classification.",
+		year: "2024",
+		url: "yemeni-music-classification",
+		images: [{ src: yemeni, offsets: "c" }],
+	},
+	{
+		title: "MassBeat",
+		description: "A user-centered home workout platform",
+		year: "2023",
+		url: "massbeat",
+		images: [{ src: massbeat, offsets: "c" }],
 	},
 ]

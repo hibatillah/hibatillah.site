@@ -1,12 +1,14 @@
 import { Header } from "@/components/header"
 import profile from "@/contents/profile.json"
 import { getContentData } from "@/lib/contents"
-import { Experience } from "@/lib/types"
+import { Project } from "@/lib/types"
 import { Metadata } from "next"
 
-export async function generateMetadata({ params }: PageProps<"/work/[slug]">): Promise<Metadata> {
+export async function generateMetadata({
+	params,
+}: PageProps<"/project/[slug]">): Promise<Metadata> {
 	const { slug } = await params
-	const { data } = await getContentData<Experience>("exp", slug)
+	const { data } = await getContentData<Project>("projects", slug)
 
 	return {
 		title: data.title,
@@ -14,7 +16,7 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
 			title: data.title,
 			description: data.description,
 			siteName: profile.title,
-			url: `/exp/${slug}`,
+			url: `/project/${slug}`,
 			type: "article",
 		},
 		twitter: {
@@ -26,13 +28,13 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
 	}
 }
 
-export default async function Page({ params }: PageProps<"/work/[slug]">) {
+export default async function Page({ params }: PageProps<"/project/[slug]">) {
 	const { slug } = await params
-	const { Content, data } = await getContentData<Experience>("exp", slug)
+	const { Content, data } = await getContentData<Project>("projects", slug)
 
 	return (
 		<>
-			<Header heading={data.title} description={data.company} />
+			<Header heading={data.title} description={data.headline} />
 			<Content />
 		</>
 	)

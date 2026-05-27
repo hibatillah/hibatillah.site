@@ -13,21 +13,21 @@ description: "A web-accessible AI tool that leverages a custom-curated dataset t
 
 # The API Transition
 
-While I had built full-stack applications using PHP before, this Rice Identification project was my first venture into **API-driven architecture**.
+While I had built full-stack applications using PHP before, this Rice Identification project was my first venture into API-driven architecture.
 
-In my previous projects, the frontend and backend were tightly coupled (Monolithic <abbr title="Model-View-Controller">MVC</abbr>). This project required a different approach. I had to build a standalone web interface that could _talk_ to a separate Python backend. It was my first time implementing a true `API endpoint` to bridge the gap between a user's browser and a Deep Learning model.
+In my previous projects, the frontend and backend were tightly coupled (Monolithic MVC). This project required a different approach. I had to build a standalone web interface that could _talk_ to a separate Python backend. It was my first time implementing a true <span className="text-nowrap">`API endpoint`</span> to bridge the gap between a user's browser and a Deep Learning model.
 
 ## The _Research_ Problem
 
 In the agricultural industry, manually sorting rice based on quality (often determined by color consistency) is labor-intensive and prone to error.
 
-- **The Goal:** Automate the quality check process using Computer Vision to classify rice grains based on their color profile.
+- The Goal: Automate the quality check process using Computer Vision to classify rice grains based on their color profile.
 
-- **The Challenge:** We needed a way to make this complex Python processing accessible to a non-technical user through a simple web interface.
+- The Challenge: We needed a way to make this complex Python processing accessible to a non-technical user through a simple web interface.
 
 ## _Data Mining_ Methodology
 
-This project was part of our **Data Mining** curriculum, where we applied the standard pipeline:
+This project was part of our Data Mining curriculum, where we applied the standard pipeline:
 
 ### 1. Data Collection & Cleaning
 
@@ -39,20 +39,20 @@ We used `Python` to build a model that could differentiate rice types based on R
 
 ## Building the _Bridge_
 
-The hardest part wasn't the UI, but the **Integration**.
+The hardest part wasn't the UI, but the Integration.
 
 At the time, I was comfortable with HTML and CSS, but connecting them to a running Python script was a mystery.
 
-- **The Backend:** We used `Flask`, a micro-framework, to expose our Python model as an API endpoint.
+- The Backend: We used `Flask`, a micro-framework, to expose our Python model as an API endpoint.
 
-- **The Frontend:** I built a Vanilla HTML/CSS interface and used `jQuery` to handle the communication.
+- The Frontend: I built a Vanilla HTML/CSS interface and used `jQuery` to handle the communication.
 
 
 ## The _Mentorship_ Factor
 
 I focused heavily on the frontend implementation, ensuring the user could upload an image and see the result without a page reload.
 
-However, the _handshake_ between the frontend and the Flask backend was complex for my skill level at the time. Working closely with our laboratory assistant, I learned how to structure **AJAX requests** to send image data asynchronously.
+However, the _handshake_ between the frontend and the Flask backend was complex for my skill level at the time. Working closely with our laboratory assistant, I learned how to structure AJAX requests to send image data asynchronously.
 
 > This collaboration demystified the concept of `API endpoints` for me, teaching me that a backend is simply a function waiting to be called by the frontend.
 
@@ -60,8 +60,8 @@ However, the _handshake_ between the frontend and the Flask backend was complex 
 
 This project was simple by industry standards, but it was a massive leap for my understanding of software architecture.
 
-- **First Python Integration:** I moved from writing standalone scripts to building a web-accessible application.
+- First Python Integration: I moved from writing standalone scripts to building a web-accessible application.
 
-- **Async Logic:** I learned why _Asynchronous_ operations (via `jQuery AJAX`) are crucial for heavy tasks like image processing, so the UI doesn't freeze while the server thinks.
+- Async Logic: I learned why _Asynchronous_ operations (via `jQuery AJAX`) are crucial for heavy tasks like image processing, so the UI doesn't freeze while the server thinks.
 
-- **Model-View-Controller:** Without realizing it then, I was implementing my first MVC pattern, separating the Data (Model), the Interface (View), and the Flask Logic (Controller).
+- Model-View-Controller: Without realizing it then, I was implementing my first MVC pattern, separating the Data (Model), the Interface (View), and the Flask Logic (Controller).

@@ -1,6 +1,6 @@
 import { RemoteImage } from "./remote-image"
 
-export type ContentCategory = "educations" | "experiences" | "projects" | "components"
+export type ContentCategory = "edu" | "exp" | "projects" | "components"
 
 export interface Experience {
 	title: string

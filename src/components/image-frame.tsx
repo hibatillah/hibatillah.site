@@ -1,3 +1,6 @@
+import { RemoteImage } from "@/lib/remote-image"
+import { decodeThumbhash } from "@/lib/thumbhash"
+import Image from "next/image"
 import { cn } from "../lib/utils"
 
 export type StackOffset =
@@ -25,9 +28,9 @@ export const STACK_OFFSETS: Record<
 	Record<"x" | "y" | "r" | "hx" | "hy" | "hr", number>
 > = {
 	tl: { x: -12, y: -9, r: -8, hx: -32, hy: -24, hr: -9 },
-	tr: { x: 5, y: -8, r: 9, hx: 31, hy: -20, hr: 12 },
+	tr: { x: 5, y: -8, r: -4, hx: 31, hy: -20, hr: -2 },
 	bl: { x: -9, y: 4, r: -6, hx: -24, hy: 13, hr: -7 },
-	br: { x: 3, y: 9, r: 7, hx: 24, hy: 18, hr: 11 },
+	br: { x: 3, y: 9, r: 5, hx: 24, hy: 18, hr: 8 },
 	l: { x: -10, y: 1, r: -2, hx: -15, hy: 9, hr: -8 },
 	r: { x: 12, y: 9, r: 5, hx: 32, hy: 8, hr: 8 },
 	t: { x: 2, y: -9, r: 2, hx: 4, hy: -12, hr: 5 },
@@ -120,6 +123,37 @@ export function ImageFrame({
 	)
 }
 
+interface ImageItemProps extends Omit<React.ComponentProps<typeof Image>, "src"> {
+	image: RemoteImage
+}
+
+export function ImageItem({ image, alt, className, ...props }: ImageItemProps) {
+	const { width, height } = image
+
+	let styles = {}
+
+	if (width && height) {
+		const aspectRatio = Number(width) / Number(height)
+		const targetWidth = height * aspectRatio
+
+		styles = { width: Math.round(targetWidth) }
+	}
+
+	return (
+		<Image
+			src={image?.src}
+			alt={alt}
+			width={image.width}
+			height={image.height}
+			placeholder={image.blurData ? "blur" : "empty"}
+			blurDataURL={image.blurData ? decodeThumbhash(image.blurData) : undefined}
+			style={styles}
+			className={cn(className)}
+			{...props}
+		/>
+	)
+}
+
 interface ImageFrameGridProps extends React.ComponentProps<"div"> {
 	layout?: "grid" | "stack"
 }
@@ -130,7 +164,7 @@ export function ImageFrameGrid({ className, layout = "grid", ...props }: ImageFr
 			data-layout={layout}
 			className={cn(
 				"group place-items-center",
-				"data-[layout=grid]:grid data-[layout=grid]:grid-cols-2 data-[layout=grid]:gap-2",
+				"data-[layout=grid]:grid data-[layout=grid]:grid-cols-1 data-[layout=grid]:gap-2 sm:data-[layout=grid]:grid-cols-2",
 				"data-[layout=stack]:relative data-[layout=stack]:inline-grid data-[layout=stack]:*:col-start-1 data-[layout=stack]:*:row-start-1",
 				className,
 			)}

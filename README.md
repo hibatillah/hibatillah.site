@@ -1,10 +1,29 @@
 ## Portfolio
 
-A modern, responsive portfolio website showcasing projects, experience, and professional background. Features an interactive home page with animated sections, keyboard navigation shortcuts, and dark mode support.
+A modern, responsive portfolio website showcasing work, education, and projects. Single-page overview with MDX-powered detail pages, stacked polaroid-style thumbnails, anchor-linked headings, and dark mode.
 
-- Next.js v16.1.1
-- React v19.2.3
-- Tailwind CSS v4.1.18
-- Motion v12.25.0
-- Shadcn with BaseUI
-- Oxlint, Oxfmt
+### Stack
+
+- Next.js 16 (App Router, React Compiler, Turbopack)
+- React 19
+- Tailwind CSS v4
+- Motion (motion/react)
+- shadcn/ui on Base UI (`@base-ui/react`)
+- MDX with `remark-gfm` and `remark-mdx-frontmatter`
+- `thumbhash` + `sharp` for remote image blur placeholders
+- TanStack Query for client-side image fetching
+- Bun, oxlint, oxfmt
+
+### Routes
+
+- `/` — Overview (brief, work, education, projects)
+- `/work/[slug]`, `/edu/[slug]`, `/project/[slug]` — MDX detail pages
+
+### Develop
+
+```bash
+bun install
+bun dev
+```
+
+Requires Bun ≥1.3.5 and Node ≥24.12.

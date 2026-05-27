@@ -3,13 +3,10 @@
 import { Separator as SeparatorComponent } from "@/components/ui/separator"
 import { useCopyToClipboard } from "@/hooks/use-copy-clipboard"
 import { staggerContainer, staggerItem } from "@/lib/animations"
-import { RemoteImage } from "@/lib/remote-image"
-import { decodeThumbhash } from "@/lib/thumbhash"
 import { cn, slugify } from "@/lib/utils"
 import { CopyIcon, LinkIcon, SquareCheckIcon } from "lucide-react"
 import { motion } from "motion/react"
-import Image from "next/image"
-import { createContext, useContext, useState } from "react"
+import { useState } from "react"
 import { toast } from "sonner"
 import { Button } from "./ui/button"
 import { Card, CardFooter, CardHeader } from "./ui/card"
@@ -22,7 +19,7 @@ export function Wrapper({ children }: { children: React.ReactNode }) {
 			initial="hidden"
 			whileInView="visible"
 			viewport={{ once: true }}
-			className="flex flex-col gap-6 max-lg:px-4"
+			className="flex flex-col gap-6"
 		>
 			{children}
 		</motion.article>
@@ -42,7 +39,7 @@ export function Heading2({ className, children, ...props }: React.ComponentProps
 				{children}
 			</h2>
 
-			<LinkIcon className="invisible absolute top-1/2 -left-6 size-[14px] -translate-y-1/2 opacity-0 transition-all duration-100 ease-linear peer-hover/heading:visible peer-hover/heading:opacity-200" />
+			<LinkIcon className="invisible absolute top-1/2 -left-5 size-[14px] -translate-y-1/2 opacity-0 transition-all duration-100 ease-linear peer-hover/heading:visible peer-hover/heading:opacity-200 md:-left-6" />
 		</motion.a>
 	)
 }
@@ -54,13 +51,13 @@ export function Heading3({ className, children, ...props }: React.ComponentProps
 		<motion.a
 			href={id ? `#${id}` : undefined}
 			variants={staggerItem}
-			className={cn("relative mt-4 block w-fit text-base/snug font-medium", className)}
+			className={cn("relative mt-4 block w-fit text-base/snug font-normal", className)}
 		>
 			<h3 id={id} className="peer/heading w-fit scroll-mt-12" {...props}>
 				{children}
 			</h3>
 
-			<LinkIcon className="invisible absolute top-1/2 -left-6 size-[14px] -translate-y-1/2 opacity-0 transition-all duration-100 ease-linear peer-hover/heading:visible peer-hover/heading:opacity-200" />
+			<LinkIcon className="invisible absolute top-1/2 -left-5 size-[14px] -translate-y-1/2 opacity-0 transition-all duration-100 ease-linear peer-hover/heading:visible peer-hover/heading:opacity-200 md:-left-6" />
 		</motion.a>
 	)
 }
@@ -83,7 +80,7 @@ export function Blockquote({
 		<motion.blockquote
 			variants={staggerItem}
 			className={cn(
-				"my-2 border-s-3 border-muted-foreground py-1 ps-4 text-muted-foreground italic",
+				"border-s-2 border-muted-foreground ps-3 text-muted-foreground italic",
 				className,
 			)}
 			{...props}
@@ -95,7 +92,7 @@ export function ListUnordered({ className, ...props }: React.ComponentProps<type
 	return (
 		<motion.ul
 			variants={staggerItem}
-			className={cn("ms-9 list-disc space-y-3 max-lg:me-4 lg:ms-6", className)}
+			className={cn("ms-6 list-disc space-y-3", className)}
 			{...props}
 		/>
 	)
@@ -105,7 +102,7 @@ export function ListOrdered({ className, ...props }: React.ComponentProps<typeof
 	return (
 		<motion.ol
 			variants={staggerItem}
-			className={cn("ms-9 list-decimal space-y-3 max-lg:me-4 lg:ms-6", className)}
+			className={cn("ms-6 list-decimal space-y-3", className)}
 			{...props}
 		/>
 	)
@@ -186,75 +183,6 @@ export function Separator({ className, ...props }: React.ComponentProps<typeof m
 		<motion.div variants={staggerItem} className={cn("my-4 px-4 md:px-12", className)} {...props}>
 			<SeparatorComponent />
 		</motion.div>
-	)
-}
-
-const ImageContext = createContext<{ height: number } | null>(null)
-
-const SIZE_MAP = {
-	md: 240, // h-60
-	lg: 288, // h-72
-}
-
-interface ImageWrapperProps extends React.ComponentProps<typeof motion.div> {
-	size?: "md" | "lg"
-}
-
-export function ImageWrapper({ size = "md", className, children, ...props }: ImageWrapperProps) {
-	return (
-		<ImageContext.Provider value={{ height: SIZE_MAP[size] }}>
-			<motion.div
-				variants={staggerItem}
-				data-slot="image-wrapper"
-				className={cn(
-					"my-6 scrollbar-hide flex items-center gap-3 overflow-x-auto max-lg:-mx-4 max-lg:px-4",
-					size === "md" && "h-60",
-					size === "lg" && "h-72",
-					className,
-				)}
-				{...props}
-			>
-				{children}
-			</motion.div>
-		</ImageContext.Provider>
-	)
-}
-
-interface ImageItemProps extends Omit<React.ComponentProps<typeof Image>, "src"> {
-	image: RemoteImage
-}
-
-export function ImageItem({ image, alt, className, ...props }: ImageItemProps) {
-	const context = useContext(ImageContext)
-	const { width, height } = image
-
-	let styles = {}
-
-	if (context && width && height) {
-		const aspectRatio = Number(width) / Number(height)
-		const targetWidth = context.height * aspectRatio
-
-		styles = { width: Math.round(targetWidth) }
-	}
-
-	return (
-		<Image
-			src={image?.src}
-			alt={alt}
-			width={image.width}
-			height={image.height}
-			placeholder={image.blurData ? "blur" : "empty"}
-			blurDataURL={image.blurData ? decodeThumbhash(image.blurData) : undefined}
-			style={styles}
-			className={cn(
-				"rounded-md border object-cover dark:brightness-90",
-				"in-data-[slot=image-wrapper]:h-full in-data-[slot=image-wrapper]:max-w-md",
-				"not-in-data-[slot=image-wrapper]:my-6 not-in-data-[slot=image-wrapper]:h-auto not-in-data-[slot=image-wrapper]:w-full not-in-data-[slot=image-wrapper]:max-lg:mx-4",
-
-				className,
-			)}
-			{...props}
-		/>
 	)
 }
 

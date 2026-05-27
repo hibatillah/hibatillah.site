@@ -8,7 +8,7 @@ interface HeaderProps extends React.ComponentProps<"header"> {
 
 export function Header({ heading, description, className, ...props }: HeaderProps) {
 	return (
-		<header className={cn("flex items-start justify-between gap-4", className)} {...props}>
+		<header className={cn("flex items-start justify-between gap-6", className)} {...props}>
 			<div>
 				<h1 className="font-medium">{heading}</h1>
 				<p>{description}</p>
