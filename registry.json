@@ -1,0 +1,162 @@
+{
+	"$schema": "https://ui.shadcn.com/schema/registry.json",
+	"name": "hibatillah",
+	"homepage": "https://hibatillah.site",
+	"items": [
+		{
+			"name": "responsive-dialog",
+			"type": "registry:ui",
+			"title": "Responsive Dialog",
+			"description": "A responsive dialog component that is show dialog on desktop and drawer on mobile using base-ui.",
+			"registryDependencies": ["dialog", "drawer"],
+			"files": [
+				{
+					"path": "registry/components/responsive-dialog.tsx",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "description-list",
+			"type": "registry:ui",
+			"title": "Description List",
+			"description": "Description list component using base-ui.",
+			"files": [
+				{
+					"path": "registry/components/description-list.tsx",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "upload-dropzone",
+			"type": "registry:component",
+			"title": "Upload Dropzone",
+			"description": "Upload dropzone component using better-upload and react-dropzone.",
+			"registryDependencies": ["progress"],
+			"dependencies": ["@better-upload/client", "react-dropzone"],
+			"files": [
+				{
+					"path": "registry/blocks/upload-dropzone/upload-dropzone.tsx",
+					"type": "registry:ui"
+				},
+				{
+					"path": "registry/blocks/upload-dropzone/lib/utils.ts",
+					"type": "registry:lib"
+				}
+			]
+		},
+		{
+			"name": "data-table-filter",
+			"type": "registry:block",
+			"title": "Data Table Filter",
+			"description": "Customized bazza/ui data table filter component with indonesian locale.",
+			"registryDependencies": [
+				"input",
+				"button",
+				"separator",
+				"command",
+				"popover",
+				"calendar",
+				"checkbox",
+				"slider",
+				"tabs"
+			],
+			"dependencies": ["@tanstack/react-table", "date-fns", "react-day-picker"],
+			"files": [
+				{
+					"path": "registry/blocks/data-table-filter/data-table-filter.tsx",
+					"type": "registry:component"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/components/active-filters.tsx",
+					"type": "registry:component"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/components/data-table-filter.tsx",
+					"type": "registry:component"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/components/filter-actions.tsx",
+					"type": "registry:component"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/components/filter-operator.tsx",
+					"type": "registry:component"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/components/filter-selector.tsx",
+					"type": "registry:component"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/components/filter-subject.tsx",
+					"type": "registry:component"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/components/filter-value.tsx",
+					"type": "registry:component"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/ui/debounced-input.tsx",
+					"type": "registry:component"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/core/filters.ts",
+					"type": "registry:file"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/core/operators.ts",
+					"type": "registry:file"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/core/types.ts",
+					"type": "registry:file"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/hooks/use-data-table-filters.tsx",
+					"type": "registry:hook"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/hooks/use-debounce-callback.tsx",
+					"type": "registry:hook"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/hooks/use-unmount.tsx",
+					"type": "registry:hook"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/lib/array.ts",
+					"type": "registry:lib"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/lib/debounce.ts",
+					"type": "registry:lib"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/lib/filter-fns.ts",
+					"type": "registry:lib"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/lib/helpers.ts",
+					"type": "registry:lib"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/lib/i18n.ts",
+					"type": "registry:lib"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/lib/memo.ts",
+					"type": "registry:lib"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/locales/id.json",
+					"type": "registry:file"
+				},
+				{
+					"path": "registry/blocks/data-table-filter/locales/en.json",
+					"type": "registry:file"
+				}
+			]
+		}
+	]
+}

@@ -19,6 +19,17 @@ export function customSort<T extends string>(a: T, b: T, order: T[]) {
 	return order.indexOf(a) - order.indexOf(b)
 }
 
+/**
+ * Convert a string to a URL-safe lowercase slug.
+ * ASCII-only — for Unicode/diacritics, swap in `github-slugger` or `slugify`.
+ */
+export function slugify(text: string) {
+	return text
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, "-")
+		.replace(/^-|-$/g, "")
+}
+
 export function getProjectStacks(stacks: string[], visibleCount: number = 2) {
 	return {
 		visible: stacks.slice(0, visibleCount),

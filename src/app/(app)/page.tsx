@@ -1,57 +1,48 @@
-import profile from "@/contents/profile.json"
-import { getContentByCategory, getContentData } from "@/lib/contents"
-import { getRemoteImages } from "@/lib/remote-image"
-import { Education, Experience, Project } from "@/lib/types"
-import { customSort } from "@/lib/utils"
-import { all } from "better-all"
-import { Metadata } from "next"
-import Overview from "./_components/overview"
+import { Header } from "@/components/header"
+import { TextLink } from "@/components/text-link"
+import { EduSection, ProjectSection, WorkSection } from "./_components/sections"
 
-export const metadata: Metadata = {
-	title: "Overview",
-	description: profile.description,
-	openGraph: {
-		title: "Overview",
-		description: profile.description,
-		siteName: profile.title,
-		url: profile.url,
-		type: "website",
-	},
-	twitter: {
-		card: "summary_large_image",
-		title: "Overview",
-		description: profile.description,
-		creator: profile.twitterHandle,
-	},
-}
+export default function Page() {
+	return (
+		<>
+			<Header heading="M. Hibatillah Hasanin" description="Fullstack Web Developer" />
 
-export default async function Page() {
-	const { experience, education, featured, images } = await all({
-		async experience() {
-			const { data } = await getContentData<Experience>("experiences", profile.featured.experience)
-			return data
-		},
-		async education() {
-			const { data } = await getContentData<Education>("educations", profile.featured.education)
-			return data
-		},
-		async projects() {
-			return getContentByCategory<Project>("projects")
-		},
-		async featured() {
-			const projects = await this.$.projects
+			<section>
+				<h2>Brief</h2>
+				<article>
+					<p>
+						Dev based on Indonesia, focused on the TypeScript ecosystem such as React, Next.js,
+						Hono, and Elysia. I work with Laravel and Python professionally too, and spend part of
+						my time on side projects and building things I find interesting.
+					</p>
+					<p>Currently Programmer AI at Onesia.</p>
+				</article>
+			</section>
 
-			return projects
-				.filter((item) => profile.featured.projects.includes(item.slug))
-				.sort((a, b) => customSort(a.slug, b.slug, profile.featured.projects))
-		},
-		async images() {
-			return getRemoteImages([
-				{ key: "about", src: `${profile.asssets}/about-bg.webp` },
-				{ key: "featured", src: `${profile.asssets}/featured-bg.webp` },
-			])
-		},
-	})
+			<WorkSection />
+			<EduSection />
+			<ProjectSection />
 
-	return <Overview data={{ experience, education, projects: featured }} images={images} />
+			<section>
+				<h2>More</h2>
+				<article>
+					<p>
+						Connect on{" "}
+						<TextLink href="https://linkedin.com/in/hibatillahhabib" underline="hover" external>
+							LinkedIn
+						</TextLink>
+						, explore work on{" "}
+						<TextLink href="https://github.com/hibatillah" underline="hover" external>
+							GitHub
+						</TextLink>
+						, and updates on{" "}
+						<TextLink href="https://x.com/hibatillahhabib" underline="hover" external>
+							X
+						</TextLink>
+						.
+					</p>
+				</article>
+			</section>
+		</>
+	)
 }

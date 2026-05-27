@@ -1,20 +1,22 @@
-import Navigation from "@/components/navigation"
-import ThemeSwitcher from "@/components/theme-switcher"
-import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
-import { SearchSlashIcon } from "lucide-react"
+import {
+	Empty,
+	EmptyContent,
+	EmptyDescription,
+	EmptyHeader,
+	EmptyMedia,
+	EmptyTitle,
+} from "@/components/ui/empty"
+import Link from "next/link"
+import { Logo } from "../components/logo"
+import { Button } from "../components/ui/button"
 
 export default function NotFound() {
 	return (
-		<div className="relative container mx-auto min-h-dvh max-w-4xl space-y-6 py-16">
-			<div className="max-lg:px-4">
-				<div className="flex w-full items-center justify-between border-b">
-					<Navigation className="w-fit" />
-				</div>
-			</div>
-			<Empty className="min-h-[50vh]">
+		<div className="grid min-h-dvh place-items-center">
+			<Empty className="w-fit">
 				<EmptyHeader>
-					<EmptyMedia variant="icon">
-						<SearchSlashIcon />
+					<EmptyMedia>
+						<Logo />
 					</EmptyMedia>
 					<EmptyTitle>
 						<h1>404 - Page not found</h1>
@@ -23,8 +25,12 @@ export default function NotFound() {
 						The page you're looking for doesn't exist or has been moved.
 					</EmptyDescription>
 				</EmptyHeader>
+				<EmptyContent>
+					<Button render={<Link href="/" />} nativeButton={false}>
+						Back to Home
+					</Button>
+				</EmptyContent>
 			</Empty>
-			<ThemeSwitcher className="fixed end-3 bottom-4" />
 		</div>
 	)
 }

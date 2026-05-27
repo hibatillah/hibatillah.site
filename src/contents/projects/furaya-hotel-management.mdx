@@ -1,5 +1,5 @@
 ---
-title: "Furaya Hotel Front Desk Management System"
+title: "Furaya Hotel Front Desk Management"
 range: "Oct 2024 - Jul 2025"
 slug: "furaya-hotel-management"
 roles: ["Fullstack Developer"]
@@ -11,13 +11,19 @@ headline: "Modernizing a legacy hotel management system"
 description: "Digitized complex manual workflows into a secure, role-based management system to streamline front desk operations and reduce administrative errors."
 ---
 
-# Upgrading Hotel Operations
+import thumbnail from "@/static/project/furaya-hotel/thumbnail.webp"
 
-The hotel industry relies on speed and service, but many hotels still use systems built decades ago. The **Furaya Hotel Project** was built to fix this.
+<ImageFrameGrid className="mb-8 w-fit mx-auto">
+	<ImageFrame offset="c" transform="rotate" className="col-span-full sm:h-80">
+		<Image src={thumbnail} alt="Furaya Hotel Management System" placeholder="blur" className="object-top" />
+	</ImageFrame>
+</ImageFrameGrid>
+
+The hotel industry relies on speed and service, but many hotels still use systems built decades ago. The Furaya Hotel Project was built to fix this.
 
 I was recruited by a lecturer to join a team of four to build a real system for a client. Our goal was to replace their outdated desktop software with a modern, fast web application for the Front Desk.
 
-## _Navigation_ Bottleneck
+## Bottleneck
 
 The hotel was running on a legacy desktop app from the early 2000s. It looked like an old computer BIOS screen—blocky and rigid, but the real problem was how it worked.
 
@@ -36,17 +42,17 @@ This constant back-and-forth was too slow for a busy hotel lobby with guests wai
 
 ## Speed & Simplicity
 
-The main goal was to remove that friction. I replaced the _Main Menu_ page with a **Persistent Sidebar**. Now, staff can jump from _Booking_ to _Guest List_ in one click, without ever losing their place.
+The main goal was to remove that friction. I replaced the _Main Menu_ page with a Persistent Sidebar. Now, staff can jump from _Booking_ to _Guest List_ in one click, without ever losing their place.
 
 We chose a tech stack that provided speed and stability:
 
 - `Laravel` to handle complex booking rules securely.
 
-- `React + Tailwind CSS` to make the interface responsive and modern.
+- `React` + `Tailwind CSS` to make the interface responsive and modern.
 
 - `Inertia.js` enables smooth, seamless navigation and data handling between Laravel and the frontend.
 
-Using Inertia allowed us to build a fast, app-like experience (<abbr title="Single Page Application">SPA</abbr>) where pages load instantly, but kept the backend simple.
+Using Inertia allowed us to build a fast, app-like experience where pages load instantly, but kept the backend simple.
 
 ## Key Features
 
@@ -57,28 +63,28 @@ Designed the dashboard to give an instant overview. Instead of digging through m
 
 ### 2. Visual Room Grid
 
-In the old system, checking room status meant reading a text list. I changed this to a Data Table with Filtering and Sorting capabilities. Rooms are color-coded (Green for "Clean", Red for "Do Not Disturb"). This uses _Jacob's Law_ (using familiar patterns) to help staff process information instantly.
+In the old system, checking room status meant reading a text list. I changed this to a Data Table with Filtering and Sorting capabilities. Rooms are using color-coded badge based on its status. This uses _Jacob's Law_ (using familiar patterns) to help staff process information instantly.
 
-### 3. Role-Based Access (RBAC)
+### 3. Role-Based Access
 
 We set strict security rules to ensure data safety:
 
-- **Staff:** Can Check-in/Check-out guests.
+- Staff: Can Check-in/Check-out guests.
 
-- **Admin:** Can manage Room Rates and Inventory.
+- Admin: Can manage Room Rates and Inventory.
 
-- **Manager:** Can only view sales reports.
+- Manager: Can only view sales reports.
 
-## Testing & Result
+## Testing
 
 We tested the system to make sure it was ready for the real world.
 
-- **Stress Test:** The system handled **100-200 users** at the same time without slowing down.
+- Stress Test: The system handled 100-200 users at the same time without slowing down.
 
-- **User Test:** The new navigation was a success. Staff reported that the **Sidebar workflow** was much faster and easier to learn than the old _Menu Index_ system.
+- User Test: The new navigation was a success. Staff reported that the Sidebar workflow was much faster and easier to learn than the old _Menu Index_ system.
 
 ---
 
 The final system successfully modernized the hotel's workflow. By removing the clunky _BIOS-style_ navigation and replacing it with a modern web design, we helped the staff work faster and reduced the waiting time for guests.
 
-This project was my **Final College Capstone**, and it was accepted because it solved a critical operational speed problem for the client.
+This project was my Final College Capstone, and it was accepted because it solved a critical operational speed problem for the client.

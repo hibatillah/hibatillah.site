@@ -1,7 +1,5 @@
 "use client"
 
-import Navigation from "@/components/navigation"
-import ThemeSwitcher from "@/components/theme-switcher"
 import { Button } from "@/components/ui/button"
 import {
 	Empty,
@@ -11,8 +9,9 @@ import {
 	EmptyMedia,
 	EmptyTitle,
 } from "@/components/ui/empty"
-import { TriangleAlertIcon } from "lucide-react"
+import Link from "next/link"
 import { useEffect } from "react"
+import { Logo } from "../components/logo"
 
 export default function Error({
 	error,
@@ -26,27 +25,24 @@ export default function Error({
 	}, [error])
 
 	return (
-		<div className="relative container mx-auto min-h-dvh max-w-4xl space-y-6 py-16">
-			<div className="max-lg:px-4">
-				<div className="flex w-full items-center justify-between border-b">
-					<Navigation className="w-fit" />
-				</div>
-			</div>
-			<Empty className="min-h-[50vh]">
+		<div className="grid min-h-dvh place-items-center">
+			<Empty className="w-fit">
 				<EmptyHeader>
-					<EmptyMedia variant="icon">
-						<TriangleAlertIcon />
+					<EmptyMedia>
+						<Logo />
 					</EmptyMedia>
 					<EmptyTitle>
 						<h1>Something went wrong</h1>
 					</EmptyTitle>
-					<EmptyDescription>An unexpected error occurred. Please try again later.</EmptyDescription>
+					<EmptyDescription>An unexpected error occurred. Please try again.</EmptyDescription>
 				</EmptyHeader>
-				<EmptyContent>
+				<EmptyContent className="flex flex-row items-center justify-center gap-2">
 					<Button onClick={reset}>Try again</Button>
+					<Button variant="secondary" render={<Link href="/" />} nativeButton={false}>
+						Back Home
+					</Button>
 				</EmptyContent>
 			</Empty>
-			<ThemeSwitcher className="fixed end-3 bottom-4" />
 		</div>
 	)
 }

@@ -1,6 +1,6 @@
 import { RemoteImage } from "./remote-image"
 
-export type ContentCategory = "educations" | "experiences" | "projects"
+export type ContentCategory = "edu" | "exp" | "projects" | "components"
 
 export interface Experience {
 	title: string
@@ -48,6 +48,17 @@ export interface Education {
 	 * Url to related contents. Could be internal or external links.
 	 * */
 	related?: Record<string, string>
+}
+
+export interface Component {
+	title: string
+	description: string
+	type: "registry:ui" | "registry:component" | "registry:block"
+	slug: string
+	registryDependencies?: string[]
+	dependencies?: string[]
+	credit?: string
+	creditUrl?: string
 }
 
 export interface MDXContent<T> {
