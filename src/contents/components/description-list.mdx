@@ -16,20 +16,17 @@ Add this component into your project using Shadcn CLI. It has no external depend
 ## Usage
 
 ```tsx
-import {
-  DescriptionList,
-  DescriptionListItem,
-} from "@/components/ui/description-list"
+import { DescriptionList, DescriptionListItem } from "@/components/ui/description-list"
 
 export function Example() {
-  return (
-    <DescriptionList>
-      <DescriptionListItem label="Name" value="M. Hibatillah" />
-      <DescriptionListItem label="Role" value="Fullstack Developer" />
-      <DescriptionListItem label="Stack" value="Next.js, TypeScript" />
-      <DescriptionListItem label="Location" value="Indonesia" />
-    </DescriptionList>
-  )
+	return (
+		<DescriptionList>
+			<DescriptionListItem label="Name" value="M. Hibatillah" />
+			<DescriptionListItem label="Role" value="Fullstack Developer" />
+			<DescriptionListItem label="Stack" value="Next.js, TypeScript" />
+			<DescriptionListItem label="Location" value="Indonesia" />
+		</DescriptionList>
+	)
 }
 ```
 
@@ -37,6 +34,6 @@ Customize label and value styles via the `className` prop on `<DescriptionList>`
 
 ```tsx
 <DescriptionList className="[&_dt]:text-primary [&_dd]:font-mono">
-  <DescriptionListItem label="Status" value="active" />
+	<DescriptionListItem label="Status" value="active" />
 </DescriptionList>
 ```

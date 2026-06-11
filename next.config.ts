@@ -24,6 +24,11 @@ const nextConfig: NextConfig = {
 				permanent: true,
 			}))
 	},
+	rewrites: async () => [
+		{ source: "/project/:slug.md", destination: "/raw/project/:slug" },
+		{ source: "/work/:slug.md", destination: "/raw/work/:slug" },
+		{ source: "/edu/:slug.md", destination: "/raw/edu/:slug" },
+	],
 }
 
 const withMDX = createMDX({

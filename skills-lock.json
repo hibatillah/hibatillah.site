@@ -25,6 +25,12 @@
 			"skillPath": "skills/productivity/grill-me/SKILL.md",
 			"computedHash": "daf64ca15f4fa081a6747766db538e2dbd1131725ed4fcdd3d538dc62c7035ba"
 		},
+		"improve": {
+			"source": "shadcn/improve",
+			"sourceType": "github",
+			"skillPath": "skills/improve/SKILL.md",
+			"computedHash": "992d71e2ed2a83e7f25d8522d069f090e2ea16286ec29ea86f84cfa05c0c2430"
+		},
 		"seo-audit": {
 			"source": "coreyhaines31/marketingskills",
 			"sourceType": "github",

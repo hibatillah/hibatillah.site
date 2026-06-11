@@ -40,6 +40,7 @@ All portfolio content lives in `src/contents/`:
 - `edu/`, `exp/`, `projects/`, `components/` — MDX files with YAML frontmatter matching types in `src/lib/types.ts`.
 
 Content is loaded via two server functions in `src/lib/contents.ts`:
+
 - `getContentByCategory<T>(category)` — Returns all frontmatter objects for a category
 - `getContentData<T>(category, slug)` — Returns `{ Content, data }` for a specific MDX file. Throws a readable error if the slug doesn't exist.
 
@@ -52,10 +53,12 @@ Local detail-page and home-page images live under `src/static/{edu,exp,project}/
 Remote images (from `cdn.hibatillah.site`) use **thumbhash** + **sharp** for blur placeholders (replaced `plaiceholder`).
 
 **Server side** (`src/lib/remote-image.ts`):
+
 - `getRemoteImage(src)` — wrapped in React `cache()`. Fetches, resizes via sharp to 100×100, then generates a base64-encoded thumbhash. Returns `{ src, width, height, blurData?, error? }`.
 - `getRemoteImages(sources)` — maps over `getRemoteImage` (via `Promise.all`), inheriting the cache automatically. Returns a `Record<key, RemoteImage>`.
 
 **Client side** (`src/hooks/use-remote-image.ts`):
+
 - `useRemoteImage(src: string)` — single-image overload, returns `UseQueryResult<RemoteImage>`
 - `useRemoteImage(sources: ImageSource[])` — multi-image overload, returns `{ images, isLoading, isError }`
 
@@ -75,8 +78,28 @@ To decode a thumbhash blur on the client, use `decodeThumbhash` from `@/lib/thum
 ### Fonts
 
 Three fonts are loaded in `src/app/layout.tsx`:
+
 - `Geist` (sans) and `Geist_Mono` from `next/font/google`, exposing `--font-geist-sans` and `--font-geist-mono`.
 - `Calloveya` (signature script) from `next/font/local` at `src/static/fonts/Calloveya.woff2`. The next/font CSS variable is `--font-calloveya-raw`; the Tailwind theme remaps it to `--font-calloveya` in `globals.css` (the rename avoids a self-referencing CSS variable). Use the `font-calloveya` Tailwind utility.
+
+### SEO & metadata
+
+The root `metadata` in `src/app/layout.tsx` uses a title template: `{ default: profile.name, template: "%s | ${profile.title}" }`. Detail pages pass `title`/`description` from their `generateMetadata` and inherit the brand suffix; each also sets a top-level `description`.
+
+- **Structured data** — `src/components/json-ld.tsx` exports `JsonLd` (one `application/ld+json` `@graph` of `Person` + `WebSite` + `ProfilePage` from `profile.json`, with `sameAs` linking social profiles; rendered once in the root layout body — the entity grounding that lets answer engines attribute the site to the name) and `BreadcrumbJsonLd` (a `BreadcrumbList` rendered by each detail page as a flat `Home › <title>` trail — there is no category listing page, so never link a non-existent `/projects`).
+- **OG images** — generated with `next/og` (`ImageResponse` + Satori) via a shared renderer in `src/lib/og.tsx` (`renderOgImage`, `OgFrame`, `OG_SIZE`, `OG_CONTENT_TYPE`; `OgFrameProps` is `{ eyebrow, title, description }`). Route files: `src/app/opengraph-image.tsx` (home) and `src/app/(app)/{project,work,edu}/[slug]/opengraph-image.tsx` (per-item, data via `getContentData`). Fonts load from bundled **`.ttf`** files in `src/static/fonts/og/` (Satori cannot read the `.woff2` used elsewhere). Next serves dynamic OG images at a hashed URL (e.g. `opengraph-image-1shh5a?<hash>`), not the clean path.
+  - **Satori `tw` caveat**: Satori supports only a subset of Tailwind. Arbitrary `font-[...]` (font-family), arbitrary `tracking-[...]` (letter-spacing), `text-pretty`, and `-950` color shades are **silently dropped**. Use inline `style` for `fontFamily` and `letterSpacing`; everything else (sizes, named + arbitrary `bg-[#hex]`/`text-[#hex]` colors, `leading-[...]`) works via `tw`. The `tw` prop is enabled by a `declare module "react"` augmentation in `og.tsx`.
+- **`manifest.ts`** — minimal web manifest (`display: "browser"`, not a PWA), theme/background `#FCFCFC`, reusing `icon.png`.
+- **`robots.ts`** — allow-all plus an explicit `aiCrawlers` allow-list (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, …) welcoming answer engines by name; sets `host` and links `sitemap.xml`.
+- **`sitemap.ts`** — home + every detail route, URLs built from frontmatter `slug`. (Note: `llms.txt` and the `.md` endpoints are deliberately **not** in the sitemap — `llms.txt` is a root-convention file like `robots.txt`, and the `.md` routes are alternate representations of pages already listed.)
+
+### Agent & LLM accessibility
+
+Beyond search SEO, the site exposes machine-readable representations for autonomous agents:
+
+- **`/llms.txt`** (`src/app/llms.txt/route.ts`) — a curated, grouped markdown map of the site (per [llmstxt.org](https://llmstxt.org)), generated from the MDX content via `getContentByCategory`. Each entry links to the page's `.md` endpoint. Discovered by convention at the root.
+- **Markdown endpoints** — `/project/<slug>.md`, `/work/<slug>.md`, `/edu/<slug>.md` return the raw MDX (frontmatter + prose, ESM `import`s stripped) as `text/markdown`. Served by `src/app/raw/[type]/[slug]/route.ts`, reached via `*.md` → `/raw/[type]/[slug]` rewrites in `next.config.ts` (the handler's `TYPE_TO_CATEGORY` maps `project→projects`, `work→exp`, `edu→edu`). The page-route slug must equal the MDX filename for both the page and its `.md` endpoint to resolve.
+- **Self-advertised alternates** — each detail page's `generateMetadata` sets `alternates.types["text/markdown"]` so the rendered HTML carries `<link rel="alternate" type="text/markdown" href="…/<slug>.md">` (the web-standard way to point agents at the markdown version). A page-level `alternates` replaces the inherited root one, so each detail page re-declares its own `canonical` there too.
 
 ### Key conventions
 

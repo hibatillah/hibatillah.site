@@ -3,7 +3,9 @@ title: "Responsive Dialog"
 description: "A dialog on desktop, drawer on mobile. Built on Base UI Dialog and Vaul Drawer."
 type: "registry:ui"
 slug: "responsive-dialog"
-registryDependencies: ["dialog", "drawer"]
+registryDependencies:
+  - "dialog"
+  - "drawer"
 ---
 
 `ResponsiveDialog` detects the viewport width and renders a **Base UI Dialog** on desktop and a **Vaul Drawer** on mobile. The API mirrors a standard dialog so you don't need separate components for each breakpoint.
@@ -18,38 +20,38 @@ Add this component into your project using Shadcn CLI. It's using `dialog` and `
 
 ```tsx
 import {
-  ResponsiveDialog,
-  ResponsiveDialogClose,
-  ResponsiveDialogContent,
-  ResponsiveDialogDescription,
-  ResponsiveDialogFooter,
-  ResponsiveDialogHeader,
-  ResponsiveDialogTitle,
-  ResponsiveDialogTrigger,
+	ResponsiveDialog,
+	ResponsiveDialogClose,
+	ResponsiveDialogContent,
+	ResponsiveDialogDescription,
+	ResponsiveDialogFooter,
+	ResponsiveDialogHeader,
+	ResponsiveDialogTitle,
+	ResponsiveDialogTrigger,
 } from "@/components/ui/responsive-dialog"
 import { Button } from "@/components/ui/button"
 
 export function Example() {
-  return (
-    <ResponsiveDialog>
-      <ResponsiveDialogTrigger asChild>
-        <Button variant="outline">Open</Button>
-      </ResponsiveDialogTrigger>
-      <ResponsiveDialogContent>
-        <ResponsiveDialogHeader>
-          <ResponsiveDialogTitle>Dialog Title</ResponsiveDialogTitle>
-          <ResponsiveDialogDescription>
-            This appears as a dialog on desktop and a bottom drawer on mobile.
-          </ResponsiveDialogDescription>
-        </ResponsiveDialogHeader>
-        <ResponsiveDialogFooter>
-          <ResponsiveDialogClose asChild>
-            <Button>Close</Button>
-          </ResponsiveDialogClose>
-        </ResponsiveDialogFooter>
-      </ResponsiveDialogContent>
-    </ResponsiveDialog>
-  )
+	return (
+		<ResponsiveDialog>
+			<ResponsiveDialogTrigger asChild>
+				<Button variant="outline">Open</Button>
+			</ResponsiveDialogTrigger>
+			<ResponsiveDialogContent>
+				<ResponsiveDialogHeader>
+					<ResponsiveDialogTitle>Dialog Title</ResponsiveDialogTitle>
+					<ResponsiveDialogDescription>
+						This appears as a dialog on desktop and a bottom drawer on mobile.
+					</ResponsiveDialogDescription>
+				</ResponsiveDialogHeader>
+				<ResponsiveDialogFooter>
+					<ResponsiveDialogClose asChild>
+						<Button>Close</Button>
+					</ResponsiveDialogClose>
+				</ResponsiveDialogFooter>
+			</ResponsiveDialogContent>
+		</ResponsiveDialog>
+	)
 }
 ```
 

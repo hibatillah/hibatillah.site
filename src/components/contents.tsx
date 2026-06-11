@@ -39,7 +39,7 @@ export function Heading2({ className, children, ...props }: React.ComponentProps
 				{children}
 			</h2>
 
-			<LinkIcon className="invisible absolute top-1/2 -left-5 size-[14px] -translate-y-1/2 opacity-0 transition-all duration-100 ease-linear peer-hover/heading:visible peer-hover/heading:opacity-200 md:-left-6" />
+			<LinkIcon className="invisible absolute top-1/2 -left-5 size-[14px] -translate-y-1/2 text-primary opacity-0 transition-all duration-100 ease-linear peer-hover/heading:visible peer-hover/heading:opacity-200 md:-left-6" />
 		</motion.a>
 	)
 }
@@ -57,7 +57,7 @@ export function Heading3({ className, children, ...props }: React.ComponentProps
 				{children}
 			</h3>
 
-			<LinkIcon className="invisible absolute top-1/2 -left-5 size-[14px] -translate-y-1/2 opacity-0 transition-all duration-100 ease-linear peer-hover/heading:visible peer-hover/heading:opacity-200 md:-left-6" />
+			<LinkIcon className="invisible absolute top-1/2 -left-5 size-[14px] -translate-y-1/2 text-primary opacity-0 transition-all duration-100 ease-linear peer-hover/heading:visible peer-hover/heading:opacity-200 md:-left-6" />
 		</motion.a>
 	)
 }
@@ -181,7 +181,7 @@ export function Pre({ className, ...props }: React.ComponentProps<typeof motion.
 export function Separator({ className, ...props }: React.ComponentProps<typeof motion.div>) {
 	return (
 		<motion.div variants={staggerItem} className={cn("my-4 px-4 md:px-12", className)} {...props}>
-			<SeparatorComponent />
+			<SeparatorComponent className="bg-primary/30" />
 		</motion.div>
 	)
 }

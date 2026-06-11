@@ -2,11 +2,21 @@
 title: "Furaya Hotel Front Desk Management"
 range: "Oct 2024 - Jul 2025"
 slug: "furaya-hotel-management"
-roles: ["Fullstack Developer"]
-repo: "https://github.com/hibatillah/furaya"
-associates: ["/education/politeknik-caltex-riau"]
-variant: "website"
-stacks: ["Laravel", "React", "Inertia.js", "Midtrans", "Mysql", "Tailwind CSS", "Shadcn UI"]
+roles:
+  - "Fullstack Developer"
+associates:
+  - "/education/politeknik-caltex-riau"
+stacks:
+  - "Laravel"
+  - "React"
+  - "Inertia.js"
+  - "Midtrans"
+  - "Mysql"
+  - "Tailwind CSS"
+  - "Shadcn UI"
+links:
+  - label: "Repository"
+    url: "https://github.com/hibatillah/furaya"
 headline: "Modernizing a legacy hotel management system"
 description: "Digitized complex manual workflows into a secure, role-based management system to streamline front desk operations and reduce administrative errors."
 ---
@@ -15,7 +25,12 @@ import thumbnail from "@/static/project/furaya-hotel/thumbnail.webp"
 
 <ImageFrameGrid className="mb-8 w-fit mx-auto">
 	<ImageFrame offset="c" transform="rotate" className="col-span-full sm:h-80">
-		<Image src={thumbnail} alt="Furaya Hotel Management System" placeholder="blur" className="object-top" />
+		<Image
+			src={thumbnail}
+			alt="Furaya Hotel Management System"
+			placeholder="blur"
+			className="object-top"
+		/>
 	</ImageFrame>
 </ImageFrameGrid>
 
@@ -39,7 +54,6 @@ The system did not have a navigation bar. To switch from _Check-In_ to _Room Sta
 
 This constant back-and-forth was too slow for a busy hotel lobby with guests waiting in line.
 
-
 ## Speed & Simplicity
 
 The main goal was to remove that friction. I replaced the _Main Menu_ page with a Persistent Sidebar. Now, staff can jump from _Booking_ to _Guest List_ in one click, without ever losing their place.
@@ -59,7 +73,6 @@ Using Inertia allowed us to build a fast, app-like experience where pages load i
 ### 1. The Front Desk Dashboard
 
 Designed the dashboard to give an instant overview. Instead of digging through menus, staff immediately see _Today's Check-ins, Occupancy Rates, and VIP Guests_ the moment they log in.
-
 
 ### 2. Visual Room Grid
 

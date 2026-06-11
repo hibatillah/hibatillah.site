@@ -31,15 +31,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const projectPages: MetadataRoute.Sitemap = projects.map((project) => ({
 		url: `${baseUrl}/project/${project.slug}`,
 		lastModified: new Date(),
-		changeFrequency: "monthly",
-		priority: 0.8,
+		changeFrequency: "yearly",
+		priority: 0.5,
 	}))
 
 	const experiencePages: MetadataRoute.Sitemap = experiences.map((experience) => ({
 		url: `${baseUrl}/work/${experience.slug}`,
 		lastModified: new Date(),
 		changeFrequency: "yearly",
-		priority: 0.7,
+		priority: 0.8,
 	}))
 
 	const educationPages: MetadataRoute.Sitemap = educations.map((education) => ({

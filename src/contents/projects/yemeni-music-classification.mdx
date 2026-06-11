@@ -1,12 +1,22 @@
 ---
-title: "Yaman Music Classification"
+title: "Yemeni Music Classification"
 range: "Nov 2024 - Jan 2025"
-slug: "yaman-music-classification"
-roles: ["Fullstack Developer"]
-repo: "https://github.com/hibatillah/deep-learning"
-live: "https://team1-deeplearning-sic.vercel.app"
-variant: "website"
-stacks: ["Flask", "Python", "Next.js", "React", "Typescript", "Tailwind CSS", "Shadcn UI"]
+slug: "yemeni-music-classification"
+roles:
+  - "Fullstack Developer"
+stacks:
+  - "Flask"
+  - "Python"
+  - "Next.js"
+  - "React"
+  - "Typescript"
+  - "Tailwind CSS"
+  - "Shadcn UI"
+links:
+  - label: "Live"
+    url: "https://team1-deeplearning-sic.vercel.app"
+  - label: "Repository"
+    url: "https://github.com/hibatillah/deep-learning"
 headline: "Deep learning audio classification."
 description: "Full-stack deep learning solution that replaces manual archiving with high-precision AI analysis, streamlining the preservation of Yaman musical traditions"
 ---
@@ -15,7 +25,12 @@ import thumbnail from "@/static/project/yemeni-music/thumbnail.webp"
 
 <ImageFrameGrid className="mb-8 w-fit mx-auto">
 	<ImageFrame offset="c" transform="rotate" className="col-span-full sm:h-80">
-		<Image src={thumbnail} alt="Yemeni Music Classification" placeholder="blur" className="object-top" />
+		<Image
+			src={thumbnail}
+			alt="Yemeni Music Classification"
+			placeholder="blur"
+			className="object-top"
+		/>
 	</ImageFrame>
 </ImageFrameGrid>
 
@@ -41,7 +56,6 @@ This project required a seamless handshake between a modern _JavaScript_ fronten
 
 Machines cannot _hear_ music, but they can _see_ it. The core of our system relies on converting raw audio waves into Mel-Spectrograms, visual representations of sound frequencies over time.
 
-
 We built the _Python_ pipeline that:
 
 1.  Accepts the user's uploaded file.
@@ -62,7 +76,6 @@ Working closely with my teammate (who focused on the model architecture), we imp
 ## User Experience
 
 While the backend was complex, I ensured the frontend remained simple. Users don't need to know about _Spectrograms_ or _CNNs_. They simply upload a song and get an instant result.
-
 
 ---
 

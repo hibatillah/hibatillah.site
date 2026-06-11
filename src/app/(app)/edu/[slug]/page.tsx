@@ -1,4 +1,5 @@
 import { Header } from "@/components/header"
+import { BreadcrumbJsonLd } from "@/components/json-ld"
 import profile from "@/contents/profile.json"
 import { getContentData } from "@/lib/contents"
 import { Education } from "@/lib/types"
@@ -10,6 +11,11 @@ export async function generateMetadata({ params }: PageProps<"/edu/[slug]">): Pr
 
 	return {
 		title: data.degree,
+		description: data.description,
+		alternates: {
+			canonical: `/edu/${slug}`,
+			types: { "text/markdown": `/edu/${slug}.md` },
+		},
 		openGraph: {
 			title: data.degree,
 			description: data.description,
@@ -32,6 +38,12 @@ export default async function Page({ params }: PageProps<"/edu/[slug]">) {
 
 	return (
 		<>
+			<BreadcrumbJsonLd
+				items={[
+					{ name: "Home", path: "/" },
+					{ name: data.degree, path: `/edu/${slug}` },
+				]}
+			/>
 			<Header heading={data.degree} description={data.college} />
 			<Content />
 		</>

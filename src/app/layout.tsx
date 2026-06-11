@@ -4,6 +4,7 @@ import { MotionConfig } from "motion/react"
 import { Geist, Geist_Mono } from "next/font/google"
 import localFont from "next/font/local"
 
+import { JsonLd } from "@/components/json-ld"
 import { Toaster } from "@/components/ui/sonner"
 import profile from "@/contents/profile.json"
 import { cn } from "@/lib/utils"
@@ -30,7 +31,10 @@ const calloveya = localFont({
 })
 
 export const metadata: Metadata = {
-	title: profile.title,
+	title: {
+		default: profile.name,
+		template: `%s | ${profile.title}`,
+	},
 	description: profile.description,
 	authors: {
 		name: profile.name,
@@ -77,6 +81,7 @@ export default function RootLayout({
 					calloveya.variable,
 				)}
 			>
+				<JsonLd />
 				<MotionConfig reducedMotion="user">
 					<Provider>
 						{children}

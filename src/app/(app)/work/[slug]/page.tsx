@@ -1,4 +1,5 @@
 import { Header } from "@/components/header"
+import { BreadcrumbJsonLd } from "@/components/json-ld"
 import profile from "@/contents/profile.json"
 import { getContentData } from "@/lib/contents"
 import { Experience } from "@/lib/types"
@@ -10,11 +11,16 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
 
 	return {
 		title: data.title,
+		description: data.description,
+		alternates: {
+			canonical: `/work/${slug}`,
+			types: { "text/markdown": `/work/${slug}.md` },
+		},
 		openGraph: {
 			title: data.title,
 			description: data.description,
 			siteName: profile.title,
-			url: `/exp/${slug}`,
+			url: `/work/${slug}`,
 			type: "article",
 		},
 		twitter: {
@@ -32,6 +38,12 @@ export default async function Page({ params }: PageProps<"/work/[slug]">) {
 
 	return (
 		<>
+			<BreadcrumbJsonLd
+				items={[
+					{ name: "Home", path: "/" },
+					{ name: data.title, path: `/work/${slug}` },
+				]}
+			/>
 			<Header heading={data.title} description={data.company} />
 			<Content />
 		</>
