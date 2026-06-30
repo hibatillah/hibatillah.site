@@ -44,7 +44,7 @@ export default async function Page({ params }: PageProps<"/work/[slug]">) {
 					{ name: data.title, path: `/work/${slug}` },
 				]}
 			/>
-			<Header heading={data.title} description={data.company} />
+			<Header heading={data.title} description={data.company} meta={[data.period]} />
 			<Content />
 		</>
 	)

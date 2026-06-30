@@ -9,6 +9,8 @@ export default async function Image() {
 	return renderOgImage({
 		eyebrow: "PORTFOLIO",
 		title: profile.name,
-		description: profile.description,
+		description:
+			"Fullstack developer building type-safe, scalable web apps with TypeScript, React, and Next.js.",
+		centered: true,
 	})
 }

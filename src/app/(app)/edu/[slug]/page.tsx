@@ -44,7 +44,7 @@ export default async function Page({ params }: PageProps<"/edu/[slug]">) {
 					{ name: data.degree, path: `/edu/${slug}` },
 				]}
 			/>
-			<Header heading={data.degree} description={data.college} />
+			<Header heading={data.degree} description={data.college} meta={[data.period, data.score]} />
 			<Content />
 		</>
 	)

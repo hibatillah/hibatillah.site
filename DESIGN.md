@@ -474,12 +474,12 @@ The OG card is where the design system is **applied to a share surface** — a 1
 
 **Type & color** map straight onto the system, with one addition:
 
-| Element     | Treatment                                                       | System mapping                                       |
-| ----------- | --------------------------------------------------------------- | ---------------------------------------------------- |
-| Eyebrow     | Geist Mono · 20px · `uppercase` · tracking `0.18em` · **blue-600** | the `section-label` register, in the **accent**      |
-| Title       | Geist Sans · 72px · weight 700 · ink `#0A0A0A` · tracking `-0.02em` | a large-format display take on `{colors.ink}`        |
-| Description | Geist Sans · 30px · `zinc-600` · leading 1.4                     | `{typography.body}` in `{colors.ink-muted}`          |
-| Canvas      | `neutral-100` (≈ `oklch 0.97`)                                   | the near-white `{colors.canvas}` register            |
+| Element     | Treatment                                                           | System mapping                                  |
+| ----------- | ------------------------------------------------------------------- | ----------------------------------------------- |
+| Eyebrow     | Geist Mono · 20px · `uppercase` · tracking `0.18em` · **blue-600**  | the `section-label` register, in the **accent** |
+| Title       | Geist Sans · 72px · weight 700 · ink `#0A0A0A` · tracking `-0.02em` | a large-format display take on `{colors.ink}`   |
+| Description | Geist Sans · 30px · `zinc-600` · leading 1.4                        | `{typography.body}` in `{colors.ink-muted}`     |
+| Canvas      | `neutral-100` (≈ `oklch 0.97`)                                      | the near-white `{colors.canvas}` register       |
 
 **The blue accent (`blue-600`, `#2563eb`) is the single chromatic mark in the entire system, and it lives only here.** The web surface stays pure monochrome; the OG eyebrow uses blue purely for share-thumbnail recognizability and scannability. Treat it as an OG-only token, never a brand color that spreads to the site.
 

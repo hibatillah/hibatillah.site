@@ -35,12 +35,16 @@ export interface OgFrameProps {
 	title: string
 	/** Body paragraph. */
 	description: string
+	/** Center all text horizontally + vertically instead of the default bottom-left. */
+	centered?: boolean
 }
 
-function OgFrame({ eyebrow, title, description }: OgFrameProps) {
+function OgFrame({ eyebrow, title, description, centered }: OgFrameProps) {
 	return (
 		<div
-			tw="flex h-full w-full flex-col justify-end bg-neutral-100 px-20 pb-24"
+			tw={`flex h-full w-full flex-col bg-neutral-100 px-20 ${
+				centered ? "items-center justify-center text-center" : "justify-end pb-24"
+			}`}
 			style={{ fontFamily: "Geist" }}
 		>
 			<div
@@ -57,7 +61,11 @@ function OgFrame({ eyebrow, title, description }: OgFrameProps) {
 				{title}
 			</div>
 
-			<div tw="mt-4 max-w-[800px] text-3xl leading-[1.4] text-zinc-600">{description}</div>
+			<div
+				tw={`mt-4 max-w-[800px] text-3xl leading-[1.4] text-zinc-600 ${centered ? "mx-auto" : ""}`}
+			>
+				{description}
+			</div>
 		</div>
 	)
 }

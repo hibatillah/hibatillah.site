@@ -31,11 +31,11 @@ export default function Page() {
 						<TextLink href="https://linkedin.com/in/hibatillahhabib" underline="hover" external>
 							LinkedIn
 						</TextLink>
-						, explore work on{" "}
+						, see my work on{" "}
 						<TextLink href="https://github.com/hibatillah" underline="hover" external>
 							GitHub
 						</TextLink>
-						, and updates on{" "}
+						, or get updates on{" "}
 						<TextLink href="https://x.com/hibatillahhabib" underline="hover" external>
 							X
 						</TextLink>

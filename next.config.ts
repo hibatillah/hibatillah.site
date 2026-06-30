@@ -29,6 +29,30 @@ const nextConfig: NextConfig = {
 		{ source: "/work/:slug.md", destination: "/raw/work/:slug" },
 		{ source: "/edu/:slug.md", destination: "/raw/edu/:slug" },
 	],
+	// RFC 8288 Link headers — advertise machine-readable representations so agents
+	// can discover them without parsing HTML. Home points at the llms.txt site map;
+	// each detail page points at its `.md` alternate (mirrors the in-HTML
+	// `<link rel="alternate" type="text/markdown">` from generateMetadata).
+	headers: async () => [
+		{
+			source: "/",
+			headers: [{ key: "Link", value: '</llms.txt>; rel="describedby"; type="text/markdown"' }],
+		},
+		{
+			source: "/project/:slug",
+			headers: [
+				{ key: "Link", value: '</project/:slug.md>; rel="alternate"; type="text/markdown"' },
+			],
+		},
+		{
+			source: "/work/:slug",
+			headers: [{ key: "Link", value: '</work/:slug.md>; rel="alternate"; type="text/markdown"' }],
+		},
+		{
+			source: "/edu/:slug",
+			headers: [{ key: "Link", value: '</edu/:slug.md>; rel="alternate"; type="text/markdown"' }],
+		},
+	],
 }
 
 const withMDX = createMDX({

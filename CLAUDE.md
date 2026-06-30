@@ -50,21 +50,11 @@ Content is loaded via two server functions in `src/lib/contents.ts`:
 
 Local detail-page and home-page images live under `src/static/{edu,exp,project}/` and are imported as `StaticImageData` (Next.js handles blur placeholders automatically for static imports).
 
-Remote images (from `cdn.hibatillah.site`) use **thumbhash** + **sharp** for blur placeholders (replaced `plaiceholder`).
+The `RemoteImage` type (`src/lib/types.ts`) describes a remote image plus its precomputed thumbhash blur (`{ src, width, height, blurData?, error? }`); `Project.thumbnail` uses it. `ImageFrame` (`src/components/image-frame.tsx`) accepts a `RemoteImage` and decodes its `blurData` to a `blurDataURL` for `next/image`.
 
-**Server side** (`src/lib/remote-image.ts`):
+To decode a thumbhash blur on the client, use `decodeThumbhash` from `@/lib/thumbhash` (which wraps `thumbHashToDataURL`) and pass the result as `blurDataURL` on `next/image`.
 
-- `getRemoteImage(src)` — wrapped in React `cache()`. Fetches, resizes via sharp to 100×100, then generates a base64-encoded thumbhash. Returns `{ src, width, height, blurData?, error? }`.
-- `getRemoteImages(sources)` — maps over `getRemoteImage` (via `Promise.all`), inheriting the cache automatically. Returns a `Record<key, RemoteImage>`.
-
-**Client side** (`src/hooks/use-remote-image.ts`):
-
-- `useRemoteImage(src: string)` — single-image overload, returns `UseQueryResult<RemoteImage>`
-- `useRemoteImage(sources: ImageSource[])` — multi-image overload, returns `{ images, isLoading, isError }`
-
-Both overloads are a single exported function backed by TanStack Query (`useQuery` / `useQueries`) with `staleTime: Infinity`.
-
-To decode a thumbhash blur on the client, use `decodeThumbhash` from `@/lib/thumbhash` and pass the result as `blurDataURL` on `next/image`.
+> The former `src/lib/remote-image.ts` server helpers (`getRemoteImage`/`getRemoteImages`) and the `use-remote-image` client hook were removed as dead code — nothing produced `RemoteImage` objects through them. `sharp` is retained only for Next.js production image optimization of the `cdn.hibatillah.site` images.
 
 ### UI components
 
@@ -90,7 +80,7 @@ The root `metadata` in `src/app/layout.tsx` uses a title template: `{ default: p
 - **OG images** — generated with `next/og` (`ImageResponse` + Satori) via a shared renderer in `src/lib/og.tsx` (`renderOgImage`, `OgFrame`, `OG_SIZE`, `OG_CONTENT_TYPE`; `OgFrameProps` is `{ eyebrow, title, description }`). Route files: `src/app/opengraph-image.tsx` (home) and `src/app/(app)/{project,work,edu}/[slug]/opengraph-image.tsx` (per-item, data via `getContentData`). Fonts load from bundled **`.ttf`** files in `src/static/fonts/og/` (Satori cannot read the `.woff2` used elsewhere). Next serves dynamic OG images at a hashed URL (e.g. `opengraph-image-1shh5a?<hash>`), not the clean path.
   - **Satori `tw` caveat**: Satori supports only a subset of Tailwind. Arbitrary `font-[...]` (font-family), arbitrary `tracking-[...]` (letter-spacing), `text-pretty`, and `-950` color shades are **silently dropped**. Use inline `style` for `fontFamily` and `letterSpacing`; everything else (sizes, named + arbitrary `bg-[#hex]`/`text-[#hex]` colors, `leading-[...]`) works via `tw`. The `tw` prop is enabled by a `declare module "react"` augmentation in `og.tsx`.
 - **`manifest.ts`** — minimal web manifest (`display: "browser"`, not a PWA), theme/background `#FCFCFC`, reusing `icon.png`.
-- **`robots.ts`** — allow-all plus an explicit `aiCrawlers` allow-list (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, …) welcoming answer engines by name; sets `host` and links `sitemap.xml`.
+- **`robots.txt`** (`src/app/robots.txt/route.ts`, a hand-built route handler — **not** the `robots.ts` metadata file, which can't emit a `Content-Signal:` line) — allow-all plus an explicit `aiCrawlers` allow-list (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, …) welcoming answer engines by name; sets `host`, links `sitemap.xml`, and declares Content Signals (`Content-Signal: search=yes, ai-input=no, ai-train=no`) per [contentsignals.org](https://contentsignals.org).
 - **`sitemap.ts`** — home + every detail route, URLs built from frontmatter `slug`. (Note: `llms.txt` and the `.md` endpoints are deliberately **not** in the sitemap — `llms.txt` is a root-convention file like `robots.txt`, and the `.md` routes are alternate representations of pages already listed.)
 
 ### Agent & LLM accessibility
@@ -100,6 +90,8 @@ Beyond search SEO, the site exposes machine-readable representations for autonom
 - **`/llms.txt`** (`src/app/llms.txt/route.ts`) — a curated, grouped markdown map of the site (per [llmstxt.org](https://llmstxt.org)), generated from the MDX content via `getContentByCategory`. Each entry links to the page's `.md` endpoint. Discovered by convention at the root.
 - **Markdown endpoints** — `/project/<slug>.md`, `/work/<slug>.md`, `/edu/<slug>.md` return the raw MDX (frontmatter + prose, ESM `import`s stripped) as `text/markdown`. Served by `src/app/raw/[type]/[slug]/route.ts`, reached via `*.md` → `/raw/[type]/[slug]` rewrites in `next.config.ts` (the handler's `TYPE_TO_CATEGORY` maps `project→projects`, `work→exp`, `edu→edu`). The page-route slug must equal the MDX filename for both the page and its `.md` endpoint to resolve.
 - **Self-advertised alternates** — each detail page's `generateMetadata` sets `alternates.types["text/markdown"]` so the rendered HTML carries `<link rel="alternate" type="text/markdown" href="…/<slug>.md">` (the web-standard way to point agents at the markdown version). A page-level `alternates` replaces the inherited root one, so each detail page re-declares its own `canonical` there too.
+- **`Link` response headers (RFC 8288)** — `headers()` in `next.config.ts` adds an HTTP `Link` header so agents discover the machine-readable representations without parsing HTML: home → `</llms.txt>; rel="describedby"`, each detail page → `</<type>/<slug>.md>; rel="alternate"; type="text/markdown"` (the header twin of the in-HTML alternate; Next interpolates the `:slug` source param into the header value).
+- **Markdown content negotiation** (`src/proxy.ts` — Next 16 renamed the `middleware` file convention to `proxy`; the exported fn is `proxy`, `config.matcher` unchanged) — when a request carries `Accept: text/markdown`, the proxy rewrites (URL-preserving) `/` → `/llms.txt` and `/project|work|edu/<slug>` → `/raw/<type>/<slug>`. Browsers (`Accept: text/html`) fall through to HTML. The matcher's `[^/.]+` excludes `<slug>.md` paths (those go through the `next.config.ts` rewrites instead). `llms.txt`'s route branches its `Content-Type` on the same `Accept` header so direct human visits stay `text/plain` (viewable) while negotiated requests get `text/markdown`; both it and the raw handler send `Vary: Accept`.
 
 ### Key conventions
 

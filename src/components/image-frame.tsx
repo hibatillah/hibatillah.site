@@ -1,4 +1,4 @@
-import { RemoteImage } from "@/lib/remote-image"
+import { RemoteImage } from "@/lib/types"
 import { decodeThumbhash } from "@/lib/thumbhash"
 import Image from "next/image"
 import { cn } from "../lib/utils"

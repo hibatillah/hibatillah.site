@@ -46,7 +46,12 @@ export default async function Page({ params }: PageProps<"/project/[slug]">) {
 					{ name: data.title, path: `/project/${slug}` },
 				]}
 			/>
-			<Header heading={data.title} description={data.headline} links={data.links ?? []} />
+			<Header
+				heading={data.title}
+				description={data.headline}
+				stacks={data.stacks}
+				links={data.links ?? []}
+			/>
 			<Content />
 		</>
 	)

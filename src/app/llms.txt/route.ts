@@ -7,7 +7,7 @@ import { all } from "better-all"
  * `/llms.txt` — a curated, markdown map of the site for LLMs and agents.
  * @see https://llmstxt.org
  */
-export async function GET() {
+export async function GET(request: Request) {
 	const { projects, experiences, educations } = await all({
 		async projects() {
 			return getContentByCategory<Project>("projects")
@@ -52,10 +52,17 @@ export async function GET() {
 		].join("\n"),
 	]
 
+	/**
+	 * Agents that negotiate `Accept: text/markdown` get `text/markdown`.
+	 * humans visiting /llms.txt get `text/plain` so the browser renders it inline instead of downloading.
+	 */
+	const wantsMarkdown = (request.headers.get("accept") ?? "").includes("text/markdown")
+
 	return new Response(`${sections.join("\n\n")}\n`, {
 		headers: {
-			"content-type": "text/plain; charset=utf-8",
+			"content-type": wantsMarkdown ? "text/markdown; charset=utf-8" : "text/plain; charset=utf-8",
 			"cache-control": "public, max-age=3600, s-maxage=86400",
+			vary: "Accept",
 		},
 	})
 }
