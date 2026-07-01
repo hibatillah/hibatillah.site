@@ -1,7 +1,7 @@
 import profile from "@/contents/profile.json"
 
 /**
- * Structured data (`Person` + `WebSite` + `ProfilePage`) declaring hibatillah.site
+ * Structured data (`Person` + `WebSite` + `ProfilePage`) declaring hibatillah.com
  * as the canonical entity for the name, with `sameAs` linking the social profiles.
  * Rendered once in the root layout.
  */

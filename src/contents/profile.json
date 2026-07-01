@@ -1,5 +1,5 @@
 {
-	"url": "https://hibatillah.site",
+	"url": "https://hibatillah.com",
 	"name": "M. Hibatillah Hasanin",
 	"title": "Hibatillah Hasanin",
 	"description": "Fullstack Developer expert in TypeScript, React, Next.js, and modern backends. Building scalable, type-safe applications with a focus on architecture and performance.",
@@ -10,7 +10,6 @@
 		"education": "politeknik-caltex-riau",
 		"projects": ["ministry-room-management", "furaya-hotel-management"]
 	},
-	"asssets": "https://cdn.hibatillah.site",
 	"twitterHandle": "@hibatillahhabib",
 	"links": {
 		"email": "mailto:hibatillahhabib@gmail.com",

@@ -36,7 +36,7 @@ Listing pages and `/explore` were removed in the redesign. Home-page section dat
 
 All portfolio content lives in `src/contents/`:
 
-- `profile.json` — Central config: name, description, CDN base URL (`asssets`, note triple-s), `twitterHandle` (e.g. `@handle`), and social links. Referenced in `next.config.ts` for `/links/:label` redirects (`mailto:` entries are filtered out). The `featured` field exists but the current home page does not read from it — it's vestigial.
+- `profile.json` — Central config: `url` (the canonical site origin, `https://hibatillah.com` — cascades to `metadataBase`, canonical URLs, OG image URLs, `sitemap.ts`, `json-ld.tsx`, and the robots.txt `Host:`/`Sitemap:` lines, so changing it re-points the whole site), name, description, `twitterHandle` (e.g. `@handle`), and social links. Referenced in `next.config.ts` for `/links/:label` redirects (`mailto:` entries are filtered out). The `featured` field exists but the current home page does not read from it — it's vestigial.
 - `edu/`, `exp/`, `projects/`, `components/` — MDX files with YAML frontmatter matching types in `src/lib/types.ts`.
 
 Content is loaded via two server functions in `src/lib/contents.ts`:
@@ -54,7 +54,7 @@ The `RemoteImage` type (`src/lib/types.ts`) describes a remote image plus its pr
 
 To decode a thumbhash blur on the client, use `decodeThumbhash` from `@/lib/thumbhash` (which wraps `thumbHashToDataURL`) and pass the result as `blurDataURL` on `next/image`.
 
-> The former `src/lib/remote-image.ts` server helpers (`getRemoteImage`/`getRemoteImages`) and the `use-remote-image` client hook were removed as dead code — nothing produced `RemoteImage` objects through them. `sharp` is retained only for Next.js production image optimization of the `cdn.hibatillah.site` images.
+> The former `src/lib/remote-image.ts` server helpers (`getRemoteImage`/`getRemoteImages`) and the `use-remote-image` client hook were removed as dead code — nothing produced `RemoteImage` objects through them. There is **no remote image CDN**: every thumbnail is a local static import, so `next.config.ts` has no `images.remotePatterns`. The `RemoteImage` type and `Project.thumbnail` field remain typed but unused. `sharp` is retained for Next.js production image optimization of the local static images.
 
 ### UI components
 
@@ -102,7 +102,6 @@ Beyond search SEO, the site exposes machine-readable representations for autonom
 - Path alias `@/` maps to `src/`. Always use `@/` imports, never relative `../` paths.
 - MDX files support GFM and frontmatter out of the box via remark plugins.
 - Twitter `creator` metadata uses `profile.twitterHandle` (the `@handle` string), not `profile.links.x` (a full URL).
-- The CDN key in `profile.json` is `asssets` (three `s`s) — preserved intentionally for compatibility.
 
 ### Adding new content
 

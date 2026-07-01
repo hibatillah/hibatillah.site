@@ -5,16 +5,6 @@ import profile from "./src/contents/profile.json"
 const nextConfig: NextConfig = {
 	pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 	reactCompiler: true,
-	images: {
-		remotePatterns: [
-			{
-				protocol: "https",
-				hostname: "cdn.hibatillah.site",
-				port: "",
-				pathname: "/**",
-			},
-		],
-	},
 	redirects: () => {
 		return Object.entries(profile.links)
 			.filter(([, url]) => !url.startsWith("mailto:"))
