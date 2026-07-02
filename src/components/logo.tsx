@@ -46,7 +46,7 @@ export function Logo({ className }: { className?: string }) {
 			<ContextMenuContent align="end" side="bottom" alignOffset={({ anchor }) => -anchor.width}>
 				<ContextMenuItem
 					render={
-						<Link href="https://ledger.hibatillah.site" target="_blank" rel="noopener noreferrer" />
+						<Link href="https://ledger.hibatillah.com" target="_blank" rel="noopener noreferrer" />
 					}
 				>
 					Ledger <ArrowUpRightIcon className="ml-auto" />

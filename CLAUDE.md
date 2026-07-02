@@ -102,6 +102,7 @@ Beyond search SEO, the site exposes machine-readable representations for autonom
 - Path alias `@/` maps to `src/`. Always use `@/` imports, never relative `../` paths.
 - MDX files support GFM and frontmatter out of the box via remark plugins.
 - Twitter `creator` metadata uses `profile.twitterHandle` (the `@handle` string), not `profile.links.x` (a full URL).
+- `headers()` in `next.config.ts` sets baseline security headers on every route (`source: "/(.*)"`) — HSTS (`includeSubDomains; preload`), `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options: DENY`, `Permissions-Policy` — alongside the per-route `Link` headers. No `Content-Security-Policy` yet (would need care around Next inline styles / OG).
 
 ### Adding new content
 

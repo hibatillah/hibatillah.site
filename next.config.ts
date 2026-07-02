@@ -24,6 +24,23 @@ const nextConfig: NextConfig = {
 	// each detail page points at its `.md` alternate (mirrors the in-HTML
 	// `<link rel="alternate" type="text/markdown">` from generateMetadata).
 	headers: async () => [
+		// Baseline security headers applied to every route.
+		{
+			source: "/(.*)",
+			headers: [
+				{
+					key: "Strict-Transport-Security",
+					value: "max-age=63072000; includeSubDomains; preload",
+				},
+				{ key: "X-Content-Type-Options", value: "nosniff" },
+				{ key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+				{ key: "X-Frame-Options", value: "DENY" },
+				{
+					key: "Permissions-Policy",
+					value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+				},
+			],
+		},
 		{
 			source: "/",
 			headers: [{ key: "Link", value: '</llms.txt>; rel="describedby"; type="text/markdown"' }],
